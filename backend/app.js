@@ -8,8 +8,11 @@ const cors = require("cors")
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
-// mongodb connection
 
+// routes
+app.use("/api", require("./routes/auth"))
+
+// mongodb connection
 const uri = process.env.MONGO_URI
 mongoose
   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
