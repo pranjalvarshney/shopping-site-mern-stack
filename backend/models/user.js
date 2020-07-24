@@ -57,13 +57,13 @@ userSchema
     return this._password
   })
 
-userSchema.method = {
+userSchema.methods = {
   authenticate: function (plainPassword) {
     return this.securePassword(plainPassword) === this.encryptedpassword
   },
 
   securePassword: function (plainPassword) {
-    if (!password) return ""
+    if (!plainPassword) return ""
     try {
       return crypto
         .createHmac("sha256", this.salt)
