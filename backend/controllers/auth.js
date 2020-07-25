@@ -74,3 +74,10 @@ exports.signout = (req, res) => {
     msg: "User successfully signed out",
   })
 }
+
+// for protected routes -- is authenticate
+exports.isSignedIn = expressJWT({
+  secret: process.env.SECRET,
+  algorithms: ["HS256"],
+  userProperty: "auth",
+})
