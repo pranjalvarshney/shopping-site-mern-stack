@@ -75,9 +75,30 @@ exports.signout = (req, res) => {
   })
 }
 
-// for protected routes -- is authenticate
+// for protected routes --
 exports.isSignedIn = expressJWT({
   secret: process.env.SECRET,
   algorithms: ["HS256"],
   userProperty: "auth",
 })
+
+//custom middlewares
+
+exports.isAuthenticated = (req, res, next) => {
+  const check = req.profile && req.auth && req.profile._id === req.auth._id
+  if (!check) {
+    return res.status(403).json({
+      errormsg: "Access denied",
+    })
+  }
+  next()
+}
+
+exports.isAdmin = (req, res, next) => {
+  if (req.profile.role === 0) {
+    return res.status(403).json({
+      errormsg: "Access denied - admin creds not found",
+    })
+  }
+  next()
+}
