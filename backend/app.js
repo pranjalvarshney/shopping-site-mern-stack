@@ -15,7 +15,11 @@ app.use("/api", require("./routes/auth"))
 // mongodb connection
 const uri = process.env.MONGO_URI
 mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log("Database connected")
   })
