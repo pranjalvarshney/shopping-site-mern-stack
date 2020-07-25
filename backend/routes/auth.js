@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { signup, signin } = require("../controllers/auth")
+const { signup, signin, signout } = require("../controllers/auth")
 const { check } = require("express-validator")
 
 router.post(
@@ -30,5 +30,7 @@ router.post(
   ],
   signin
 )
+
+router.get("/signout", signout)
 
 module.exports = router
