@@ -1,6 +1,6 @@
-const mongosse = require("mongoose")
+const mongoose = require("mongoose")
 
-const categorySchema = new mongosse.Schema(
+const categorySchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -12,4 +12,4 @@ const categorySchema = new mongosse.Schema(
   { timestamps: true } //it gives the timestamp of the creation}
 )
 
-module.exports = mongosse.model("Category", categorySchema)
+module.exports = mongoose.model("Category", categorySchema)
