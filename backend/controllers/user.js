@@ -9,7 +9,7 @@ exports.getUserById = (req, res, next, id) => {
     }
     if (!user) {
       return res.status(400).json({
-        errormsg: "User not found",
+        errormsg: "User email not found",
       })
     }
     req.profile = user
