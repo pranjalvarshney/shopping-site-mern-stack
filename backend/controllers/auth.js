@@ -85,8 +85,8 @@ exports.isSignedIn = expressJWT({
 //custom middlewares
 
 exports.isAuthenticated = (req, res, next) => {
-  console.log(req.profile)
-  console.log(req.auth)
+  // console.log(req.profile)
+  // console.log(req.auth)
   let check = req.profile && req.auth && req.profile._id == req.auth.id
   if (!check) {
     return res.status(403).json({
