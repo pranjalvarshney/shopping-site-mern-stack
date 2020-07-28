@@ -19,5 +19,8 @@ exports.getUserById = (req, res, next, id) => {
 
 exports.getUser = (req, res) => {
   //TODO: get back here for password
+  req.profile.encryptedpassword = undefined
+  req.profile.salt = undefined
+  req.profile.updatedAt = undefined
   return res.json(req.profile)
 }
