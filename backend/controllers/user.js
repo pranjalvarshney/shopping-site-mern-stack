@@ -31,7 +31,6 @@ exports.updateUser = (req, res) => {
     { _id: req.profile._id },
     {
       $set: req.body,
-      $,
     },
     {
       new: true,
