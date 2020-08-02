@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema(
       ref: "Category",
       required: true,
     },
-    totalstock: {
+    totalStock: {
       type: Number,
       required: true,
     },
@@ -32,7 +32,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    image: {
+    pimage: {
       data: Buffer,
       contentType: String,
     },
