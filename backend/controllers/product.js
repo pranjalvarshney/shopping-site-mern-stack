@@ -64,3 +64,20 @@ exports.createProduct = (req, res) => {
     })
   })
 }
+
+exports.getProduct = (req, res) => {
+  // since the product image will take a lot of time,
+  // for performance it is set undefined so that the json data is sent quick, while for the image,
+  // a separate middleware is created to send the image
+  req.product.pimage = undefined
+  return res.json(req.product)
+}
+
+// middleware for product image for efficiency and performance
+exports.getProductImage = (req, res, next) => {
+  if (req.product.pimage) {
+    res.set("Content-Type", req.product.pimage.contentType)
+    res.send(req.product.pimage.data)
+  }
+  next()
+}
