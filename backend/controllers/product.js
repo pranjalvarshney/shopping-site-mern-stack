@@ -3,6 +3,8 @@ const formidable = require("formidable") // to handle formdata
 const _ = require("lodash") // makes javascript work easier
 const fs = require("fs") //file system
 
+// middleware for param productID which gives us "req.product"
+
 exports.getProductByID = (req, res, next, id) => {
   Product.findById(id).exec((err, product) => {
     if (err) {
@@ -19,6 +21,8 @@ exports.getProductByID = (req, res, next, id) => {
     next()
   })
 }
+
+// creating a new product
 
 exports.createProduct = (req, res) => {
   let form = new formidable.IncomingForm()
@@ -65,6 +69,8 @@ exports.createProduct = (req, res) => {
   })
 }
 
+// get / read a product
+
 exports.getProduct = (req, res) => {
   // since the product image will take a lot of time,
   // for performance it is set undefined so that the json data is sent quick, while for the image,
@@ -81,6 +87,8 @@ exports.getProductImage = (req, res, next) => {
   }
   next()
 }
+
+// updating the product
 
 exports.updateProduct = (req, res) => {
   let form = new formidable.IncomingForm()
@@ -117,6 +125,7 @@ exports.updateProduct = (req, res) => {
   })
 }
 
+// deleting the product
 exports.removeProduct = (req, res) => {
   let product = req.product
   product.remove((err, deletedProduct) => {
@@ -130,4 +139,30 @@ exports.removeProduct = (req, res) => {
       deletedProduct,
     })
   })
+}
+
+//product listing
+
+exports.getAllProducts = (req, res) => {
+  let limit = req.query.limit ? parseInt(req.query.limit) : 8
+  let sortBy = req.query.sortBy ? parseInt(req.query.sortBy) : "_id"
+
+  Product.find()
+    .select("-pimage")
+    .populate("category")
+    .sort([[sortBy, "asc"]])
+    .limit(limit)
+    .exec((err, products) => {
+      if (err) {
+        return res.status(400).json({
+          errormsg: "An error occured! try again later",
+        })
+      }
+      if (!products) {
+        return res.status(400).json({
+          errormsg: "No product found",
+        })
+      }
+      res.json(products)
+    })
 }
