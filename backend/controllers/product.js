@@ -81,3 +81,53 @@ exports.getProductImage = (req, res, next) => {
   }
   next()
 }
+
+exports.updateProduct = (req, res) => {
+  let form = new formidable.IncomingForm()
+  form.keepExtensions = true
+
+  form.parse(req, (err, fields, file) => {
+    if (err) {
+      return res.status(400).json({
+        errormsg: "An error occured! must be a problem with image",
+      })
+    }
+
+    let product = req.product
+    product = _.extend(product, fields)
+
+    if (file.pimage) {
+      if (file.pimage.size > 2 * 1024 * 1024) {
+        res.status(400).json({
+          errormsg: "Image size too big",
+        })
+      }
+      product.pimage.data = fs.readFileSync(file.pimage.path)
+      product.pimage.contentType = file.pimage.type
+    }
+
+    product.save((err, product) => {
+      if (err) {
+        return res.status(400).json({
+          errormsg: "An error occured! While updating - Failed",
+        })
+      }
+      res.json(product)
+    })
+  })
+}
+
+exports.removeProduct = (req, res) => {
+  let product = req.product
+  product.remove((err, deletedProduct) => {
+    if (err) {
+      return res.json({
+        errormsg: "An error occured! Failed to delete the product",
+      })
+    }
+    res.json({
+      msg: "Product has been deleted successfully",
+      deletedProduct,
+    })
+  })
+}
