@@ -2,6 +2,8 @@ const Product = require("../models/product")
 const formidable = require("formidable") // to handle formdata
 const _ = require("lodash") // makes javascript work easier
 const fs = require("fs") //file system
+const { updateOne, update } = require("../models/product")
+const { filter } = require("lodash")
 
 // middleware for param productID which gives us "req.product"
 
@@ -165,4 +167,25 @@ exports.getAllProducts = (req, res) => {
       }
       res.json(products)
     })
+}
+
+// middleware for updating the stock and sold
+
+exports.updateStock = (req, res, next) => {
+  let updateOpertion = req.body.order.products.map((item) => {
+    return {
+      updateOne: {
+        filter: { _id: item._id },
+        update: { $inc: { totalStock= -item.count, sold: -item.count } },
+      },
+    }
+  })
+  Product.bulkWrite(updateOpertion,{},(err,products)=>{
+    if(err){
+      return res.status(400).json({
+        errormsg: "Bulk operation failed"
+      })
+    }
+    next()
+  })
 }
