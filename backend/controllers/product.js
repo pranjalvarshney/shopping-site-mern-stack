@@ -24,8 +24,19 @@ exports.getProductByID = (req, res, next, id) => {
   })
 }
 
-// creating a new product
+// get all distinct product categories
+exports.getAllDistictCategories = (req,res) =>{
+  Product.distinct("category",{},(err, categories)=>{
+    if(err){
+      return res.status(400).json({
+        errormsg: "No categories found"
+      })
+    }
+    res.json(categories)
+  })
+}
 
+// creating a new product
 exports.createProduct = (req, res) => {
   let form = new formidable.IncomingForm()
   form.keepExtensions = true
@@ -71,7 +82,7 @@ exports.createProduct = (req, res) => {
   })
 }
 
-// get / read a product
+// get/read a product with image set to undefined
 
 exports.getProduct = (req, res) => {
   // since the product image will take a lot of time,

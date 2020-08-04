@@ -7,6 +7,8 @@ const {
   getProductImage,
   removeProduct,
   updateProduct,
+  getAllDistictCategories,
+  getAllProducts,
 } = require("../controllers/product")
 const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth")
 const router = express.Router()
@@ -46,6 +48,10 @@ router.delete(
   removeProduct
 )
 
-// listing routes
+// products listing routes
+router.get("/products", getAllProducts)
+
+// get all unique categories
+router.get("/products/categories", getAllDistictCategories)
 
 module.exports = router
