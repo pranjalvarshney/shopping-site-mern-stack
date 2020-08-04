@@ -25,11 +25,11 @@ exports.getProductByID = (req, res, next, id) => {
 }
 
 // get all distinct product categories
-exports.getAllDistictCategories = (req,res) =>{
-  Product.distinct("category",{},(err, categories)=>{
-    if(err){
+exports.getAllDistictCategories = (req, res) => {
+  Product.distinct("category", {}, (err, categories) => {
+    if (err) {
       return res.status(400).json({
-        errormsg: "No categories found"
+        errormsg: "No categories found",
       })
     }
     res.json(categories)
@@ -187,14 +187,14 @@ exports.updateStock = (req, res, next) => {
     return {
       updateOne: {
         filter: { _id: item._id },
-        update: { $inc: { totalStock= -item.count, sold: -item.count } },
+        update: { $inc: { totalStock: -item.count, sold: +item.count } },
       },
     }
   })
-  Product.bulkWrite(updateOpertion,{},(err,products)=>{
-    if(err){
+  Product.bulkWrite(updateOpertion, {}, (err, products) => {
+    if (err) {
       return res.status(400).json({
-        errormsg: "Bulk operation failed"
+        errormsg: "Bulk operation failed",
       })
     }
     next()
