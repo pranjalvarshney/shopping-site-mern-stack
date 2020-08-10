@@ -1,7 +1,15 @@
 import React from "react"
 import { Link, withRouter } from "react-router-dom"
 
-const Navbar = () => {
+const currentTab = (history, path) => {
+  if (history.location.pathname === path) {
+    return { color: "white" }
+  } else {
+    return { color: "grey" }
+  }
+}
+
+const Navbar = ({ history }) => {
   return (
     <div>
       <nav class='navbar navbar-dark navbar-expand-lg bg-dark py-3 px-5'>
@@ -23,27 +31,43 @@ const Navbar = () => {
         <div class='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul class='navbar-nav ml-auto'>
             <li class='nav-item active'>
-              <Link class='nav-link' to='/'>
-                Home <span class='sr-only'>(current)</span>
+              <Link style={currentTab(history, "/")} class='nav-link' to='/'>
+                Home
               </Link>
             </li>
             <li class='nav-item'>
-              <Link class='nav-link' to='/signup'>
+              <Link
+                style={currentTab(history, "/signup")}
+                class='nav-link'
+                to='/signup'
+              >
                 Signup
               </Link>
             </li>
             <li class='nav-item'>
-              <Link class='nav-link' to='/signin'>
+              <Link
+                style={currentTab(history, "/signin")}
+                class='nav-link'
+                to='/signin'
+              >
                 Signin
               </Link>
             </li>
             <li class='nav-item'>
-              <Link class='nav-link' to='#'>
+              <Link
+                style={currentTab(history, "/cart")}
+                class='nav-link'
+                to='#'
+              >
                 Cart
               </Link>
             </li>
             <li class='nav-item'>
-              <Link class='nav-link' to='#'>
+              <Link
+                style={currentTab(history, "/account")}
+                class='nav-link'
+                to='#'
+              >
                 Account
               </Link>
             </li>
