@@ -10,8 +10,8 @@ exports.signup = (req, res) => {
       errormsg: errors.array()[0].msg,
     })
   }
-  const { firstname, lastname, email, password } = req.body
-  const newUser = new User({ firstname, lastname, email, password })
+  const { name, email, password } = req.body
+  const newUser = new User({ name, email, password })
   newUser.save((err, user) => {
     if (err) {
       return res.status(400).json({
@@ -54,13 +54,12 @@ exports.signin = (req, res) => {
     //put token in cookie
     res.cookie("token", token, { expire: new Date() + 9999 })
     //send response to frontend
-    const { _id, firstname, lastname, email, role } = user
+    const { _id, name, email, role } = user
     res.status(200).json({
       token,
       data: {
         _id,
-        firstname,
-        lastname,
+        name,
         email,
         role,
       },
