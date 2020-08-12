@@ -6,62 +6,62 @@ export const Base = ({ className = "container", children }) => {
     <div>
       <Navbar />
       <div className={className}>{children}</div>
-      <div class='mt-5 pt-5 pb-5 footer bg-dark text-white'>
-        <div class='container'>
-          <div class='row'>
-            <div class='col-lg-5 col-xs-12 about-company'>
+      <div className='mt-5 pt-5 pb-5 footer bg-dark text-white'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-5 col-xs-12 about-company'>
               <h2>BuyTees</h2>
-              <p class='pr-5 text-white-50'>
+              <p className='pr-5 text-white-50'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
                 ac ante mollis quam tristique convallis
               </p>
               <p>
-                <a to='#'>
-                  <i class='fa fa-facebook-square mr-1'></i>
+                <a href='/'>
+                  <i className='fa fa-facebook-square mr-1'></i>
                 </a>
-                <a to='#'>
-                  <i class='fa fa-linkedin-square'></i>
+                <a href='/'>
+                  <i className='fa fa-linkedin-square'></i>
                 </a>
               </p>
             </div>
-            <div class='col-lg-3 col-xs-12 links'>
-              <h4 class='mt-lg-0 mt-sm-3'>Links</h4>
-              <ul class='m-0 p-0'>
+            <div className='col-lg-3 col-xs-12 links'>
+              <h4 className='mt-lg-0 mt-sm-3'>Links</h4>
+              <ul className='m-0 p-0'>
                 <li>
-                  - <a to='#'>Lorem ipsum</a>
+                  - <a href='/'>Lorem ipsum</a>
                 </li>
                 <li>
-                  - <a to='#'>Nam mauris velit</a>
+                  - <a href='/'>Nam mauris velit</a>
                 </li>
                 <li>
-                  - <a to='#'>Etiam vitae mauris</a>
+                  - <a href='/'>Etiam vitae mauris</a>
                 </li>
                 <li>
-                  - <a to='#'>Fusce scelerisque</a>
+                  - <a href='/'>Fusce scelerisque</a>
                 </li>
                 <li>
-                  - <a to='#'>Sed faucibus</a>
+                  - <a href='/'>Sed faucibus</a>
                 </li>
                 <li>
-                  - <a to='#'>Mauris efficitur nulla</a>
+                  - <a href='/'>Mauris efficitur nulla</a>
                 </li>
               </ul>
             </div>
-            <div class='col-lg-4 col-xs-12 location'>
-              <h4 class='mt-lg-0 mt-sm-4'>Location</h4>
+            <div className='col-lg-4 col-xs-12 location'>
+              <h4 className='mt-lg-0 mt-sm-4'>Location</h4>
               <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
-              <p class='mb-0'>
-                <i class='fa fa-phone mr-3'></i>(541) 754-3010
+              <p className='mb-0'>
+                <i className='fa fa-phone mr-3'></i>(541) 754-3010
               </p>
               <p>
-                <i class='fa fa-envelope-o mr-3'></i>info@hsdf.com
+                <i className='fa fa-envelope-o mr-3'></i>info@hsdf.com
               </p>
             </div>
           </div>
-          <div class='row mt-5'>
-            <div class='col copyright'>
-              <p class=''>
-                <small class='text-white-50'>
+          <div className='row mt-5'>
+            <div className='col copyright'>
+              <p className=''>
+                <small className='text-white-50'>
                   © 2019. All Rights Reserved.
                 </small>
               </p>

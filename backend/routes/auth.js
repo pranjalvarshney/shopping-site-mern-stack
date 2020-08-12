@@ -6,11 +6,11 @@ const { check } = require("express-validator")
 router.post(
   "/signup",
   [
-    check("name").isLength({ min: 3 }).withMessage("enter a valid first name"),
-    check("email").isEmail().withMessage("enter a valid email"),
+    check("name").isLength({ min: 3 }).withMessage("Enter a valid name"),
+    check("email").isEmail().withMessage("Enter a valid email address"),
     check("password")
       .isLength({ min: 5 })
-      .withMessage("password should be greater than 6 characters"),
+      .withMessage("Password should be greater than 6 characters"),
   ],
   signup
 )
@@ -18,10 +18,10 @@ router.post(
 router.post(
   "/signin",
   [
-    check("email").isEmail().withMessage("enter a valid email"),
+    check("email").isEmail().withMessage("Enter a valid email"),
     check("password")
       .isLength({ min: 5 })
-      .withMessage("password should be greater than 6 characters"),
+      .withMessage("Password should be greater than 6 characters"),
   ],
   signin
 )

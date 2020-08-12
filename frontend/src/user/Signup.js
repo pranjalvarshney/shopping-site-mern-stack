@@ -24,7 +24,7 @@ export const Signup = () => {
   const successMsg = () => {
     return (
       <div
-        className='alert alert-success'
+        className='alert py-1 text-center alert-success '
         style={{ display: success ? "" : "none" }}
       >
         Congratulations! Your account has been created successfully
@@ -35,7 +35,7 @@ export const Signup = () => {
   const errorMsg = () => {
     return (
       <div
-        className='alert alert-danger'
+        className='alert py-1 text-center alert-danger'
         style={{ display: error ? "" : "none" }}
       >
         {error}
@@ -46,38 +46,35 @@ export const Signup = () => {
   const onFormSubmit = async (e) => {
     e.preventDefault()
     setinputValues({ ...inputValues, error: false })
+
     try {
       const response = await signup({ name, email, password })
-      // if (response.errormsg) {
-      //   setinputValues({
-      //     ...inputValues,
-      //     success: false,
-      //     error: response.errormsg,
-      //   })
-      // } else {
+      if (response)
+        setinputValues({
+          ...inputValues,
+          name: "",
+          email: "",
+          password: "",
+          error: "",
+          success: true,
+        })
+    } catch (error) {
       setinputValues({
         ...inputValues,
-        name: "",
-        email: "",
-        password: "",
-        error: "",
-        success: true,
+        error: error.response.data.errormsg,
+        success: false,
       })
-      console.log(response)
-      // }
-    } catch (error) {
-      console.log(error.response)
     }
   }
 
   return (
     <Base>
       <div className='row '>
-        <div className='col-md-5 jumbotron mx-auto pt-5 bg-light'>
+        <div className='col-10 mt-5 col-md-5 jumbotron mx-auto py-4 bg-light'>
           <h4>Signup</h4>
           <p>Create a new account</p>
-          {successMsg}
-          {errorMsg}
+          {successMsg()}
+          {errorMsg()}
           <form noValidate onSubmit={onFormSubmit}>
             <div className='form-group'>
               <label>Name</label>
@@ -112,7 +109,7 @@ export const Signup = () => {
             <button className='btn btn-sm btn-outline-success btn-block'>
               Submit
             </button>
-            <h6>{JSON.stringify(inputValues)}</h6>
+            {/* <h6>{JSON.stringify(inputValues)}</h6> */}
           </form>
         </div>
       </div>

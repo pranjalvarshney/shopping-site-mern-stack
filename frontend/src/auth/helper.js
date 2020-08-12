@@ -8,9 +8,10 @@ export const signup = async (user) => {
         "Content-Type": "application/json",
       },
     })
-    console.log(response)
+    return response
   } catch (error) {
     console.log(error.response)
+    throw error
   }
 }
 
@@ -21,7 +22,8 @@ export const signin = async (user) => {
         "Content-Type": "application/json",
       },
     })
-    console.log(response)
+    // console.log(response)
+    return response
   } catch (error) {
     console.log(error.response)
   }
@@ -40,7 +42,9 @@ export const signout = async (next) => {
     next()
     try {
       const response = await axios.get(`${API}/signout`)
-      console.log(response)
+      // console.log(response)
+
+      return response
     } catch (error) {
       console.log(error.response)
     }
