@@ -36,12 +36,12 @@ exports.signin = (req, res) => {
   User.findOne({ email }, (err, user) => {
     if (err) {
       return res.status(400).json({
-        errormsg: "an error occured",
+        errormsg: "An error occured",
       })
     }
     if (!user) {
       return res.status(400).json({
-        errormsg: "email not found",
+        errormsg: "Email not found",
       })
     }
     if (!user.authenticate(password)) {

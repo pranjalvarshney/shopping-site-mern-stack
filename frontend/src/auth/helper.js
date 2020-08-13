@@ -10,7 +10,7 @@ export const signup = async (user) => {
     })
     return response
   } catch (error) {
-    console.log(error.response)
+    // console.log(error.response)
     throw error
   }
 }
@@ -22,10 +22,10 @@ export const signin = async (user) => {
         "Content-Type": "application/json",
       },
     })
-    // console.log(response)
     return response
   } catch (error) {
     console.log(error.response)
+    throw error
   }
 }
 

@@ -17,7 +17,7 @@ export const Signup = () => {
     setinputValues({
       ...inputValues,
       [e.target.name]: e.target.value,
-      error: false,
+      error: "",
     })
   }
 
@@ -76,8 +76,8 @@ export const Signup = () => {
           {successMsg()}
           {errorMsg()}
           <form noValidate onSubmit={onFormSubmit}>
-            <div className='form-group'>
-              <label>Name</label>
+            <div className='form-group my-1'>
+              <label className='mb-0'>Name</label>
               <input
                 name='name'
                 onChange={handleChange}
@@ -86,8 +86,8 @@ export const Signup = () => {
                 className='form-control form-control-sm'
               />
             </div>
-            <div className='form-group'>
-              <label>Email</label>
+            <div className='form-group my-1'>
+              <label className='mb-0'>Email</label>
               <input
                 name='email'
                 onChange={handleChange}
@@ -96,8 +96,8 @@ export const Signup = () => {
                 className='form-control form-control-sm'
               />
             </div>
-            <div className='form-group'>
-              <label>Password</label>
+            <div className='form-group my-1'>
+              <label className='mb-0'>Password</label>
               <input
                 name='password'
                 onChange={handleChange}
@@ -106,7 +106,7 @@ export const Signup = () => {
                 className='form-control form-control-sm'
               />
             </div>
-            <button className='btn btn-sm btn-outline-success btn-block'>
+            <button className='btn btn-sm btn-outline-success btn-block my-3'>
               Submit
             </button>
             {/* <h6>{JSON.stringify(inputValues)}</h6> */}
