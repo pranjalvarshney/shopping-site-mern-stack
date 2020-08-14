@@ -7,11 +7,14 @@ export const AdminRoutes = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isAuthenticated() && isAuthenticated().user.role == 1 ? (
+        isAuthenticated() && isAuthenticated().data.user.role === 1 ? (
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: "/signin", state: { from: props.location } }}
+            to={{
+              pathname: "/signin",
+              state: { from: props.location },
+            }}
           />
         )
       }

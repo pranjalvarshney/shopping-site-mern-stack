@@ -31,6 +31,8 @@ const userSchema = new mongoose.Schema(
     role: {
       type: Number,
       default: 0,
+      // 0 - User
+      // 1 - Admin
     },
     purchases: {
       type: Array,

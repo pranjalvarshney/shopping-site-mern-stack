@@ -5,15 +5,15 @@ import { Redirect } from "react-router-dom"
 
 export const Signin = () => {
   const [inputValues, setinputValues] = useState({
-    email: "",
-    password: "",
+    email: "admin@admin.com",
+    password: "123123",
     error: "",
     success: false,
     loading: false,
   })
 
   const { email, password, error, success, loading } = inputValues
-  const { user } = isAuthenticated()
+  const { data } = isAuthenticated()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -32,13 +32,13 @@ export const Signin = () => {
       authenticate(response, () => {
         setinputValues({
           ...inputValues,
-          ...inputValues,
           success: true,
           error: "",
           loading: true,
         })
       })
     } catch (error) {
+      console.log(error)
       setinputValues({
         ...inputValues,
         error: error.response.data.errormsg,
@@ -50,14 +50,16 @@ export const Signin = () => {
 
   const redirectPage = () => {
     if (success) {
-      // if (user && user.role == 1) {
-      //   return <Redirect to='/' />
-      // } else {
-      //   return <Redirect to='/' />
-      // }
-      if (isAuthenticated()) {
-        return <Redirect to='/' />
+      // console.log(data)
+      if (data.user && data.user.role === 1) {
+        // console.log("hi")
+        return <Redirect to='/admin' />
+      } else {
+        return <Redirect to='/user' />
       }
+    }
+    if (isAuthenticated()) {
+      return <Redirect to='/' />
     }
   }
 
@@ -73,13 +75,13 @@ export const Signin = () => {
   }
 
   const showLoading = () => (
-    <div class='d-flex justify-content-center'>
+    <div className='d-flex justify-content-center'>
       <div
-        class='spinner-border'
+        className='spinner-border'
         role='status'
         style={{ display: loading ? "" : "none" }}
       >
-        <span class='sr-only'>Loading...</span>
+        <span className='sr-only'>Loading...</span>
       </div>
     </div>
   )
@@ -87,7 +89,7 @@ export const Signin = () => {
   return (
     <Base>
       <div className='row '>
-        <div className='col-md-5 jumbotron mx-auto mt-5 py-5 bg-light'>
+        <div className='col-md-5 jumbotron mx-auto mt-5 py-5'>
           <h4>Signin</h4>
           {errorMsg()}
           {showLoading()}

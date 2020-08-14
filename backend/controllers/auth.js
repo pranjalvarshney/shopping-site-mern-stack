@@ -57,7 +57,7 @@ exports.signin = (req, res) => {
     const { _id, name, email, role } = user
     res.status(200).json({
       token,
-      data: {
+      user: {
         _id,
         name,
         email,
