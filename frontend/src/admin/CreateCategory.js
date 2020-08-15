@@ -15,6 +15,7 @@ export const CreateCategory = () => {
 
   const handleChange = (e) => {
     setError("")
+    setSuccess(false)
     setCatName(e.target.value)
   }
   const formData = {
@@ -48,9 +49,19 @@ export const CreateCategory = () => {
       </div>
     )
   }
+  const errorMsg = () => {
+    return (
+      <div
+        className='alert py-1 text-center alert-danger'
+        style={{ display: error ? "" : "none" }}
+      >
+        {error}
+      </div>
+    )
+  }
   const createCategoryForm = () => {
     return (
-      <form className='col-10 col-lg-6' noValidate onSubmit={handleSubmit}>
+      <form className='col-10 col-lg-6 my-3' noValidate onSubmit={handleSubmit}>
         <div className='form-group'>
           <label>Enter category name</label>
           <input
@@ -65,7 +76,6 @@ export const CreateCategory = () => {
         <button type='submit' className='w-100 btn btn-outline-info'>
           Save
         </button>
-        {catName}
       </form>
     )
   }
@@ -74,9 +84,9 @@ export const CreateCategory = () => {
     <AdminContent>
       <div className=''>
         <h4>Create category</h4>
-
         {createCategoryForm()}
         {successMsg()}
+        {errorMsg()}
       </div>
     </AdminContent>
   )

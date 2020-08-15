@@ -32,7 +32,7 @@ router.get("/product/photo/:productID", getProductImage)
 
 // update route
 router.put(
-  "/product/:productID/:userID",
+  "/product/:productID/update/:userID",
   isSignedIn,
   isAuthenticated,
   isAdmin,
