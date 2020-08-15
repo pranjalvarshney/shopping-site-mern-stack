@@ -9,6 +9,7 @@ import { Profile } from "./user/Profile"
 import { UserDashboard } from "./user/UserDashBoard"
 import { AdminDashboard } from "./user/AdminDashboard"
 import { CreateCategory } from "./admin/CreateCategory"
+import { CreateProduct } from "./admin/CreateProduct"
 
 export const Routes = () => {
   return (
@@ -23,6 +24,11 @@ export const Routes = () => {
           exact
           path='/admin/create/category'
           component={CreateCategory}
+        />
+        <AdminRoutes
+          exact
+          path='/admin/create/product'
+          component={CreateProduct}
         />
         <Route exact path='/cart' component={Home} />
       </Switch>

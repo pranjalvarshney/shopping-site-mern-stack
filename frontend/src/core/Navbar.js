@@ -66,7 +66,7 @@ const Navbar = ({ history }) => {
                 <Link
                   style={currentTab(history, "/admin")}
                   className='nav-link'
-                  to='admin'
+                  to='/admin'
                 >
                   Account
                 </Link>

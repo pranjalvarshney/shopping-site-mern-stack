@@ -7,6 +7,7 @@ const categorySchema = new mongoose.Schema(
       trim: true,
       maxlength: 32,
       unique: true,
+      minlength: 1,
     },
   },
   { timestamps: true } //it gives the timestamp of the creation}
