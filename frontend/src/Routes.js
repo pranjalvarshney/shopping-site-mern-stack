@@ -10,6 +10,9 @@ import { UserDashboard } from "./user/UserDashBoard"
 import { AdminDashboard } from "./user/AdminDashboard"
 import { CreateCategory } from "./admin/CreateCategory"
 import { CreateProduct } from "./admin/CreateProduct"
+import { ManageCategories } from "./admin/ManageCategories"
+import { ManageProducts } from "./admin/ManageProducts"
+import { ManageOrders } from "./admin/ManageOrders"
 
 export const Routes = () => {
   return (
@@ -29,6 +32,28 @@ export const Routes = () => {
           exact
           path='/admin/create/product'
           component={CreateProduct}
+        />
+
+        <AdminRoutes
+          exact
+          path='/admin/manage/categories'
+          component={ManageCategories}
+        />
+
+        <AdminRoutes
+          exact
+          path='/admin/manage/products'
+          component={ManageProducts}
+        />
+        <AdminRoutes
+          exact
+          path='/admin/manage/orders'
+          component={ManageOrders}
+        />
+        <AdminRoutes
+          exact
+          path='/admin/manage/users'
+          component={ManageOrders}
         />
         <Route exact path='/cart' component={Home} />
       </Switch>

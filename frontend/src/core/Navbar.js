@@ -15,7 +15,7 @@ const Navbar = ({ history }) => {
     <div>
       <nav className='navbar navbar-dark navbar-expand-lg bg-dark py-3 px-5'>
         <Link className='navbar-brand' to='/'>
-          <h3>BuyTees</h3>
+          <h3>Shopping</h3>
         </Link>
         <button
           className='navbar-toggler'

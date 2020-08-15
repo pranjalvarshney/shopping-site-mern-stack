@@ -70,10 +70,9 @@ export const createProduct = async (userId, product, token) => {
 //get a product via Id
 export const getProduct = async (productId) => {
   try {
-    const response = await axios.get(`${API}/product/${productId}/${userId}`, {
+    const response = await axios.get(`${API}/product/${productId}`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     })
     return response
