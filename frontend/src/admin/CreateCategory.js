@@ -1,7 +1,5 @@
 import React, { useState } from "react"
-import { Base } from "../core/Base"
 import { isAuthenticated } from "../auth/helper"
-import { AdminSidebar } from "../core/AdminSidebar"
 import { AdminContent } from "../core/AdminContent"
 import { createCategory } from "./adminAPI"
 

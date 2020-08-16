@@ -1,11 +1,10 @@
 import React from "react"
 import { Base } from "../core/Base"
 import { isAuthenticated } from "../auth/helper"
-import { Link } from "react-router-dom"
 import { AdminSidebar } from "../core/AdminSidebar"
 
 export const AdminDashboard = () => {
-  const { name, email, role } = isAuthenticated().data.user
+  const { name, email } = isAuthenticated().data.user
 
   const contentArea = () => {
     return (

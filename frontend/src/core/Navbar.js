@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { Link, withRouter, Redirect } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 import { isAuthenticated, signout } from "../auth/helper"
 
 const currentTab = (history, path) => {

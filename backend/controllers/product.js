@@ -73,6 +73,7 @@ exports.createProduct = (req, res) => {
 
     newProduct.save((err, product) => {
       if (err) {
+        console.log(err)
         return res.status(400).json({
           errormsg: "An error occured! While saving - Failed",
         })

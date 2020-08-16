@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import { Base } from "../core/Base"
 import { AdminContent } from "../core/AdminContent"
-import { getAllCategories } from "./adminAPI"
+import { getAllCategories, createProduct } from "./adminAPI"
+import { isAuthenticated } from "../auth/helper"
 
 export const CreateProduct = () => {
   const [values, setValues] = useState({
@@ -14,7 +14,7 @@ export const CreateProduct = () => {
     pimage: "",
     loading: false,
     error: "",
-    success: "",
+    success: false,
     formData: "",
   })
 
@@ -22,6 +22,7 @@ export const CreateProduct = () => {
     name,
     description,
     price,
+    pimage,
     totalStock,
     category,
     categories,
@@ -31,14 +32,17 @@ export const CreateProduct = () => {
     success,
   } = values
 
+  const { data } = isAuthenticated()
+  const { user, token } = data
+
   const preLoadData = async () => {
     try {
       const response = await getAllCategories()
       if (response) {
         setValues({
           ...values,
-          categories: response.data,
           formData: new FormData(),
+          categories: response.data,
         })
         console.log(response.data)
       }
@@ -55,33 +59,68 @@ export const CreateProduct = () => {
     preLoadData()
   }, [])
 
-  // const successMsg = () => {
-  //   return (
-  //     <div
-  //       className='alert py-1 text-center alert-success '
-  //       style={{ display: success ? "" : "none" }}
-  //     >
-  //       Successfully Added
-  //     </div>
-  //   )
-  // }
-  // const errorMsg = () => {
-  //   return (
-  //     <div
-  //       className='alert py-1 text-center alert-danger'
-  //       style={{ display: error ? "" : "none" }}
-  //     >
-  //       {error}
-  //     </div>
-  //   )
-  // }
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
+  const successMsg = () => {
+    return (
+      <div
+        className='alert py-1 text-center alert-success '
+        style={{ display: success ? "" : "none" }}
+      >
+        Successfully Added
+      </div>
+    )
+  }
+  const errorMsg = () => {
+    return (
+      <div
+        className='alert py-1 text-center alert-danger'
+        style={{ display: error ? "" : "none" }}
+      >
+        {error}
+      </div>
+    )
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleChange = (e) => {
+    const value =
+      e.target.name === "pimage" ? e.target.files[0] : e.target.value
+
+    formData.set(e.target.name, value)
+    setValues({
+      ...values,
+      [e.target.name]: value,
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault()
+      setValues({
+        ...values,
+        loading: true,
+        success: false,
+      })
+      const response = await createProduct(user._id, formData, token)
+      if (response) {
+        setValues({
+          ...values,
+          name: "",
+          description: "",
+          totalStock: "",
+          price: "",
+          category: "",
+          success: true,
+          loading: false,
+          error: "",
+        })
+      }
+    } catch (error) {
+      console.log(error.response)
+      setValues({
+        success: false,
+        loading: false,
+        error: error.response.data.errormsg,
+      })
+    }
   }
 
   const createProductForm = () => {
@@ -97,8 +136,9 @@ export const CreateProduct = () => {
             <input
               className='form-control'
               type='text'
-              // value={}
-              // onChange={handleChange}
+              name='name'
+              value={name}
+              onChange={handleChange}
               autoFocus
               required
               placeholder='eg: Samsung Galaxy A7'
@@ -108,17 +148,16 @@ export const CreateProduct = () => {
           <div className='form-group col-lg-6'>
             <label>Price</label>
 
-            <div class='input-group mb-2'>
-              <div class='input-group-prepend'>
-                <div class='input-group-text'>Rs</div>
+            <div className='input-group mb-2'>
+              <div className='input-group-prepend'>
+                <div className='input-group-text'>Rs</div>
               </div>
               <input
                 className='form-control'
                 type='number'
-                // value={}
-                // onChange={handleChange}
-                autoFocus
-                required
+                name='price'
+                value={price}
+                onChange={handleChange}
                 placeholder='eg: 23999'
               />
             </div>
@@ -128,11 +167,9 @@ export const CreateProduct = () => {
           <label>Description</label>
           <textarea
             className='form-control'
-            type='text'
-            // value={}
-            // onChange={handleChange}
-            autoFocus
-            required
+            name='description'
+            value={description}
+            onChange={handleChange}
             placeholder='eg: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis    '
           />
         </div>
@@ -141,15 +178,17 @@ export const CreateProduct = () => {
             <label>Category</label>
             <select
               className='form-control'
-              type='text'
-              // value={}
-              // onChange={handleChange}
-              placeholder='eg: summer collection'
+              name='category'
+              onChange={handleChange}
             >
               <option>select</option>
               {categories &&
                 categories.map((item, index) => {
-                  return <option key={index}>{item.name}</option>
+                  return (
+                    <option key={index} value={item._id}>
+                      {item.name}
+                    </option>
+                  )
                 })}
             </select>
           </div>
@@ -159,10 +198,9 @@ export const CreateProduct = () => {
             <input
               className='form-control'
               type='number'
-              // value={}
-              // onChange={handleChange}
-              autoFocus
-              required
+              name='totalStock'
+              value={totalStock}
+              onChange={handleChange}
               placeholder='eg: 99'
             />
           </div>
@@ -172,11 +210,9 @@ export const CreateProduct = () => {
           <input
             className='form-control-file'
             type='file'
-            // value={}
-            // onChange={handleChange}
-            autoFocus
-            required
-            placeholder='eg: summer collection'
+            accept='image'
+            name='pimage'
+            onChange={handleChange}
           />
         </div>
 
@@ -190,7 +226,10 @@ export const CreateProduct = () => {
     <AdminContent>
       <div>
         <h4>Create product</h4>
+        {errorMsg()}
+        {successMsg()}
         {createProductForm()}
+        {formData}
       </div>
     </AdminContent>
   )

@@ -51,7 +51,7 @@ export const getProducts = async () => {
 export const createProduct = async (userId, product, token) => {
   try {
     const response = await axios.post(
-      `${API}/create/product/${userId}`,
+      `${API}/product/create/${userId}`,
       product,
       {
         headers: {
