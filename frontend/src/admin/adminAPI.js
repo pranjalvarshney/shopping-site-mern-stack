@@ -83,7 +83,7 @@ export const getProduct = async (productId) => {
 }
 
 //delete a product
-export const deleteProduct = async (productId, userId, token) => {
+export const deleteProduct = async (userId, productId, token) => {
   try {
     const response = await axios.delete(
       `${API}/product/${productId}/${userId}`,
