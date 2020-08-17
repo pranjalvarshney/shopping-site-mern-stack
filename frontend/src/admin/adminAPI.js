@@ -21,18 +21,45 @@ export const createCategory = async (userID, category, token) => {
   }
 }
 
+export const getCategory = async (categoryId) => {
+  try {
+    const response = await axios.post(
+      `${API}/category/${categoryId}`,
+      categoryId
+    )
+    return response
+  } catch (error) {
+    throw error
+  }
+}
+
 export const getAllCategories = async () => {
   try {
     const response = await axios.get(`${API}/categories`)
     return response
   } catch (error) {
-    console.log(error)
     throw error
   }
 }
 
+export const deleteCategory = async (userId, categoryId, token) => {
+  try {
+    const response = await axios.delete(
+      `${API}/category/${categoryId}/${userId}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    return response
+  } catch (error) {
+    console.log(error.response)
+    throw error
+  }
+}
 // Product CRUD operations
-
 export const getProducts = async () => {
   try {
     const response = await axios.get(`${API}/products/`, {
@@ -42,7 +69,6 @@ export const getProducts = async () => {
     })
     return response
   } catch (error) {
-    console.log(error)
     throw error
   }
 }

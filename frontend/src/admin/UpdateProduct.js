@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { AdminContent } from "../core/AdminContent"
-import { getAllCategories, createProduct } from "./adminAPI"
+import { getAllCategories, getProduct, updateProduct } from "./adminAPI"
 import { isAuthenticated } from "../auth/helper"
+import { useHistory } from "react-router-dom"
 
-export const CreateProduct = () => {
+export const UpdateProduct = ({ match }) => {
   const [values, setValues] = useState({
     name: "",
     description: "",
@@ -17,7 +18,7 @@ export const CreateProduct = () => {
     success: false,
     formData: "",
   })
-
+  const history = useHistory()
   const {
     name,
     description,
@@ -35,28 +36,45 @@ export const CreateProduct = () => {
   const { data } = isAuthenticated()
   const { user, token } = data
 
-  const preLoadData = async () => {
+  const preLoadData = async (productId) => {
     try {
-      const response = await getAllCategories()
+      const response = await getProduct(productId)
       if (response) {
         setValues({
           ...values,
+          name: response.data.name,
+          description: response.data.description,
+          price: response.data.price,
+          category: response.data.category._id,
+          totalStock: response.data.totalStock,
+          pimage: response.data.pimage,
           formData: new FormData(),
-          categories: response.data,
         })
-        console.log(response.data)
       }
     } catch (error) {
       console.log(error)
       setValues({
         ...values,
-        error: "error.response.data.errormsg",
+        error: error.response.data.errormsg,
       })
+    }
+  }
+  const preloadCategories = async () => {
+    try {
+      const response = await getAllCategories()
+      return setValues({
+        categories: response.data,
+        formData: new FormData(),
+      })
+    } catch (err) {
+      throw err
     }
   }
 
   useEffect(() => {
-    preLoadData()
+    preLoadData(match.params.productId) // using match to get the productId from the params
+
+    preloadCategories()
   }, [])
 
   const successMsg = () => {
@@ -65,7 +83,7 @@ export const CreateProduct = () => {
         className='alert py-1 text-center alert-success '
         style={{ display: success ? "" : "none" }}
       >
-        Successfully Added
+        Successfully Updated
       </div>
     )
   }
@@ -99,7 +117,12 @@ export const CreateProduct = () => {
         loading: true,
         success: false,
       })
-      const response = await createProduct(user._id, formData, token)
+      const response = await updateProduct(
+        match.params.productId,
+        user._id,
+        token,
+        formData
+      )
       if (response) {
         setValues({
           ...values,
@@ -113,6 +136,7 @@ export const CreateProduct = () => {
           loading: false,
           error: "",
         })
+        history.push("/admin")
       }
     } catch (error) {
       console.log(error.response)
@@ -226,7 +250,7 @@ export const CreateProduct = () => {
   return (
     <AdminContent>
       <div>
-        <h4>Create product</h4>
+        <h4>Update product - id</h4>
         {errorMsg()}
         {successMsg()}
         {createProductForm()}

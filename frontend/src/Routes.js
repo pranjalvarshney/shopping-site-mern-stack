@@ -12,6 +12,7 @@ import { CreateProduct } from "./admin/CreateProduct"
 import { ManageCategories } from "./admin/ManageCategories"
 import { ManageProducts } from "./admin/ManageProducts"
 import { ManageOrders } from "./admin/ManageOrders"
+import { UpdateProduct } from "./admin/UpdateProduct"
 
 export const Routes = () => {
   return (
@@ -38,11 +39,21 @@ export const Routes = () => {
           path='/admin/manage/categories'
           component={ManageCategories}
         />
+        <AdminRoutes
+          exact
+          path='/admin/manage/category/:categoryId'
+          component={ManageCategories}
+        />
 
         <AdminRoutes
           exact
           path='/admin/manage/products'
           component={ManageProducts}
+        />
+        <AdminRoutes
+          exact
+          path='/admin/product/update/:productId'
+          component={UpdateProduct}
         />
         <AdminRoutes
           exact

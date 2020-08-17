@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { AdminContent } from "../core/AdminContent"
 import { getProducts, deleteProduct } from "./adminAPI"
 import { isAuthenticated } from "../auth/helper"
+import { Link } from "react-router-dom"
 
 export const ManageProducts = () => {
   const [preData, setPreData] = useState({
@@ -102,27 +103,30 @@ export const ManageProducts = () => {
             <tr>
               <th scope='col'>#</th>
               <th scope='col'>Name</th>
+              <th scope='col'>Category</th>
               <th scope='col'>Stock</th>
               <th scope='col'>Price</th>
               <th scope='col'>Manage</th>
             </tr>
           </thead>
           <tbody>
-            {showLoading()}
             {getData &&
               getData.map((item, index) => {
                 return (
                   <tr key={index}>
                     <th scope='row'>{index}</th>
                     <td>{item.name}</td>
+                    <td>{item.category.name}</td>
                     <td>{item.totalStock}</td>
                     <td>{item.price}</td>
                     <td>
-                      <span
-                        className='badge badge-warning p-2 text-white mr-3'
-                        onClick={() => {}}
-                      >
-                        Edit
+                      <span className='btn badge badge-warning p-2 text-white mr-3'>
+                        <Link
+                          to={`/admin/product/update/${item._id}`}
+                          style={{ textDecoration: "none", color: "#fff" }}
+                        >
+                          Edit
+                        </Link>
                       </span>
                       <span
                         className='btn badge badge-danger p-2 text-white'
@@ -138,7 +142,7 @@ export const ManageProducts = () => {
               })}
           </tbody>
         </table>
-        {getData.length == 0 && (
+        {getData.length === 0 && (
           <div className='text-center'>
             <h6>
               No products found!
@@ -146,6 +150,7 @@ export const ManageProducts = () => {
             </h6>
           </div>
         )}
+        {showLoading()}
         {errorMsg()}
         {successMsg()}
       </div>
