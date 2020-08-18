@@ -13,7 +13,7 @@ const currentTab = (history, path) => {
 const Navbar = ({ history }) => {
   return (
     <div>
-      <nav className='navbar navbar-dark navbar-expand-lg bg-dark py-3 px-5'>
+      <nav className='navbar navbar-dark navbar-expand-lg bg-dark py-3 px-5 shadow sticky-top'>
         <Link className='navbar-brand' to='/'>
           <h3>Shopping</h3>
         </Link>
@@ -57,7 +57,10 @@ const Navbar = ({ history }) => {
                   className='nav-link'
                   to='/user'
                 >
-                  Account
+                  Hey,
+                  {isAuthenticated() && (
+                    <span> {isAuthenticated().data.user.name}</span>
+                  )}
                 </Link>
               </li>
             )}
@@ -68,7 +71,7 @@ const Navbar = ({ history }) => {
                   className='nav-link'
                   to='/admin'
                 >
-                  Account
+                  Dashboard
                 </Link>
               </li>
             )}

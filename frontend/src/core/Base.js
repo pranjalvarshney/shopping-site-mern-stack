@@ -1,7 +1,7 @@
 import React from "react"
 import Navbar from "./Navbar"
 
-export const Base = ({ className = "container", children }) => {
+export const Base = ({ className, children }) => {
   return (
     <div>
       <Navbar />

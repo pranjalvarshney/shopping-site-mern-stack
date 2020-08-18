@@ -68,7 +68,7 @@ export const Signup = () => {
   }
 
   return (
-    <Base>
+    <Base className={"container"}>
       <div className='row '>
         <div className='col-10 mt-5 col-md-5 jumbotron mx-auto py-4 bg-light'>
           <h4>Signup</h4>

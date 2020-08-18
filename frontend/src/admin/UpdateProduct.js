@@ -136,7 +136,7 @@ export const UpdateProduct = ({ match }) => {
           loading: false,
           error: "",
         })
-        history.push("/admin")
+        history.push("/admin/manage/products")
       }
     } catch (error) {
       console.log(error.response)

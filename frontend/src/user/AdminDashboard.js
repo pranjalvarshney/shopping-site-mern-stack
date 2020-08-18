@@ -32,7 +32,7 @@ export const AdminDashboard = () => {
     )
   }
   return (
-    <Base>
+    <Base className={"container"}>
       <div className='row mt-5'>
         <div className='col-lg-3'>
           <AdminSidebar />
