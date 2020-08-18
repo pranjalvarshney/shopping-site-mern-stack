@@ -27,7 +27,7 @@
         display: flex;
         flex-direction: column;
         width: 100vw;
-        height: 60vh;
+        height: 80vh;
         justify-content: center;
         align-items: flex-end;
         color: rgb(173, 62, 62);
@@ -35,6 +35,68 @@
         h1 {
           text-align: right;
           font-size: 70px;
+        }
+        h2 {
+          text-align: right;
+          font-size: 70px;
+        }
+        h3 {
+          text-align: right;
+          font-size: 30px;
+        }
+
+        .badge-flex {
+          text-align: left;
+          width: 450px;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  .Occasions {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+    .occasions-wrap {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      overflow: auto;
+      justify-content: flex-start;
+
+      .occasion-card {
+        flex: 1;
+        border: 0;
+        margin: 10px;
+        height: 250px;
+        width: 200px;
+        h6 {
+          text-align: left;
+        }
+      }
+    }
+  }
+  .products-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .products-wrapper {
+      display: flex;
+      flex-direction: row;
+      overflow: auto;
+
+      .product-card {
+        margin: 10px;
+        border: none;
+        width: 200px;
+        height: 250px;
+
+        .product-brief {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
         }
       }
     }
