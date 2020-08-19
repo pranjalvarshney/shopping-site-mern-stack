@@ -13,12 +13,14 @@ import { ManageCategories } from "./admin/ManageCategories"
 import { ManageProducts } from "./admin/ManageProducts"
 import { ManageOrders } from "./admin/ManageOrders"
 import { UpdateProduct } from "./admin/UpdateProduct"
+import { ProductPage } from "./core/components/ProductPage"
 
 export const Routes = () => {
   return (
     <Router>
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route exact path='/product/:productId' component={ProductPage} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/signin' component={Signin} />
         <PrivateRoutes exact path='/user' component={UserDashboard} />

@@ -1,6 +1,5 @@
 import React from "react"
 import { API } from "../../utils/backend"
-import Axios from "axios"
 
 export const ProductCard = ({ product }) => {
   return (

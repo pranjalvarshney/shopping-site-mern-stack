@@ -1,5 +1,6 @@
 import React from "react"
 import { ProductCard } from "../card/ProductCard"
+import { Link } from "react-router-dom"
 
 export const ShowProducts = ({ products }) => {
   console.log(products)
@@ -9,7 +10,11 @@ export const ShowProducts = ({ products }) => {
       <div className='products-wrapper'>
         {products.length > 0 ? (
           products.map((product, index) => {
-            return <ProductCard key={index} product={product} />
+            return (
+              <Link key={index} to={`/product/${product._id}`}>
+                <ProductCard product={product} />
+              </Link>
+            )
           })
         ) : (
           <div>loading</div>
