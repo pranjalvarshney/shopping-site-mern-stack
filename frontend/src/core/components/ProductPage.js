@@ -4,6 +4,9 @@ import { API } from "../../utils/backend"
 import { getProduct } from "../helper/mainAPICalls"
 
 export const ProductPage = ({ match }) => {
+  const [addToCart, setAddToCart] = useState(true)
+  const [removeFromCart, setRemoveFromCart] = useState(false)
+
   const [data, setData] = useState([])
   const [error, setError] = useState("")
 
