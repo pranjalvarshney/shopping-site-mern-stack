@@ -1,6 +1,9 @@
 import React, { Fragment } from "react"
 import { Link, withRouter } from "react-router-dom"
 import { isAuthenticated, signout } from "../auth/helper"
+import ShoppingCartTwoToneIcon from "@material-ui/icons/ShoppingCartTwoTone"
+import AccountCircleIcon from "@material-ui/icons/AccountCircle"
+import SearchIcon from "@material-ui/icons/Search"
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
@@ -16,7 +19,7 @@ const Navbar = ({ history }) => {
       <nav className='navbar navbar-dark navbar-expand-lg py-3 px-5 shadow main-navbar'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-            <h3>Cute Teddy</h3>
+            <h2>Cute Teddy</h2>
           </Link>
           <button
             className='navbar-toggler'
@@ -31,8 +34,8 @@ const Navbar = ({ history }) => {
           </button>
 
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul className='navbar-nav ml-auto'>
-              <li className='nav-item active'>
+            <ul className='navbar-nav mr-auto'>
+              <li className='nav-item h6 active'>
                 <Link
                   style={currentTab(history, "/")}
                   className='nav-link'
@@ -42,17 +45,26 @@ const Navbar = ({ history }) => {
                 </Link>
               </li>
 
-              <li className='nav-item'>
+              <li className='nav-item h6'>
                 <Link
-                  style={currentTab(history, "/cart")}
+                  style={currentTab(history, "/blogs")}
                   className='nav-link'
-                  to='#'
+                  to='/blogs'
                 >
-                  Cart
+                  Blogs
+                </Link>
+              </li>
+              <li className='nav-item h6'>
+                <Link
+                  style={currentTab(history, "/occasions")}
+                  className='nav-link'
+                  to='/occasions'
+                >
+                  Occasions
                 </Link>
               </li>
               {isAuthenticated() && isAuthenticated().data.user.role === 0 && (
-                <li className='nav-item'>
+                <li className='nav-item h6'>
                   <Link
                     style={currentTab(history, "/user")}
                     className='nav-link'
@@ -66,7 +78,7 @@ const Navbar = ({ history }) => {
                 </li>
               )}
               {isAuthenticated() && isAuthenticated().data.user.role === 1 && (
-                <li className='nav-item'>
+                <li className='nav-item h6'>
                   <Link
                     style={currentTab(history, "/admin")}
                     className='nav-link'
@@ -79,7 +91,7 @@ const Navbar = ({ history }) => {
 
               {!isAuthenticated() && (
                 <Fragment>
-                  <li className='nav-item'>
+                  <li className='nav-item h6'>
                     <Link
                       style={currentTab(history, "/signup")}
                       className='nav-link'
@@ -88,7 +100,7 @@ const Navbar = ({ history }) => {
                       Signup
                     </Link>
                   </li>
-                  <li className='nav-item'>
+                  <li className='nav-item h6'>
                     <Link
                       style={currentTab(history, "/signin")}
                       className='nav-link'
@@ -100,7 +112,7 @@ const Navbar = ({ history }) => {
                 </Fragment>
               )}
               {isAuthenticated() && (
-                <li className='nav-item'>
+                <li className='nav-item h6'>
                   <span
                     className='nav-link'
                     onClick={() => {
@@ -113,6 +125,26 @@ const Navbar = ({ history }) => {
                   </span>
                 </li>
               )}
+            </ul>
+            <ul className='navbar-nav ml-auto'>
+              <span className='text-white h6'>
+                {" "}
+                <SearchIcon style={{ color: "white", fontSize: "30px" }} />
+                Search
+              </span>
+              <span className='text-white h6 mx-3'>
+                <AccountCircleIcon
+                  style={{ color: "white", fontSize: "30px" }}
+                />{" "}
+                Profile
+              </span>
+              <span className='text-white h6'>
+                <ShoppingCartTwoToneIcon
+                  style={{ color: "white", fontSize: "30px" }}
+                />{" "}
+                Cart
+              </span>
+              {/* <span className='text-white h6 '>Signin</span> */}
             </ul>
           </div>
         </div>

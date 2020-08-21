@@ -35,7 +35,7 @@ export const ProductPage = ({ match }) => {
               alt='product'
             />
           </div>
-          <div className='col-md-6 product-info'>
+          <div className='col-lg-6 product-info'>
             <h4>{data.name}</h4>
             <small className='text-muted'>catID: {data.category}</small>
             <div>

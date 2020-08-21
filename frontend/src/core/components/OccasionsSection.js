@@ -54,7 +54,7 @@ const oca = [
   },
 ]
 
-export const Occasions = () => {
+export const OccasionsSection = () => {
   return (
     <div className='Occasions container'>
       <h4>Occasions</h4>

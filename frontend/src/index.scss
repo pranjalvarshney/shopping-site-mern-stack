@@ -50,20 +50,18 @@ $nav-red-color-dark: #ff003357;
           font-size: 50px;
           margin: 0;
           padding: 0;
-          // background: $nav-red-color-dark;
         }
         h2 {
           text-align: right;
           font-size: 50px;
           margin: 0;
           padding: 0;
-          // background: $nav-red-color-dark;
+          color: $nav-red-color;
         }
         h3 {
           margin: 0;
           padding: 0;
           text-align: right;
-          // background: $nav-red-color-dark;
           font-size: 30px;
         }
 
@@ -114,6 +112,7 @@ $nav-red-color-dark: #ff003357;
         border: none;
         width: 200px;
         height: 250px;
+        box-shadow: 10 10 1px 0px black;
 
         .product-brief {
           display: flex;

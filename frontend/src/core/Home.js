@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Base } from "./Base"
 import { SectionHello } from "./components/SectionHello"
-import { Occasions } from "./components/Occasions"
+import { OccasionsSection } from "./components/OccasionsSection"
 import { ShowProducts } from "./components/ShowProducts"
 import { getProducts } from "./helper/mainAPICalls"
 
@@ -34,7 +34,7 @@ export const Home = () => {
           <SectionHello />
         </div>
         <ShowProducts products={products} />
-        <Occasions />
+        <OccasionsSection />
       </div>
     </Base>
   )
