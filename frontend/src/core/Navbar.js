@@ -13,106 +13,108 @@ const currentTab = (history, path) => {
 const Navbar = ({ history }) => {
   return (
     <div>
-      <nav className='navbar navbar-dark navbar-expand-lg bg-dark py-3 px-5 shadow sticky-top'>
-        <Link className='navbar-brand' to='/'>
-          <h3>Shopping</h3>
-        </Link>
-        <button
-          className='navbar-toggler'
-          type='button'
-          data-toggle='collapse'
-          data-target='#navbarSupportedContent'
-          aria-controls='navbarSupportedContent'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
-        >
-          <span className='navbar-toggler-icon'></span>
-        </button>
+      <nav className='navbar navbar-dark navbar-expand-lg py-3 px-5 shadow main-navbar'>
+        <div className='container'>
+          <Link className='navbar-brand' to='/'>
+            <h3>Cute Teddy</h3>
+          </Link>
+          <button
+            className='navbar-toggler'
+            type='button'
+            data-toggle='collapse'
+            data-target='#navbarSupportedContent'
+            aria-controls='navbarSupportedContent'
+            aria-expanded='false'
+            aria-label='Toggle navigation'
+          >
+            <span className='navbar-toggler-icon'></span>
+          </button>
 
-        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-          <ul className='navbar-nav ml-auto'>
-            <li className='nav-item active'>
-              <Link
-                style={currentTab(history, "/")}
-                className='nav-link'
-                to='/'
-              >
-                Home
-              </Link>
-            </li>
-
-            <li className='nav-item'>
-              <Link
-                style={currentTab(history, "/cart")}
-                className='nav-link'
-                to='#'
-              >
-                Cart
-              </Link>
-            </li>
-            {isAuthenticated() && isAuthenticated().data.user.role === 0 && (
-              <li className='nav-item'>
+          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul className='navbar-nav ml-auto'>
+              <li className='nav-item active'>
                 <Link
-                  style={currentTab(history, "/user")}
+                  style={currentTab(history, "/")}
                   className='nav-link'
-                  to='/user'
+                  to='/'
                 >
-                  Hey,
-                  {isAuthenticated() && (
-                    <span> {isAuthenticated().data.user.name}</span>
-                  )}
+                  Home
                 </Link>
               </li>
-            )}
-            {isAuthenticated() && isAuthenticated().data.user.role === 1 && (
+
               <li className='nav-item'>
                 <Link
-                  style={currentTab(history, "/admin")}
+                  style={currentTab(history, "/cart")}
                   className='nav-link'
-                  to='/admin'
+                  to='#'
                 >
-                  Dashboard
+                  Cart
                 </Link>
               </li>
-            )}
+              {isAuthenticated() && isAuthenticated().data.user.role === 0 && (
+                <li className='nav-item'>
+                  <Link
+                    style={currentTab(history, "/user")}
+                    className='nav-link'
+                    to='/user'
+                  >
+                    Hey,
+                    {isAuthenticated() && (
+                      <span> {isAuthenticated().data.user.name}</span>
+                    )}
+                  </Link>
+                </li>
+              )}
+              {isAuthenticated() && isAuthenticated().data.user.role === 1 && (
+                <li className='nav-item'>
+                  <Link
+                    style={currentTab(history, "/admin")}
+                    className='nav-link'
+                    to='/admin'
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
 
-            {!isAuthenticated() && (
-              <Fragment>
+              {!isAuthenticated() && (
+                <Fragment>
+                  <li className='nav-item'>
+                    <Link
+                      style={currentTab(history, "/signup")}
+                      className='nav-link'
+                      to='/signup'
+                    >
+                      Signup
+                    </Link>
+                  </li>
+                  <li className='nav-item'>
+                    <Link
+                      style={currentTab(history, "/signin")}
+                      className='nav-link'
+                      to='/signin'
+                    >
+                      Signin
+                    </Link>
+                  </li>
+                </Fragment>
+              )}
+              {isAuthenticated() && (
                 <li className='nav-item'>
-                  <Link
-                    style={currentTab(history, "/signup")}
+                  <span
                     className='nav-link'
-                    to='/signup'
+                    onClick={() => {
+                      signout(() => {
+                        history.push("/")
+                      })
+                    }}
                   >
-                    Signup
-                  </Link>
+                    Signout
+                  </span>
                 </li>
-                <li className='nav-item'>
-                  <Link
-                    style={currentTab(history, "/signin")}
-                    className='nav-link'
-                    to='/signin'
-                  >
-                    Signin
-                  </Link>
-                </li>
-              </Fragment>
-            )}
-            {isAuthenticated() && (
-              <li className='nav-item'>
-                <span
-                  className='nav-link'
-                  onClick={() => {
-                    signout(() => {
-                      history.push("/")
-                    })
-                  }}
-                >
-                  Signout
-                </span>
-              </li>
-            )}
-          </ul>
+              )}
+            </ul>
+          </div>
         </div>
       </nav>
     </div>

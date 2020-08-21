@@ -1,6 +1,18 @@
+$nav-red-color: #ff0033;
+$nav-red-color-dark: #ff003357;
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
 * {
   margin: 0;
   box-sizing: border-box;
+}
+
+.main-navbar {
+  opacity: 0.9;
+  background: $nav-red-color;
+  .navbar-brand {
+    font-family: "Pacifico", cursive;
+  }
 }
 
 .Home {
@@ -13,35 +25,45 @@
     background: url("/wallpaper.jpg");
     background-attachment: fixed;
     background-size: cover;
-    background-position-y: bottom;
+    background-position-x: center;
+    background-position-y: center;
     background-repeat: no-repeat;
-    height: 90vh;
+    height: 50vh;
     width: 100%;
 
     .section-1 {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
 
       .content-wrapper {
         display: flex;
         flex-direction: column;
         width: 100vw;
-        height: 80vh;
+        height: 50vh;
         justify-content: center;
         align-items: flex-end;
-        color: rgb(173, 62, 62);
+        color: beige;
+        font-family: "Pacifico", cursive;
 
         h1 {
-          text-align: right;
-          font-size: 70px;
+          text-align: left;
+          font-size: 50px;
+          margin: 0;
+          padding: 0;
+          // background: $nav-red-color-dark;
         }
         h2 {
           text-align: right;
-          font-size: 70px;
+          font-size: 50px;
+          margin: 0;
+          padding: 0;
+          // background: $nav-red-color-dark;
         }
         h3 {
+          margin: 0;
+          padding: 0;
           text-align: right;
+          // background: $nav-red-color-dark;
           font-size: 30px;
         }
 

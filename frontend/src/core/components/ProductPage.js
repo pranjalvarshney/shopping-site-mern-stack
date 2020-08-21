@@ -30,7 +30,10 @@ export const ProductPage = ({ match }) => {
       <div className='product-page '>
         <div className='row'>
           <div className='col-md-6'>
-            <img src={`${API}/product/photo/${match.params.productId}`} />
+            <img
+              src={`${API}/product/photo/${match.params.productId}`}
+              alt='product'
+            />
           </div>
           <div className='col-md-6 product-info'>
             <h4>{data.name}</h4>

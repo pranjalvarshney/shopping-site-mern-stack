@@ -10,7 +10,7 @@ export const ProductCard = ({ product }) => {
           src={`${API}/product/photo/${product._id}`}
           height='200'
           width='150'
-          alt='Card image cap'
+          alt='cap'
         />
         <div className='mt-1 px-3 product-brief'>
           <span>
