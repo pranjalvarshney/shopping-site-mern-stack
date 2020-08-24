@@ -12,7 +12,7 @@ const blogSchema = new mongoose.Schema({
     max: 100,
     trim: true,
   },
-  description: {
+  content: {
     type: String,
     max: 3000,
   },
