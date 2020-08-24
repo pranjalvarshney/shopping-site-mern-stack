@@ -1,10 +1,12 @@
 const express = require("express")
-const { isSignedIn, isAuthenticated } = require("../controllers/auth")
+const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth")
 const {
   getBlogByID,
   getBlog,
   createBlog,
   getBlogs,
+  deleteBlog,
+  getBlogPicture,
 } = require("../controllers/blog")
 const router = express.Router()
 const { getUserById } = require("../controllers/user")
@@ -18,6 +20,19 @@ router.param("blogID", getBlogByID)
 router.get("/blog/:blogID", getBlog)
 router.get("/blogs", getBlogs)
 
-router.post("/blog/create", createBlog)
+// route to get blog picture
+router.get("/blog/picture/:blogID", getBlogPicture)
+
+// create blog
+router.post("/blog/create", isSignedIn, isAuthenticated, isAdmin, createBlog)
+
+// delete blog
+router.delete(
+  "/blog/:blogID/remove/:userID",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  deleteBlog
+)
 
 module.exports = router

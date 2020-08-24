@@ -14,8 +14,18 @@ exports.getBlogByID = (req, res, next, id) => {
   })
 }
 
+//get route for blog without picture
 exports.getBlog = (req, res) => {
+  req.blog.picture = undefined
   return res.json(req.blog)
+}
+
+// get route for picture for optimiztion
+exports.getBlogPicture = (req, res, next) => {
+  if (req.blog.picture) {
+    res.set("Content-Type: req.blog.picture.contentType")
+    res.send(req.blog.picture.data)
+  }
 }
 
 exports.getBlogs = (req, res) => {
@@ -71,5 +81,17 @@ exports.createBlog = (req, res) => {
       }
       res.json(blog)
     })
+  })
+}
+
+exports.deleteBlog = (req, res) => {
+  const blog = req.blog
+  blog.remove((err, deletedBlog) => {
+    if (err) {
+      return res.status(400).json({
+        errormsg: "Error removing from the database",
+      })
+    }
+    res.status(200).json("Successfully removed")
   })
 }
