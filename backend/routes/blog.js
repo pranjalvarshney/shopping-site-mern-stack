@@ -24,7 +24,13 @@ router.get("/blogs", getBlogs)
 router.get("/blog/picture/:blogID", getBlogPicture)
 
 // create blog
-router.post("/blog/create", isSignedIn, isAuthenticated, isAdmin, createBlog)
+router.post(
+  "/blog/create/:userID",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  createBlog
+)
 
 // delete blog
 router.delete(

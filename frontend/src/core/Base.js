@@ -10,10 +10,11 @@ export const Base = ({ className, children }) => {
         <div className='container'>
           <div className='row'>
             <div className='col-lg-5 col-xs-12 about-company'>
-              <h2>BuyTees</h2>
+              <h2 className='brandName'>Cute Teddy</h2>
               <p className='pr-5 text-white-50'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                ac ante mollis quam tristique convallis
+                There’s just something about a Teddy bear that’s impossible to
+                explain. When you hold one in your arms, you get a feeling of
+                love, comfort, and security. It’s almost supernatural
               </p>
               <p>
                 <a href='/'>
@@ -62,7 +63,7 @@ export const Base = ({ className, children }) => {
             <div className='col copyright'>
               <p className=''>
                 <small className='text-white-50'>
-                  © 2019. All Rights Reserved.
+                  © 2020. All Rights Reserved.
                 </small>
               </p>
             </div>

@@ -18,3 +18,12 @@ export const getProduct = async (productId) => {
     throw error
   }
 }
+
+export const getBlogs = async () => {
+  try {
+    const response = await axios.get(`${API}/blogs`)
+    return response
+  } catch (error) {
+    throw error
+  }
+}

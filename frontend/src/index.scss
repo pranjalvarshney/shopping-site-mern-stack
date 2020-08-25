@@ -7,12 +7,15 @@ $nav-red-color-dark: #ff003357;
   box-sizing: border-box;
 }
 
+.brandName {
+  font-family: "Pacifico", cursive;
+}
+
 .main-navbar {
   opacity: 0.9;
   background: $nav-red-color;
-  .navbar-brand {
-    font-family: "Pacifico", cursive;
-  }
+
+
 }
 
 .Home {
@@ -51,6 +54,7 @@ $nav-red-color-dark: #ff003357;
           margin: 0;
           padding: 0;
         }
+
         h2 {
           text-align: right;
           font-size: 50px;
@@ -58,6 +62,7 @@ $nav-red-color-dark: #ff003357;
           padding: 0;
           color: $nav-red-color;
         }
+
         h3 {
           margin: 0;
           padding: 0;
@@ -73,6 +78,7 @@ $nav-red-color-dark: #ff003357;
       }
     }
   }
+
   .Occasions {
     display: flex;
     justify-content: space-around;
@@ -91,12 +97,14 @@ $nav-red-color-dark: #ff003357;
         margin: 10px;
         height: 250px;
         width: 200px;
+
         h6 {
           text-align: left;
         }
       }
     }
   }
+
   .products-section {
     display: flex;
     flex-direction: column;
@@ -132,5 +140,18 @@ $nav-red-color-dark: #ff003357;
 
   .p-btn {
     width: 46%;
+  }
+}
+
+.showBlogsCardsSection {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .blog-picture {
+    width: 50%;
+    align-self: center;
   }
 }
