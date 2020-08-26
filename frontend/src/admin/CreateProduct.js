@@ -22,11 +22,8 @@ export const CreateProduct = () => {
     name,
     description,
     price,
-    pimage,
     totalStock,
-    category,
     categories,
-    loading,
     error,
     formData,
     success,
@@ -44,10 +41,10 @@ export const CreateProduct = () => {
           formData: new FormData(),
           categories: response.data,
         })
-        console.log(response.data)
+        // console.log(response.data)
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       setValues({
         ...values,
         error: "error.response.data.errormsg",
@@ -230,7 +227,6 @@ export const CreateProduct = () => {
         {errorMsg()}
         {successMsg()}
         {createProductForm()}
-        {formData}
       </div>
     </AdminContent>
   )

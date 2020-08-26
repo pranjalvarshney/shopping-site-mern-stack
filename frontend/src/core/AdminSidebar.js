@@ -9,6 +9,16 @@ export const AdminSidebar = () => {
       </h6>
       <ul className='list-group'>
         <li className='list-group-item py-1 my-0 border-0'>
+          <Link to='/admin/create/blog' className=' nav-link'>
+            Create Blog
+          </Link>
+        </li>
+        <li className='list-group-item py-1 my-0 border-0'>
+          <Link to='/admin/manage/blogs' className=' nav-link'>
+            Manage Blogs
+          </Link>
+        </li>
+        <li className='list-group-item py-1 my-0 border-0'>
           <Link to='/admin/create/category' className=' nav-link'>
             Create Category
           </Link>

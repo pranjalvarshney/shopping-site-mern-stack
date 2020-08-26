@@ -7,16 +7,16 @@ import { getProducts } from "./helper/mainAPICalls"
 
 export const Home = () => {
   const [products, setProducts] = useState([])
-  const [errors, setErrors] = useState([])
+  // const [errors, setErrors] = useState([])
 
   const loadData = async () => {
     try {
       const response = await getProducts()
-      console.log(response.data)
+      // console.log(response.data)
 
       if (response) {
         setProducts(response.data)
-        setErrors("")
+        // setErrors("")
       }
     } catch (error) {
       // setErrors(error.response.data.errormsg)

@@ -16,6 +16,8 @@ import { UpdateProduct } from "./admin/UpdateProduct"
 import { ProductPage } from "./core/components/ProductPage"
 import { Blog } from "./user/Blog"
 import { Occasion } from "./user/Occasion"
+import { CreateBlog } from "./admin/CreateBlog"
+import { ManageBlog } from "./admin/ManageBlog"
 
 export const Routes = () => {
   return (
@@ -29,6 +31,8 @@ export const Routes = () => {
         <Route exact path='/signin' component={Signin} />
         <PrivateRoutes exact path='/user' component={UserDashboard} />
         <AdminRoutes exact path='/admin' component={AdminDashboard} />
+        <AdminRoutes exact path='/admin/manage/blogs' component={ManageBlog} />
+        <AdminRoutes exact path='/admin/create/blog' component={CreateBlog} />
         <AdminRoutes
           exact
           path='/admin/create/category'

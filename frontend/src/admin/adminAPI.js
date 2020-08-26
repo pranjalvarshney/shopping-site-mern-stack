@@ -13,10 +13,9 @@ export const createCategory = async (userID, category, token) => {
         },
       }
     )
-    console.log(response)
+    // console.log(response)
     return response
   } catch (error) {
-    console.log(error.response)
     throw error
   }
 }
@@ -55,7 +54,6 @@ export const deleteCategory = async (userId, categoryId, token) => {
     )
     return response
   } catch (error) {
-    console.log(error.response)
     throw error
   }
 }
@@ -88,7 +86,6 @@ export const createProduct = async (userId, product, token) => {
     )
     return response
   } catch (error) {
-    console.log(error.response)
     throw error
   }
 }
@@ -103,7 +100,6 @@ export const getProduct = async (productId) => {
     })
     return response
   } catch (error) {
-    console.log(error.response)
     throw error
   }
 }
@@ -122,7 +118,6 @@ export const deleteProduct = async (userId, productId, token) => {
     )
     return response
   } catch (error) {
-    console.log(error.response)
     throw error
   }
 }
@@ -147,7 +142,47 @@ export const updateProduct = async (
     )
     return response
   } catch (error) {
-    console.log(error.response)
+    throw error
+  }
+}
+
+// blog create calls
+
+export const postBlog = async (userId, data, token) => {
+  try {
+    const response = await axios.post(`${API}/blog/create/${userId}`, data, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    return response
+  } catch (error) {
+    throw error
+  }
+}
+export const deleteBlog = async (userId, blogId, token) => {
+  try {
+    const response = await axios.delete(
+      `${API}/blog/${blogId}/remove/${userId}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    return response
+  } catch (error) {
+    throw error
+  }
+}
+
+export const getAllBlogs = async () => {
+  try {
+    const response = await axios.get(`${API}/blogs`)
+    return response
+  } catch (error) {
     throw error
   }
 }

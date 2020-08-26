@@ -23,11 +23,8 @@ export const UpdateProduct = ({ match }) => {
     name,
     description,
     price,
-    pimage,
     totalStock,
-    category,
     categories,
-    loading,
     error,
     formData,
     success,
@@ -38,6 +35,11 @@ export const UpdateProduct = ({ match }) => {
 
   const preLoadData = async (productId) => {
     try {
+      setValues({
+        ...values,
+        loading: true,
+        error: "",
+      })
       const response = await getProduct(productId)
       if (response) {
         setValues({
@@ -49,13 +51,15 @@ export const UpdateProduct = ({ match }) => {
           totalStock: response.data.totalStock,
           pimage: response.data.pimage,
           formData: new FormData(),
+          loading: false,
+          error: "",
         })
       }
     } catch (error) {
-      console.log(error)
       setValues({
         ...values,
         error: error.response.data.errormsg,
+        loading: false,
       })
     }
   }
@@ -73,7 +77,6 @@ export const UpdateProduct = ({ match }) => {
 
   useEffect(() => {
     preLoadData(match.params.productId) // using match to get the productId from the params
-
     preloadCategories()
   }, [])
 
@@ -164,8 +167,6 @@ export const UpdateProduct = ({ match }) => {
               name='name'
               value={name}
               onChange={handleChange}
-              autoFocus
-              required
               placeholder='eg: Samsung Galaxy A7'
             />
           </div>
@@ -250,11 +251,13 @@ export const UpdateProduct = ({ match }) => {
   return (
     <AdminContent>
       <div>
-        <h4>Update product - id</h4>
+        <h4>
+          Update product -{" "}
+          <span className='text-muted h6'>{match.params.productId}</span>
+        </h4>
         {errorMsg()}
         {successMsg()}
         {createProductForm()}
-        {formData}
       </div>
     </AdminContent>
   )
