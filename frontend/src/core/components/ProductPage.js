@@ -2,13 +2,33 @@ import React, { useState, useEffect } from "react"
 import { Base } from "../Base"
 import { API } from "../../utils/backend"
 import { getProduct } from "../helper/mainAPICalls"
+import { addToCartFunc, buyNowFunc } from "../helper/addToCartHelper"
+import { Redirect } from "react-router-dom"
+import { Toast } from "react-bootstrap"
 
 export const ProductPage = ({ match }) => {
   const [addToCart, setAddToCart] = useState(true)
   const [removeFromCart, setRemoveFromCart] = useState(false)
-
+  const [redirect, setRedirect] = useState(false)
   const [data, setData] = useState([])
   const [error, setError] = useState("")
+  const [success, setSuccess] = useState(false)
+
+  const addToCartMethod = async () => {
+    addToCartFunc(data)
+    setSuccess(true)
+  }
+  const buyNowMethod = async () => {
+    buyNowFunc(data, () => {
+      setRedirect(true)
+    })
+  }
+
+  const getRedirect = (redirect) => {
+    if (redirect) {
+      return <Redirect to='/cart' />
+    }
+  }
 
   const preloadData = async (productId) => {
     try {
@@ -25,9 +45,45 @@ export const ProductPage = ({ match }) => {
   useEffect(() => {
     preloadData(match.params.productId)
   }, [])
+
+  const successMsg = () => {
+    return (
+      <Toast
+        onClose={() => setSuccess(false)}
+        show={success}
+        delay={2000}
+        autohide
+        style={{
+          position: "absolute",
+          top: "100px",
+          right: "100px",
+        }}
+      >
+        <Toast.Header>
+          <strong className='mr-auto'>{data.name}</strong>
+          <small>just now</small>
+        </Toast.Header>
+        <Toast.Body>Product successfully added to cart!</Toast.Body>
+      </Toast>
+    )
+  }
+
+  const errorMsg = () => {
+    return (
+      <div
+        className='alert py-1 text-center alert-danger'
+        style={{ display: error ? "" : "none" }}
+      >
+        {error}
+      </div>
+    )
+  }
+
   return (
     <Base className='container my-5'>
       <div className='product-page '>
+        {successMsg()}
+        {errorMsg()}
         <div className='row'>
           <div className='col-md-6'>
             <img
@@ -53,11 +109,18 @@ export const ProductPage = ({ match }) => {
               </span>
             </h6>
             <div className='row justify-content-around'>
-              <button className='btn btn-danger py-2 font-weight-bold p-btn'>
+              <button
+                onClick={buyNowMethod}
+                className='btn btn-danger py-2 font-weight-bold p-btn'
+              >
                 Buy now
               </button>
-              <button className='btn btn-warning py-2 font-weight-bold p-btn'>
+              <button
+                onClick={addToCartMethod}
+                className='btn btn-warning py-2 font-weight-bold p-btn'
+              >
                 Add to cart
+                {getRedirect(redirect)}
               </button>
             </div>
           </div>

@@ -14,8 +14,6 @@ $nav-red-color-dark: #ff003357;
 .main-navbar {
   opacity: 0.9;
   background: $nav-red-color;
-
-
 }
 
 .Home {
@@ -149,9 +147,4 @@ $nav-red-color-dark: #ff003357;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  .blog-picture {
-    width: 50%;
-    align-self: center;
-  }
 }

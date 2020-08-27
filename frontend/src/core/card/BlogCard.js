@@ -4,20 +4,19 @@ import { API } from "../../utils/backend"
 export const BlogCard = ({ blog }) => {
   const date = new Date(blog.createdAt)
   return (
-    <div className='col-md-6'>
-      <div className='card my-3 mx-1'>
+    <div className='col-md-6 my-3'>
+      <div class='card bg-dark text-white'>
         <img
-          className='card-img-top blog-picture'
+          class='card-img'
           src={`${API}/blog/picture/${blog._id}`}
-          alt='Card cap'
+          alt='Card'
         />
-        <div className='card-body'>
-          <h5 className='card-title'>{blog.title}</h5>
-          <h6 className='card-title'>{blog.tagline}</h6>
-          <p className='card-text'>{blog.content}</p>
-          <p className='card-text'>
-            <small className='text-muted'>{date.toDateString()}</small>
-          </p>
+        <div class='card-img-overlay '>
+          <h3 class='card-title'>{blog.title}</h3>
+
+          <h5 class='card-title'>{blog.tagline}</h5>
+          <p class='card-text'>{blog.content.slice(0, 100)}</p>
+          <p class='badge badge-secondary'>{date.toDateString()}</p>
         </div>
       </div>
     </div>
