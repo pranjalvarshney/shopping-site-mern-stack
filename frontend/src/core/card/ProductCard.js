@@ -1,16 +1,15 @@
 import React from "react"
 import { API } from "../../utils/backend"
+import { ImageLoading } from "../components/ImageLoading"
 
 export const ProductCard = ({ product }) => {
   return (
     <div>
       <div className='product-card card'>
-        <img
-          className='card-img-top'
-          src={`${API}/product/photo/${product._id}`}
-          height='200'
-          width='150'
-          alt='cap'
+        <ImageLoading
+          imgUrl={`${API}/product/photo/${product._id}`}
+          height={"200px"}
+          width={"150px"}
         />
         <div className='mt-1 px-3 product-brief'>
           <span>

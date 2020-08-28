@@ -127,23 +127,39 @@ const Navbar = ({ history }) => {
               )}
             </ul>
             <ul className='navbar-nav ml-auto'>
-              <span className='text-white h6'>
+              <span className='nav-link text-white h6'>
                 {" "}
                 <SearchIcon style={{ color: "white", fontSize: "30px" }} />
                 Search
               </span>
-              <span className='text-white h6 mx-3'>
-                <AccountCircleIcon
-                  style={{ color: "white", fontSize: "30px" }}
-                />{" "}
-                Profile
-              </span>
-              <span className='text-white h6'>
-                <ShoppingCartTwoToneIcon
-                  style={{ color: "white", fontSize: "30px" }}
-                />{" "}
-                Cart
-              </span>
+              <li>
+                <Link
+                  style={currentTab(history, "/profile")}
+                  className='nav-link'
+                  to='/profile'
+                >
+                  <span className='text-white h6 mx-3'>
+                    <AccountCircleIcon
+                      style={{ color: "white", fontSize: "30px" }}
+                    />{" "}
+                    Profile
+                  </span>
+                </Link>
+              </li>
+              <li className='nav-item h6'>
+                <Link
+                  style={currentTab(history, "/cart")}
+                  className='nav-link'
+                  to='/cart'
+                >
+                  <span className='text-white h6'>
+                    <ShoppingCartTwoToneIcon
+                      style={{ color: "white", fontSize: "30px" }}
+                    />{" "}
+                    Cart
+                  </span>
+                </Link>
+              </li>
               {/* <span className='text-white h6 '>Signin</span> */}
             </ul>
           </div>

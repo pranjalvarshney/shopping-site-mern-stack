@@ -15,6 +15,7 @@ import { ManageOrders } from "./admin/ManageOrders"
 import { UpdateProduct } from "./admin/UpdateProduct"
 import { ProductPage } from "./core/components/ProductPage"
 import { Blog } from "./user/Blog"
+import { Cart } from "./user/Cart"
 import { Occasion } from "./user/Occasion"
 import { CreateBlog } from "./admin/CreateBlog"
 import { ManageBlog } from "./admin/ManageBlog"
@@ -25,6 +26,7 @@ export const Routes = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/blogs' component={Blog} />
+        <Route exact path='/cart' component={Cart} />
         <Route exact path='/occasions' component={Occasion} />
         <Route exact path='/product/:productId' component={ProductPage} />
         <Route exact path='/signup' component={Signup} />
