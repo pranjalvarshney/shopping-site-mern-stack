@@ -85,7 +85,14 @@ export const ProductPage = ({ match }) => {
         {successMsg()}
         {errorMsg()}
         <div className='row'>
-          <div className='col-md-6'>
+          <div
+            className='col-md-6'
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <img
               src={`${API}/product/photo/${match.params.productId}`}
               alt='product'
@@ -93,7 +100,7 @@ export const ProductPage = ({ match }) => {
           </div>
           <div className='col-lg-6 product-info'>
             <h4>{data.name}</h4>
-            <small className='text-muted'>catID: {data.category}</small>
+            <small className='text-muted'>PId: {data.category}</small>
             <div>
               <h6>Description</h6>
               <p className='text-muted'>{data.description}</p>

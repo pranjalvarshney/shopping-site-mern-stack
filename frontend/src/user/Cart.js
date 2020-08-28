@@ -10,19 +10,23 @@ export const Cart = () => {
   useEffect(() => {
     setCartdata(loadCart())
   }, [])
-  console.log(cartdata)
 
   return (
     <Base className='container my-3 '>
       <div className='row m-auto'>
         <div className='col-lg-7 jumbotron py-3 m-2'>
-          <h2>Cart</h2>
+          <h5>
+            My Cart (<span className='h5 px-1'>{cartdata.length}</span>)
+          </h5>
           {cartdata.map((item, i) => {
             return <CartItem key={i} item={item} />
           })}
+          <button className='btn btn-lg btn-danger float-right shadow'>
+            Place Order
+          </button>
         </div>
         <div className='col-lg-4 jumbotron py-3 m-2'>
-          <TotalCart />
+          <TotalCart cartData={cartdata} />
         </div>
       </div>
     </Base>

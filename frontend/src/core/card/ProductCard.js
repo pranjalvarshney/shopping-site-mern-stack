@@ -5,7 +5,7 @@ import { ImageLoading } from "../components/ImageLoading"
 export const ProductCard = ({ product }) => {
   return (
     <div>
-      <div className='product-card card'>
+      <div className='product-card card shadow'>
         <ImageLoading
           imgUrl={`${API}/product/photo/${product._id}`}
           height={"200px"}
