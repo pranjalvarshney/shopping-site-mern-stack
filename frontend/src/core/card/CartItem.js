@@ -2,7 +2,7 @@ import React from "react"
 import { ImageLoading } from "../components/ImageLoading"
 import { API } from "../../utils/backend"
 
-export const CartItem = ({ item }) => {
+export const CartItem = ({ item, removeFromCartFunc, addToWishListFunc }) => {
   return (
     <div>
       <div className='card my-3 shadow border-0'>
@@ -21,12 +21,18 @@ export const CartItem = ({ item }) => {
                 <small style={{ fontSize: "11px" }}>PId: {item._id}</small>
               </h6>
               <p className='card-text h5'>$ {item.price}</p>
-              <a href='#' className='card-link'>
+              <span
+                className='card-link'
+                onClick={() => addToWishListFunc(item)}
+              >
                 <small> Add to wishlist</small>
-              </a>
-              <a href='#' className='card-link'>
+              </span>
+              <span
+                className='card-link'
+                onClick={() => removeFromCartFunc(item)}
+              >
                 <small>Remove</small>
-              </a>
+              </span>
             </div>
           </div>
           <div className='col-3 mx-auto mt-3'>

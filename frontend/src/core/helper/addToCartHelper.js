@@ -32,3 +32,13 @@ export const loadCart = () => {
     }
   }
 }
+
+export const removeFromCart = (item) => {
+  if (typeof window !== undefined) {
+    if (localStorage.getItem("cart")) {
+      let data = JSON.parse(localStorage.getItem("cart"))
+      let newCart = data.filter((obj) => obj._id !== item._id)
+      localStorage.setItem("cart", JSON.stringify(newCart))
+    }
+  }
+}
