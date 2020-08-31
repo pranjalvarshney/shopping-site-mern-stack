@@ -42,3 +42,9 @@ export const removeFromCart = (item) => {
     }
   }
 }
+
+export const emptyCart = () => {
+  if (typeof window !== undefined) {
+    localStorage.removeItem("cart")
+  }
+}

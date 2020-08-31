@@ -7,21 +7,23 @@ import { Redirect } from "react-router-dom"
 import { Toast } from "react-bootstrap"
 
 export const ProductPage = ({ match }) => {
-  const [addToCart, setAddToCart] = useState(true)
-  const [removeFromCart, setRemoveFromCart] = useState(false)
   const [redirect, setRedirect] = useState(false)
   const [data, setData] = useState([])
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
 
   const addToCartMethod = async () => {
-    addToCartFunc(data)
-    setSuccess(true)
+    if (!success) {
+      addToCartFunc(data)
+      setSuccess(true)
+    }
   }
   const buyNowMethod = async () => {
-    buyNowFunc(data, () => {
-      setRedirect(true)
-    })
+    if (!success) {
+      buyNowFunc(data, () => {
+        setRedirect(true)
+      })
+    }
   }
 
   const getRedirect = (redirect) => {
@@ -116,12 +118,21 @@ export const ProductPage = ({ match }) => {
               </span>
             </h6>
             <div className='row justify-content-around'>
-              <button
-                onClick={buyNowMethod}
-                className='btn btn-danger py-2 font-weight-bold p-btn'
-              >
-                Buy now
-              </button>
+              {!success ? (
+                <button
+                  onClick={buyNowMethod}
+                  className='btn btn-danger py-2 font-weight-bold p-btn'
+                >
+                  Buy now
+                </button>
+              ) : (
+                <button
+                  onClick={buyNowMethod}
+                  className='btn btn-success py-2 font-weight-bold p-btn'
+                >
+                  Go to cart
+                </button>
+              )}
               <button
                 onClick={addToCartMethod}
                 className='btn btn-warning py-2 font-weight-bold p-btn'

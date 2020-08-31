@@ -162,7 +162,7 @@ exports.getAllProducts = (req, res) => {
   let sortBy = req.query.sortBy ? parseInt(req.query.sortBy) : "_id"
 
   Product.find()
-    .select("-pimage")
+    .select("-pimage") // minus sign to de-select pimage from the result
     .populate("category")
     .sort([[sortBy, "asc"]])
     .limit(limit)

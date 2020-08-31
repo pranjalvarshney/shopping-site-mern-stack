@@ -3,11 +3,21 @@ import { Base } from "../core/Base"
 import { CartItem } from "../core/card/CartItem"
 import { TotalCart } from "../core/card/TotalCart"
 import { loadCart, removeFromCart } from "../core/helper/addToCartHelper"
-import { useHistory } from "react-router-dom"
+import { useHistory, Redirect, Link } from "react-router-dom"
 import { addToWishList } from "../core/helper/wishlistHelper"
+import { isAuthenticated } from "../auth/helper"
 
 export const Cart = () => {
   const [cartdata, setCartdata] = useState([])
+
+  const submitCheckOut = () => {
+    console.log("hi")
+    if (isAuthenticated()) {
+      console.log(isAuthenticated())
+      return <Redirect to='/payment' />
+    }
+    return <Redirect to='/signin' />
+  }
 
   const addToWishListFunc = (item) => {
     addToWishList(item)
@@ -44,8 +54,11 @@ export const Cart = () => {
                   />
                 )
               })}
-              <button className='btn btn-lg btn-danger float-right shadow'>
-                Place Order
+              <button
+                className='btn btn-lg btn-danger float-right shadow'
+                onClick={submitCheckOut}
+              >
+                Checkout
               </button>
             </>
           ) : (
