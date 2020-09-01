@@ -3,21 +3,13 @@ import { Base } from "../core/Base"
 import { CartItem } from "../core/card/CartItem"
 import { TotalCart } from "../core/card/TotalCart"
 import { loadCart, removeFromCart } from "../core/helper/addToCartHelper"
-import { useHistory, Redirect, Link } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { addToWishList } from "../core/helper/wishlistHelper"
 import { isAuthenticated } from "../auth/helper"
 
 export const Cart = () => {
   const [cartdata, setCartdata] = useState([])
-
-  const submitCheckOut = () => {
-    console.log("hi")
-    if (isAuthenticated()) {
-      console.log(isAuthenticated())
-      return <Redirect to='/payment' />
-    }
-    return <Redirect to='/signin' />
-  }
+  const history = useHistory()
 
   const addToWishListFunc = (item) => {
     addToWishList(item)
@@ -28,8 +20,6 @@ export const Cart = () => {
     removeFromCart(id)
     setCartdata(loadCart())
   }
-
-  const history = useHistory()
 
   useEffect(() => {
     setCartdata(loadCart())
@@ -54,12 +44,25 @@ export const Cart = () => {
                   />
                 )
               })}
-              <button
-                className='btn btn-lg btn-danger float-right shadow'
-                onClick={submitCheckOut}
-              >
-                Checkout
-              </button>
+              {isAuthenticated() ? (
+                <Link to='/payment'>
+                  <button
+                    type='submit'
+                    className='btn btn-lg btn-danger float-right shadow'
+                  >
+                    Checkout
+                  </button>
+                </Link>
+              ) : (
+                <Link to='/signin'>
+                  <button
+                    type='submit'
+                    className='btn btn-lg btn-danger float-right shadow'
+                  >
+                    Signin to CheckOut
+                  </button>
+                </Link>
+              )}
             </>
           ) : (
             <div className='card m-auto w-50 border-0 py-3'>
