@@ -59,7 +59,7 @@ export const Cart = () => {
                     type='submit'
                     className='btn btn-lg btn-danger float-right shadow'
                   >
-                    Signin to CheckOut
+                    Signin to Checkout
                   </button>
                 </Link>
               )}
