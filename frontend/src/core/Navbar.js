@@ -19,7 +19,7 @@ const Navbar = ({ history }) => {
       <nav className='navbar navbar-dark navbar-expand-lg py-3 px-5 shadow main-navbar'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-            <h2 className='brandName'>Gift Shop</h2>
+            <h2 className='brandName'>Wrap & go</h2>
           </Link>
           <button
             className='navbar-toggler'
@@ -132,7 +132,8 @@ const Navbar = ({ history }) => {
                 <SearchIcon style={{ color: "white", fontSize: "30px" }} />
                 Search
               </span>
-              <li>
+              {
+                isAuthenticated ? <li>
                 <Link
                   style={currentTab(history, "/profile")}
                   className='nav-link'
@@ -145,7 +146,8 @@ const Navbar = ({ history }) => {
                     Profile
                   </span>
                 </Link>
-              </li>
+              </li> : null
+              }
               <li className='nav-item h6'>
                 <Link
                   style={currentTab(history, "/cart")}

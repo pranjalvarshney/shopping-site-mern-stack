@@ -18,6 +18,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.19",
     "mongoose": "^5.9.25",
+    "morgan": "^1.10.0",
     "stripe": "^8.91.0",
     "uuid": "^8.2.0"
   },

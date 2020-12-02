@@ -52,9 +52,9 @@ export const CreateProduct = () => {
     }
   }
 
-  useEffect(() => {
-    preLoadData()
-  }, [])
+  useEffect(
+    preLoadData
+  , [])
 
   const successMsg = () => {
     return (

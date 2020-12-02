@@ -4,6 +4,7 @@ import { SectionHello } from "./components/SectionHello"
 import { OccasionsSection } from "./components/OccasionsSection"
 import { ShowProducts } from "./components/ShowProducts"
 import { getProducts } from "./helper/mainAPICalls"
+import { loadCart } from "./helper/addToCartHelper"
 
 export const Home = () => {
   const [products, setProducts] = useState([])
@@ -25,6 +26,7 @@ export const Home = () => {
 
   useEffect(() => {
     loadData()
+    loadCart()
   }, [])
 
   return (

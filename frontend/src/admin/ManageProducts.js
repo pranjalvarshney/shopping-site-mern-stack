@@ -43,9 +43,7 @@ export const ManageProducts = () => {
     }
   }
 
-  useEffect(() => {
-    preLoad()
-  }, [])
+  useEffect(preLoad, [])
 
   const deleteBtn = async (productId) => {
     try {

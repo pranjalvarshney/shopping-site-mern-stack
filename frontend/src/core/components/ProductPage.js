@@ -46,7 +46,7 @@ export const ProductPage = ({ match }) => {
   }
   useEffect(() => {
     preloadData(match.params.productId)
-  }, [])
+  }, [match.params.productId])
 
   const successMsg = () => {
     return (
@@ -54,7 +54,7 @@ export const ProductPage = ({ match }) => {
         onClose={() => setSuccess(false)}
         show={success}
         delay={2000}
-        autohide
+        autohideCategories
         style={{
           position: "absolute",
           top: "100px",
