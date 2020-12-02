@@ -4,8 +4,8 @@ import { AdminSidebar } from "./AdminSidebar"
 
 export const AdminContent = ({ children }) => {
   return (
-    <Base className={"container"}>
-      <div className='row mt-5'>
+    <Base className={"container pt-5"}>
+      <div className='row pt-5'>
         <div className='col-lg-3'>
           <AdminSidebar />
         </div>

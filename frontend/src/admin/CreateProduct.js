@@ -52,14 +52,12 @@ export const CreateProduct = () => {
     }
   }
 
-  useEffect(
-    preLoadData
-  , [])
+  useEffect(preLoadData, [])
 
   const successMsg = () => {
     return (
       <div
-        className='alert py-1 text-center alert-success '
+        className="alert py-1 text-center alert-success "
         style={{ display: success ? "" : "none" }}
       >
         Successfully Added
@@ -69,7 +67,7 @@ export const CreateProduct = () => {
   const errorMsg = () => {
     return (
       <div
-        className='alert py-1 text-center alert-danger'
+        className="alert py-1 text-center alert-danger"
         style={{ display: error ? "" : "none" }}
       >
         {error}
@@ -124,59 +122,59 @@ export const CreateProduct = () => {
   const createProductForm = () => {
     return (
       <form
-        className='col-12 col-lg-12 my-3'
+        className="col-12 col-lg-12 my-3"
         noValidate
         onSubmit={handleSubmit}
       >
-        <div className='row'>
-          <div className='form-group col-lg-6'>
+        <div className="row">
+          <div className="form-group col-lg-6">
             <label>Product name</label>
             <input
-              className='form-control'
-              type='text'
-              name='name'
+              className="form-control"
+              type="text"
+              name="name"
               value={name}
               onChange={handleChange}
               autoFocus
               required
-              placeholder='eg: Samsung Galaxy A7'
+              placeholder="eg: Samsung Galaxy A7"
             />
           </div>
 
-          <div className='form-group col-lg-6'>
+          <div className="form-group col-lg-6">
             <label>Price</label>
 
-            <div className='input-group mb-2'>
-              <div className='input-group-prepend'>
-                <div className='input-group-text'>Rs</div>
+            <div className="input-group mb-2">
+              <div className="input-group-prepend">
+                <div className="input-group-text">Rs</div>
               </div>
               <input
-                className='form-control'
-                type='number'
-                name='price'
+                className="form-control"
+                type="number"
+                name="price"
                 value={price}
                 onChange={handleChange}
-                placeholder='eg: 23999'
+                placeholder="eg: 23999"
               />
             </div>
           </div>
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <label>Description</label>
           <textarea
-            className='form-control'
-            name='description'
+            className="form-control"
+            name="description"
             value={description}
             onChange={handleChange}
-            placeholder='eg: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis    '
+            placeholder="eg: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis    "
           />
         </div>
-        <div className='row'>
-          <div className='form-group col-lg-6'>
+        <div className="row">
+          <div className="form-group col-lg-6">
             <label>Category</label>
             <select
-              className='form-control'
-              name='category'
+              className="form-control"
+              name="category"
               onChange={handleChange}
             >
               <option>select</option>
@@ -191,30 +189,30 @@ export const CreateProduct = () => {
             </select>
           </div>
 
-          <div className='form-group col-lg-6'>
+          <div className="form-group col-lg-6">
             <label>Total Stock</label>
             <input
-              className='form-control'
-              type='number'
-              name='totalStock'
+              className="form-control"
+              type="number"
+              name="totalStock"
               value={totalStock}
               onChange={handleChange}
-              placeholder='eg: 99'
+              placeholder="eg: 99"
             />
           </div>
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <label>Product Image</label>
           <input
-            className='form-control-file'
-            type='file'
-            accept='image'
-            name='pimage'
+            className="form-control-file"
+            type="file"
+            accept="image"
+            name="pimage"
             onChange={handleChange}
           />
         </div>
 
-        <button type='submit' className='w-100 btn btn-outline-info'>
+        <button type="submit" className="w-100 btn btn-outline-info">
           Save
         </button>
       </form>

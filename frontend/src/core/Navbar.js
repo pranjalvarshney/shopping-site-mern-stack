@@ -1,135 +1,98 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { Link, withRouter } from "react-router-dom"
 import { isAuthenticated, signout } from "../auth/helper"
 import ShoppingCartTwoToneIcon from "@material-ui/icons/ShoppingCartTwoTone"
-import SearchIcon from "@material-ui/icons/Search"
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: "orange", fontWeight: "bold" }
+    return { color: "orange" ,textDecoration:"none"}
   } else {
-    return { color: "white" }
+    return { color: "white" ,textDecoration:"none"}
   }
 }
 
 const Navbar = ({ history }) => {
   return (
-    <nav className="navbar navbar-expand-md navbar-dark py-3  main-navbar">
-          <div className=" container">
-          <Link className='navbar-brand' to='/'>
-            <h2 className='brandName'>Wrap & go</h2>
+    <nav className="main-navbar">
+      <Link className="main-navbar-brand" to="/" style={{textDecoration:"none"}}>
+        <h2 id="brandName">Wrap & go</h2>
+      </Link>
+      <div className="menu-toggle" id="mobile-menu">
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </div>
+
+      <ul className="nav no-search">
+        <li className="h6 nav-link active">
+          <Link style={currentTab(history, "/")} to="/">
+            Home
           </Link>
-          <button
-            className='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#navbarToggler'>
-            <span className='navbar-toggler-icon'></span>
-          </button>
-          <div className="collapse navbar-collapse ">
-          <ul className='navbar-nav ml-auto ' style={{alignItems:"center"}}>
-              <li className='nav-item h6 active'>
-                <Link
-                  style={currentTab(history, "/")}
-                  className='nav-link'
-                  to='/'
-                >
-                  Home
-                </Link>
-              </li>
+        </li>
 
-              <li className='nav-item h6'>
-                <Link
-                  style={currentTab(history, "/blogs")}
-                  className='nav-link'
-                  to='/blogs'
-                >
-                  Blogs
-                </Link>
-              </li>
-              <li className='nav-item h6'>
-                <Link
-                  style={currentTab(history, "/occasions")}
-                  className='nav-link'
-                  to='/occasions'
-                >
-                  Occasions
-                </Link>
-              </li>
-              {isAuthenticated() && isAuthenticated().data.user.role === 0 && (
-                <li className='nav-item h6'>
-                  <Link
-                    style={currentTab(history, "/user")}
-                    className='nav-link'
-                    to='/user'
-                  >
-                    Hey,
-                    {isAuthenticated() && (
-                      <span> {isAuthenticated().data.user.name}</span>
-                    )}
-                  </Link>
-                </li>
-              )}
-              {isAuthenticated() && isAuthenticated().data.user.role === 1 && (
-                <li className='nav-item h6'>
-                  <Link
-                    style={currentTab(history, "/admin")}
-                    className='nav-link'
-                    to='/admin'
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-              )}
+        <li className="h6 nav-link">
+          <Link style={currentTab(history, "/blogs")} to="/blogs">
+            Blogs
+          </Link>
+        </li>
+        <li className="h6 nav-link">
+          <Link style={currentTab(history, "/occasions")} to="/occasions">
+            Occasions
+          </Link>
+        </li>
 
-              {!isAuthenticated() && (
-                <Fragment>
-                  <li className='nav-item h6'>
-                    <Link
-                      style={currentTab(history, "/signup")}
-                      className='nav-link'
-                      to='/signup'
-                    >
-                      Signup
-                    </Link>
-                  </li>
-                  <li className='nav-item h6'>
-                    <Link
-                      style={currentTab(history, "/signin")}
-                      className='nav-link'
-                      to='/signin'
-                    >
-                      Signin
-                    </Link>
-                  </li>
-                </Fragment>
-              )}
+        {isAuthenticated() && isAuthenticated().data.user.role === 1 && (
+          <li className="h6 nav-link">
+            <Link style={currentTab(history, "/admin")} to="/admin">
+              Dashboard
+            </Link>
+          </li>
+        )}
+        {isAuthenticated() && isAuthenticated().data.user.role === 0 && (
+          <li className="h6 nav-link">
+            <Link style={currentTab(history, "/user")} to="/user">
+              Hey,
               {isAuthenticated() && (
-                <li className='nav-item h6'>
-                  <span
-                    className='nav-link'
-                    onClick={() => {
-                      signout(() => {
-                        history.push("/")
-                      })
-                    }}
-                  >
-                    Signout
-                  </span>
-                </li>
+                <span> {isAuthenticated().data.user.name}</span>
               )}
-              {/* <span className='nav-link text-white h6'>
+            </Link>
+          </li>
+        )}
+        {!isAuthenticated() && (
+          <li className="h6 nav-link">
+            <Link style={currentTab(history, "/signin")} to="/signin">
+              Signin
+            </Link>
+          </li>
+        )}
+        {isAuthenticated() && (
+          <li className="h6 nav-link">
+            <Link to="/" style={{ color: "white" }}>
+              
+              <span
+                onClick={() => {
+                  signout(() => {
+                    history.push("/")
+                  })
+                }}
+              >
+                Signout
+              </span>
+            </Link>
+          </li>
+        )}
+        {/* <span className='nav-link text-white h6 nav-link'>
                 <SearchIcon style={{ color: "white", fontSize: "30px" }} />
                 Search
               </span> */}
-              {/* {
+        {/* {
                 isAuthenticated ? <li>
                 <Link
                   style={currentTab(history, "/profile")}
                   className='nav-link'
                   to='/profile'
                 >
-                  <span className='text-white h6 mx-3'>
+                  <span className='text-white h6 nav-link mx-3'>
                     <AccountCircleIcon
                       style={{ color: "white", fontSize: "30px" }}
                     />
@@ -138,25 +101,18 @@ const Navbar = ({ history }) => {
                 </Link>
               </li> : null
               } */}
-              <li className='nav-item h6'>
-                <Link
-                  style={currentTab(history, "/cart")}
-                  className='nav-link'
-                  to='/cart'
-                >
-                  <span className='text-white h6'>
-                    <ShoppingCartTwoToneIcon
-                      style={{ color: "white", fontSize: "32px" }}
-                    />
-                    Cart
-                  </span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          </div>
+        <li className="h6 nav-link">
+          <Link style={currentTab(history, "/cart")}  to="/cart">
+            <span className="m-auto text-white h6 nav-link" style={{display:"flex",alignItems:"center",justifyContent:"center"}} >
+                <ShoppingCartTwoToneIcon
+                  style={{ color: "white", fontSize: "32px" }}
+                />
+                Cart
+            </span>
+          </Link>
+        </li>
+      </ul>
     </nav>
-     
   )
 }
 

@@ -45,9 +45,9 @@ export const ManageProducts = () => {
 
   useEffect(preLoad, [])
 
-  const deleteBtn = async (productId) => {
+  const deleteBtn = (productId) => {
     try {
-      const response = await deleteProduct(user._id, productId, token)
+      const response = deleteProduct(user._id, productId, token)
       if (response) {
         preLoad()
         setSuccess(true)

@@ -51,9 +51,9 @@ export const Blog = () => {
     )
   }
   return (
-    <Base className='container'>
-      <div className='py-5'>
-        <h2>Teddy's Blogs</h2>
+    <Base className='container pt-5'>
+      <div className='pt-5 '>
+        <h2>Blogs</h2>
         <div>
           {showLoading()}
           {errorMsg()}
