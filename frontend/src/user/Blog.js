@@ -52,7 +52,7 @@ export const Blog = () => {
   }
   return (
     <Base className='container'>
-      <div className='my-4'>
+      <div className='py-5'>
         <h2>Teddy's Blogs</h2>
         <div>
           {showLoading()}

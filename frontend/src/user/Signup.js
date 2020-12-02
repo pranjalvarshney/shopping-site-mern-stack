@@ -68,9 +68,9 @@ export const Signup = () => {
   }
 
   return (
-    <Base className={"container"}>
-      <div className='row '>
-        <div className='col-10 mt-5 col-md-5 jumbotron mx-auto py-4 bg-light'>
+    <Base className={"container pt-5"}>
+      <div className='row mt-5 pt-5'>
+        <div className='col-xs-10 col-md-5 jumbotron py-3 mx-auto  bg-light'>
           <h4>Signup</h4>
           <p>Create a new account</p>
           {successMsg()}

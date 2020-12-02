@@ -1,4 +1,4 @@
-$nav-red-color: #ff0033;
+$nav-red-color: #080963;
 $nav-red-color-dark: #ff003357;
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
@@ -12,14 +12,17 @@ $nav-red-color-dark: #ff003357;
 }
 
 .main-navbar {
-  opacity: 0.9;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
   background: $nav-red-color;
 }
 
 .Home {
+  
   display: flex;
   flex-direction: column;
-  padding: 0 !important;
+  padding-top: 90px;;
   margin: 0 !important;
 
   .main-wrapper {
@@ -79,6 +82,7 @@ $nav-red-color-dark: #ff003357;
 
   .Occasions {
     display: flex;
+    padding-top: 90px;
     justify-content: space-around;
     flex-direction: column;
 

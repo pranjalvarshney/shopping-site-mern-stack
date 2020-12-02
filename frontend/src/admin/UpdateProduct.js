@@ -33,36 +33,7 @@ export const UpdateProduct = ({ match }) => {
   const { data } = isAuthenticated()
   const { user, token } = data
 
-  const preLoadData = async (productId) => {
-    try {
-      setValues({
-        ...values,
-        loading: true,
-        error: "",
-      })
-      const response = await getProduct(productId)
-      if (response) {
-        setValues({
-          ...values,
-          name: response.data.name,
-          description: response.data.description,
-          price: response.data.price,
-          category: response.data.category._id,
-          totalStock: response.data.totalStock,
-          pimage: response.data.pimage,
-          formData: new FormData(),
-          loading: false,
-          error: "",
-        })
-      }
-    } catch (error) {
-      setValues({
-        ...values,
-        error: error.response.data.errormsg,
-        loading: false,
-      })
-    }
-  }
+  
   const preloadCategories = async () => {
     try {
       const response = await getAllCategories()
@@ -76,9 +47,39 @@ export const UpdateProduct = ({ match }) => {
   }
 
   useEffect(() => {
+    const preLoadData = async (productId) => {
+      try {
+        setValues({
+          ...values,
+          loading: true,
+          error: "",
+        })
+        const response = await getProduct(productId)
+        if (response) {
+          setValues({
+            ...values,
+            name: response.data.name,
+            description: response.data.description,
+            price: response.data.price,
+            category: response.data.category._id,
+            totalStock: response.data.totalStock,
+            pimage: response.data.pimage,
+            formData: new FormData(),
+            loading: false,
+            error: "",
+          })
+        }
+      } catch (error) {
+        setValues({
+          ...values,
+          error: error.response.data.errormsg,
+          loading: false,
+        })
+      }
+    }
     preLoadData(match.params.productId) // using match to get the productId from the params
     preloadCategories()
-  }, [])
+  }, [match.params.productId,values])
 
   const successMsg = () => {
     return (

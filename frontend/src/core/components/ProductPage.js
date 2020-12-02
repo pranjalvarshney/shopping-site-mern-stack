@@ -82,8 +82,8 @@ export const ProductPage = ({ match }) => {
   }
 
   return (
-    <Base className='container my-5'>
-      <div className='product-page '>
+    <Base className='container py-5'>
+      <div className='product-page mt-5 py-5'>
         {successMsg()}
         {errorMsg()}
         <div className='row'>

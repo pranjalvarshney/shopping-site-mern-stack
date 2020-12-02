@@ -2,22 +2,20 @@ import React, { Fragment } from "react"
 import { Link, withRouter } from "react-router-dom"
 import { isAuthenticated, signout } from "../auth/helper"
 import ShoppingCartTwoToneIcon from "@material-ui/icons/ShoppingCartTwoTone"
-import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 import SearchIcon from "@material-ui/icons/Search"
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: "white" }
+    return { color: "orange", fontWeight: "bold" }
   } else {
-    return { color: "grey" }
+    return { color: "white" }
   }
 }
 
 const Navbar = ({ history }) => {
   return (
-    <div>
-      <nav className='navbar navbar-dark navbar-expand-lg py-3 px-5 shadow main-navbar'>
-        <div className='container'>
+    <nav className="navbar navbar-expand-md navbar-dark py-3  main-navbar">
+          <div className=" container">
           <Link className='navbar-brand' to='/'>
             <h2 className='brandName'>Wrap & go</h2>
           </Link>
@@ -25,16 +23,11 @@ const Navbar = ({ history }) => {
             className='navbar-toggler'
             type='button'
             data-toggle='collapse'
-            data-target='#navbarSupportedContent'
-            aria-controls='navbarSupportedContent'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
+            data-target='#navbarToggler'>
             <span className='navbar-toggler-icon'></span>
           </button>
-
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul className='navbar-nav mr-auto'>
+          <div className="collapse navbar-collapse ">
+          <ul className='navbar-nav ml-auto ' style={{alignItems:"center"}}>
               <li className='nav-item h6 active'>
                 <Link
                   style={currentTab(history, "/")}
@@ -125,14 +118,11 @@ const Navbar = ({ history }) => {
                   </span>
                 </li>
               )}
-            </ul>
-            <ul className='navbar-nav ml-auto'>
-              <span className='nav-link text-white h6'>
-                {" "}
+              {/* <span className='nav-link text-white h6'>
                 <SearchIcon style={{ color: "white", fontSize: "30px" }} />
                 Search
-              </span>
-              {
+              </span> */}
+              {/* {
                 isAuthenticated ? <li>
                 <Link
                   style={currentTab(history, "/profile")}
@@ -142,12 +132,12 @@ const Navbar = ({ history }) => {
                   <span className='text-white h6 mx-3'>
                     <AccountCircleIcon
                       style={{ color: "white", fontSize: "30px" }}
-                    />{" "}
+                    />
                     Profile
                   </span>
                 </Link>
               </li> : null
-              }
+              } */}
               <li className='nav-item h6'>
                 <Link
                   style={currentTab(history, "/cart")}
@@ -156,18 +146,17 @@ const Navbar = ({ history }) => {
                 >
                   <span className='text-white h6'>
                     <ShoppingCartTwoToneIcon
-                      style={{ color: "white", fontSize: "30px" }}
-                    />{" "}
+                      style={{ color: "white", fontSize: "32px" }}
+                    />
                     Cart
                   </span>
                 </Link>
               </li>
-              {/* <span className='text-white h6 '>Signin</span> */}
             </ul>
           </div>
-        </div>
-      </nav>
-    </div>
+          </div>
+    </nav>
+     
   )
 }
 
