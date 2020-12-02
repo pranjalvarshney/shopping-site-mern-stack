@@ -2,7 +2,7 @@ import React from "react"
 
 export const OccasionCard = ({ item }) => {
   return (
-    <div className=''>
+    <div >
       <div className=' occasion-card card'>
         <img className='card-img-top' src={item.img} alt='Card cap' />
 

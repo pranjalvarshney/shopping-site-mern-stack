@@ -250,7 +250,7 @@ $nav-red-color-dark: #ff003357;
 @media only screen and (max-width: 720px) { 
   
      
-  .navbar ul {
+  .main-navbar ul {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -263,15 +263,15 @@ $nav-red-color-dark: #ff003357;
     overflow: hidden;
   }
   
-  .navbar li {
+  .main-navbar li {
     padding: 15px;
   }
   
-  .navbar li:first-child {
+  .main-navbar li:first-child {
     margin-top: 50px;
   }
   
-  .navbar li a {
+  .main-navbar li a {
     font-size: 1rem;
   }
    
@@ -286,14 +286,5 @@ $nav-red-color-dark: #ff003357;
   
   /* SECTIONS */
   
-  
-  
-  #search-icon {
-    display: none;
-  }
-  
-  .search-input {
-  display: none;
- }
   
 }
