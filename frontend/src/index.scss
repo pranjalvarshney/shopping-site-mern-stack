@@ -21,7 +21,7 @@ $nav-red-color-dark: #ff003357;
   justify-content: space-between;
   height: 90px;
 }
-.main-navbar-brand{
+.main-navbar-brand {
   width: auto;
   padding: 0 30px;
 }
@@ -29,15 +29,14 @@ $nav-red-color-dark: #ff003357;
   list-style: none;
   align-items: center;
 }
-.nav-link{
+.nav-link {
   padding: 0 20px;
   text-align: center;
 }
 .Home {
-  
   display: flex;
   flex-direction: column;
-  padding-top: 90px;;
+  padding-top: 90px;
   margin: 0 !important;
 
   .main-wrapper {
@@ -167,7 +166,7 @@ $nav-red-color-dark: #ff003357;
   justify-content: center;
   align-items: center;
 }
-.menu-toggle .bar{
+.menu-toggle .bar {
   width: 25px;
   height: 3px;
   background-color: #fff;
@@ -183,22 +182,22 @@ $nav-red-color-dark: #ff003357;
   display: none;
 }
 
-.menu-toggle:hover{
+.menu-toggle:hover {
   cursor: pointer;
 }
 
-#mobile-menu.is-active .bar:nth-child(2){
+#mobile-menu.is-active .bar:nth-child(2) {
   opacity: 0;
 }
 
-#mobile-menu.is-active .bar:nth-child(1){
+#mobile-menu.is-active .bar:nth-child(1) {
   -webkit-transform: translateY(8px) rotate(45deg);
   -ms-transform: translateY(8px) rotate(45deg);
   -o-transform: translateY(8px) rotate(45deg);
   transform: translateY(8px) rotate(45deg);
 }
 
-#mobile-menu.is-active .bar:nth-child(3){
+#mobile-menu.is-active .bar:nth-child(3) {
   -webkit-transform: translateY(-8px) rotate(-45deg);
   -ms-transform: translateY(-8px) rotate(-45deg);
   -o-transform: translateY(-8px) rotate(-45deg);
@@ -208,57 +207,56 @@ $nav-red-color-dark: #ff003357;
 /* KEYFRAME ANIMATIONS */
 
 @-webkit-keyframes gradbar {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @-moz-keyframes gradbar {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes gradbar {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Media Queries */
 
-  /* Mobile Devices - Phones/Tablets */
+/* Mobile Devices - Phones/Tablets */
 
-@media only screen and (max-width: 720px) { 
-  
+@media only screen and (max-width: 720px) {
   .main-navbar ul {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 90px;
-    opacity: .95;
+    opacity: 0.95;
     left: 0%;
     width: 100%;
     height: calc(100vh - 90px);
-    background-color:darkblue;
+    background-color: darkblue;
     justify-content: center;
     align-items: center;
     transform: translate(-100%);
@@ -269,27 +267,27 @@ $nav-red-color-dark: #ff003357;
   .main-navbar li {
     padding: 15px;
   }
-  
+
   .main-navbar li:first-child {
     margin-top: -50px;
   }
-  
+
   .main-navbar li a {
     font-size: 1.6rem;
-  }.main-navbar li a span{
+  }
+  .main-navbar li a span {
     font-size: 1.6rem;
   }
-   
-  .menu-toggle, .bar {
+
+  .menu-toggle,
+  .bar {
     display: block;
     cursor: pointer;
   }
-  
+
   .mobile-nav {
-  transform: translate(0%)!important;
-}
-  
+    transform: translate(0%) !important;
+  }
+
   /* SECTIONS */
-  
-  
 }

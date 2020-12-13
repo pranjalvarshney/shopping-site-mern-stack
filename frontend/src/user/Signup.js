@@ -1,8 +1,12 @@
 import React, { useState } from "react"
 import { Base } from "../core/Base"
 import { signup } from "../auth/helper"
+import { Button } from "@material-ui/core"
+import { useHistory } from "react-router-dom"
 
 export const Signup = () => {
+
+  const history = useHistory()
   const [inputValues, setinputValues] = useState({
     name: "",
     email: "",
@@ -24,7 +28,7 @@ export const Signup = () => {
   const successMsg = () => {
     return (
       <div
-        className='alert py-1 text-center alert-success '
+        className='alert text-center alert-success '
         style={{ display: success ? "" : "none" }}
       >
         Congratulations! Your account has been created successfully
@@ -35,7 +39,7 @@ export const Signup = () => {
   const errorMsg = () => {
     return (
       <div
-        className='alert py-1 text-center alert-danger'
+        className='alert  text-center alert-danger'
         style={{ display: error ? "" : "none" }}
       >
         {error}
@@ -71,7 +75,7 @@ export const Signup = () => {
     <Base className={"container pt-5"}>
       <div className='row mt-5 pt-5'>
         <div className='col-xs-10 col-md-5 jumbotron py-3 mx-auto  bg-light'>
-          <h4>Signup</h4>
+          <h4><b>Signup</b></h4>
           <p>Create a new account</p>
           {successMsg()}
           {errorMsg()}
@@ -83,7 +87,7 @@ export const Signup = () => {
                 onChange={handleChange}
                 value={name}
                 type='text'
-                className='form-control form-control-sm'
+                className='form-control'
               />
             </div>
             <div className='form-group my-1'>
@@ -93,7 +97,7 @@ export const Signup = () => {
                 onChange={handleChange}
                 value={email}
                 type='email'
-                className='form-control form-control-sm'
+                className='form-control'
               />
             </div>
             <div className='form-group my-1'>
@@ -103,14 +107,19 @@ export const Signup = () => {
                 onChange={handleChange}
                 value={password}
                 type='password'
-                className='form-control form-control-sm'
+                className='form-control'
               />
             </div>
-            <button className='btn btn-sm btn-outline-success btn-block my-3'>
+            <button className='btn  btn-outline-success btn-block my-3'>
               Submit
             </button>
-            {/* <h6>{JSON.stringify(inputValues)}</h6> */}
           </form>
+          <div style={{ display: "flex",alignItems:"center", justifyContent: "space-between" }}>
+            <Button size="small" disabled>Already have an account!</Button>
+            <Button size="small" onClick={()=>{
+              history.push("/signin")
+            }}>Signin</Button>
+          </div>
         </div>
       </div>
     </Base>
