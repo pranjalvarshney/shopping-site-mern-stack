@@ -15,15 +15,15 @@ export const AdminDashboard = () => {
           <h6>Admin Info</h6>
           <ul className='list-group'>
             <li className='list-group-item border-0 py-1'>
-              <span className='badge badge-primary mr-2 px-2 py-1'>Name </span>{" "}
+              <span className='badge badge-primary mr-2 px-2 py-1'>Name </span>
               {name}
             </li>
             <li className='list-group-item border-0 py-1'>
-              <span className='badge badge-primary mr-2 px-2 py-1'>Email </span>{" "}
+              <span className='badge badge-primary mr-2 px-2 py-1'>Email </span>
               {email}
             </li>
             <li className='list-group-item border-0 py-1'>
-              <span className='badge badge-primary mr-2 px-2 py-1'>Work </span>{" "}
+              <span className='badge badge-primary mr-2 px-2 py-1'>Work </span>
               Admin
             </li>
           </ul>
@@ -32,8 +32,8 @@ export const AdminDashboard = () => {
     )
   }
   return (
-    <Base className={"container pt-5"}>
-      <div className='row pt-5 my-3'>
+    <Base className="container pt-5">
+      <div className='row pt-5 my-5'>
         <div className='col-lg-3'>
           <AdminSidebar />
         </div>

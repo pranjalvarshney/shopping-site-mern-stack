@@ -253,26 +253,29 @@ $nav-red-color-dark: #ff003357;
   .main-navbar ul {
     display: flex;
     flex-direction: column;
-    position: fixed;
-    justify-content: flex-start;
-    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 50%;
     width: 100%;
-    height: calc(100vh - 55px);
-    transform: translate(-101%);
+    height: 100vh;
+    background-color:darkblue;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%);
     text-align: center;
     overflow: hidden;
   }
   
   .main-navbar li {
-    padding: 15px;
+    padding: 20px;
   }
   
   .main-navbar li:first-child {
-    margin-top: 50px;
+    // margin-top: 50px;
   }
   
   .main-navbar li a {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
    
   .menu-toggle, .bar {

@@ -29,9 +29,7 @@ export const ManageCategories = () => {
     }
   }
 
-  useEffect(() => {
-    preLoadData()
-  }, [])
+  useEffect(preLoadData,[])
 
   const deleteBtn = async (categoryId) => {
     try {

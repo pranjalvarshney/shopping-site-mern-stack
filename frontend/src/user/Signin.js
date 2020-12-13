@@ -87,9 +87,9 @@ export const Signin = () => {
   )
 
   return (
-    <Base className={"container pt-5"}>
-      <div className='row mt-5 pt-5'>
-        <div className='col-xs-10 col-md-5 jumbotron bg-light mx-auto  py-3'>
+    <Base className="container pt-5">
+      <div className='row mt-5 pt-5 mx-3'>
+        <div className='col-xs-12 col-md-5 jumbotron bg-light py-5'>
           <h4>Signin</h4>
           {errorMsg()}
           {showLoading()}
