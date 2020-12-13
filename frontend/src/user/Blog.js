@@ -20,7 +20,7 @@ export const Blog = () => {
       }
     } catch (error) {
       setLoading(false)
-      setError(error.response.data.errormsg)
+      // setError(error.response.data.errorMsg)
     }
   }
 
