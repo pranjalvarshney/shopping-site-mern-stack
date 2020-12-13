@@ -43,7 +43,7 @@ export const Blog = () => {
   const errorMsg = () => {
     return (
       <div
-        className='alert py-1 text-center alert-danger'
+        className='alert  text-center alert-danger'
         style={{ display: error ? "" : "none" }}
       >
         {error}
@@ -52,7 +52,7 @@ export const Blog = () => {
   }
   return (
     <Base className='container pt-5'>
-      <div className='pt-5 '>
+      <div className='pt-5 my-3'>
         <h2>Blogs</h2>
         <div>
           {showLoading()}
