@@ -8,8 +8,8 @@ const stripePromise = loadStripe("pk_test_JJ1eMdKN0Hp4UFJ6kWXWO4ix00jtXzq5XG")
 
 export const Payment = () => {
   return (
-    <Base className='container my-3'>
-      <h4 className='my-3'>Payment Page</h4>
+    <Base className='container pt-5'>
+      <h4 className='my-5 pt-5'>Payment Page</h4>
       <div className='row'>
         <div className='col-lg-5'>
           <AddressCard />

@@ -8,7 +8,7 @@ const { filter } = require("lodash")
 // middleware for param productID which gives us "req.product"
 
 exports.getProductByID = (req, res, next, id) => {
-  Product.findById(id).exec((err, product) => {
+  Product.findById(id).populate("category").exec((err, product) => {
     if (err) {
       return res.status(400).json({
         errormsg: "An error occured!",

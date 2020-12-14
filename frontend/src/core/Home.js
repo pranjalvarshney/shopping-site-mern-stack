@@ -32,7 +32,7 @@ export const Home = () => {
   return (
     <Base>
       <div className='Home'>
-        <div className='main-wrapper '>
+        <div className='main-wrapper'>
           <SectionHello />
         </div>
         <ShowProducts products={products} />
