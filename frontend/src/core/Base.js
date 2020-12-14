@@ -10,11 +10,9 @@ export const Base = ({ className, children }) => {
         <div className='container'>
           <div className='row'>
             <div className='col-lg-5 col-xs-12 about-company'>
-              <h2 className='brandName'>Cute Teddy</h2>
-              <p className='pr-5 text-white-50'>
-                There’s just something about a Teddy bear that’s impossible to
-                explain. When you hold one in your arms, you get a feeling of
-                love, comfort, and security. It’s almost supernatural
+              <h2 id='brandName'>Wrap & go</h2>
+              <p className='pt-3 pr-5 text-white-50'>
+              We provide an exhaustive collection of exclusive gifts to help you express your deepest feelings for your loved ones. In today’s increasingly hurried times, we get so engrossed in making a living that we almost forget to appreciate the real blessings in our lives - our people. Now is the time to let them know how you feel, without saying a word, through a range of exciting online gift ideas put together by our team of experts. 
               </p>
               <p>
                 <a href='/'>
@@ -26,36 +24,30 @@ export const Base = ({ className, children }) => {
               </p>
             </div>
             <div className='col-lg-3 col-xs-12 links'>
-              <h4 className='mt-lg-0 mt-sm-3'>Links</h4>
-              <ul className='m-0 p-0'>
-                <li>
-                  - <a href='/'>Lorem ipsum</a>
+              <ul className='m-0 p-0' style={{listStyle:"none"}}>
+                <li className="my-3">
+                  <a href='/' className="text-white">Home</a>
                 </li>
-                <li>
-                  - <a href='/'>Nam mauris velit</a>
+                <li className="my-3">
+                  <a href='/blogs' className="text-white">Blogs</a>
                 </li>
-                <li>
-                  - <a href='/'>Etiam vitae mauris</a>
+                <li className="my-3">
+                  <a href='/occassions' className="text-white">Occasions</a>
                 </li>
-                <li>
-                  - <a href='/'>Fusce scelerisque</a>
+                <li className="my-3">
+                  <a href='/cart' className="text-white">Cart</a>
                 </li>
-                <li>
-                  - <a href='/'>Sed faucibus</a>
-                </li>
-                <li>
-                  - <a href='/'>Mauris efficitur nulla</a>
-                </li>
+               
               </ul>
             </div>
             <div className='col-lg-4 col-xs-12 location'>
               <h4 className='mt-lg-0 mt-sm-4'>Location</h4>
-              <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
+              <p>lorem ipsem address overhere</p>
               <p className='mb-0'>
-                <i className='fa fa-phone mr-3'></i>(541) 754-3010
+                <i className='fa fa-phone mr-3'></i>+1 00000 999 99
               </p>
               <p>
-                <i className='fa fa-envelope-o mr-3'></i>info@hsdf.com
+                <i className='fa fa-envelope-o mr-3'></i>cs@wrapandgo.com
               </p>
             </div>
           </div>

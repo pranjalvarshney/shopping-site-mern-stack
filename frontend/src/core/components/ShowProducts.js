@@ -1,12 +1,10 @@
 import React from "react"
-import { ProductCard } from "../card/ProductCard"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import {
   Grid,
   GridList,
   GridListTile,
   GridListTileBar,
-  Typography,
 } from "@material-ui/core"
 import { API } from "../../utils/backend"
 import { ImageLoading } from "./ImageLoading"
