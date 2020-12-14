@@ -13,7 +13,7 @@ export const ShowProducts = ({ products }) => {
   const history = useHistory()
   return (
     <div className="products-section container mt-3">
-      <div className="row container justify-content-between">
+      <div className="row container justify-content-between mb-3">
         <h4>Trending gifts</h4>
         <h6>Explore more</h6>
       </div>

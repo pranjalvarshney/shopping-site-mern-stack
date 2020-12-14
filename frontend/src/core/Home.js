@@ -5,6 +5,7 @@ import { OccasionsSection } from "./components/OccasionsSection"
 import { ShowProducts } from "./components/ShowProducts"
 import { getProducts } from "./helper/mainAPICalls"
 import { loadCart } from "./helper/addToCartHelper"
+import { Carousel } from "react-bootstrap"
 
 export const Home = () => {
   const [products, setProducts] = useState([])
@@ -31,11 +32,20 @@ export const Home = () => {
 
   return (
     <Base>
-      <div className='Home'>
-        <div className='main-wrapper'>
-          <SectionHello />
-        </div>
+      <div className="Home">
+      <Carousel>
+          <Carousel.Item>
+            <img className="d-block w-100" src="slide1.jpg" alt="First slide" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src="slide2.png" alt="First slide" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src="christmas.gif" alt="First slide" />
+          </Carousel.Item>
+        </Carousel>
         <ShowProducts products={products} />
+       
         <OccasionsSection />
       </div>
     </Base>
