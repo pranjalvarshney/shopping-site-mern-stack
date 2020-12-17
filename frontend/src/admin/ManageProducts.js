@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react"
 import { AdminContent } from "../core/AdminContent"
 import { getProducts, deleteProduct } from "./adminAPI"
 import { isAuthenticated } from "../auth/helper"
-import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import { Button } from "@material-ui/core"
 
 export const ManageProducts = () => {
+  const history = useHistory()
   const [preData, setPreData] = useState({
     getData: [],
     loading: false,
@@ -43,15 +45,19 @@ export const ManageProducts = () => {
     }
   }
 
-  useEffect(preLoad, [])
+  useEffect(() => {
+    preLoad()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const deleteBtn = (productId) => {
     try {
       const response = deleteProduct(user._id, productId, token)
       if (response) {
-        preLoad()
         setSuccess(true)
         setError("")
+        preLoad()
+
       }
     } catch (error) {
       setSuccess(false)
@@ -60,20 +66,20 @@ export const ManageProducts = () => {
   }
 
   const showLoading = () => (
-    <div className='d-flex justify-content-center '>
+    <div className="d-flex justify-content-center ">
       <div
-        className='spinner-border'
-        role='status'
+        className="spinner-border"
+        role="status"
         style={{ display: loading ? "" : "none" }}
       >
-        <span className='sr-only'>Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
     </div>
   )
   const successMsg = () => {
     return (
       <div
-        className='alert py-1 text-center alert-success '
+        className="alert py-1 text-center alert-success "
         style={{ display: success ? "" : "none" }}
       >
         Successfully Deleted
@@ -83,7 +89,7 @@ export const ManageProducts = () => {
   const errorMsg = () => {
     return (
       <div
-        className='alert py-1 text-center alert-danger'
+        className="alert py-1 text-center alert-danger"
         style={{ display: error ? "" : "none" }}
       >
         {error}
@@ -95,15 +101,15 @@ export const ManageProducts = () => {
       <div>
         <h4>Manage products</h4>
 
-        <table className='table table-hover table-md border-0'>
+        <table className="table table-hover table-md border-0">
           <thead>
             <tr>
-              <th scope='col'>#</th>
-              <th scope='col'>Name</th>
-              <th scope='col'>Category</th>
-              <th scope='col'>Stock</th>
-              <th scope='col'>Price</th>
-              <th scope='col'>Manage</th>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Price</th>
+              <th scope="col">Manage</th>
             </tr>
           </thead>
           <tbody>
@@ -111,28 +117,34 @@ export const ManageProducts = () => {
               getData.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <th scope='row'>{index + 1}</th>
+                    <th scope="row">{index + 1}</th>
                     <td>{item.name}</td>
                     <td>{item.category.name}</td>
                     <td>{item.totalStock}</td>
                     <td>{item.price}</td>
                     <td>
-                      <span className='btn badge badge-warning p-2 text-white mr-3'>
-                        <Link
-                          to={`/admin/product/update/${item._id}`}
-                          style={{ textDecoration: "none", color: "#fff" }}
-                        >
-                          Edit
-                        </Link>
-                      </span>
-                      <span
-                        className='btn badge badge-danger p-2 text-white'
+                      <Button
+                        color="primary"
+                        size="small"
+                        variant="contained"
+                        style={{ textDecoration: "none", color: "#fff" }}
+                        onClick={() => {
+                          history.push(`/admin/product/update/${item._id}`)
+                          window.location.reload()
+                        }}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        size="small"
+                        variant="contained"
+                        color="secondary"
                         onClick={() => {
                           deleteBtn(item._id)
                         }}
                       >
                         Delete
-                      </span>
+                      </Button>
                     </td>
                   </tr>
                 )
@@ -140,7 +152,7 @@ export const ManageProducts = () => {
           </tbody>
         </table>
         {getData.length === 0 && (
-          <div className='text-center'>
+          <div className="text-center">
             <h6>
               No products found!
               <br /> Add new products

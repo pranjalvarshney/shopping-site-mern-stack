@@ -79,7 +79,8 @@ export const UpdateProduct = ({ match }) => {
     }
     preLoadData(match.params.productId) // using match to get the productId from the params
     preloadCategories()
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [match.params.productId])
 
   const successMsg = () => {
     return (

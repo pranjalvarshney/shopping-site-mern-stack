@@ -32,27 +32,31 @@ export const CreateProduct = () => {
   const { data } = isAuthenticated()
   const { user, token } = data
 
-  const preLoadData = async () => {
-    try {
-      const response = await getAllCategories()
-      if (response) {
+  
+
+  useEffect(()=>{
+    const preLoadData = async () => {
+      try {
+        const response = await getAllCategories()
+        if (response) {
+          setValues({
+            ...values,
+            formData: new FormData(),
+            categories: response.data,
+          })
+          // console.log(response.data)
+        }
+      } catch (error) {
+        // console.log(error)
         setValues({
           ...values,
-          formData: new FormData(),
-          categories: response.data,
+          error: "error.response.data.errormsg",
         })
-        // console.log(response.data)
       }
-    } catch (error) {
-      // console.log(error)
-      setValues({
-        ...values,
-        error: "error.response.data.errormsg",
-      })
     }
-  }
-
-  useEffect(preLoadData, [])
+    preLoadData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const successMsg = () => {
     return (

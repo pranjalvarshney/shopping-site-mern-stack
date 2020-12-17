@@ -14,28 +14,30 @@ export const ManageCategories = () => {
     data: { user, token },
   } = isAuthenticated()
 
-  const preLoadData = async () => {
-    try {
-      setLoading(true)
-      setError("")
-      const response = await getAllCategories()
-      if (response) {
-        setCatData(response.data)
-        setLoading(false)
-      }
-    } catch (error) {
-      setLoading(false)
-      setError(error.response.data.errormsg)
-    }
-  }
+  
 
-  useEffect(preLoadData,[])
+  useEffect(()=>{
+    const preLoadData = async () => {
+      try {
+        setLoading(true)
+        setError("")
+        const response = await getAllCategories()
+        if (response) {
+          setCatData(response.data)
+          setLoading(false)
+        }
+      } catch (error) {
+        setLoading(false)
+        setError(error.response.data.errormsg)
+      }
+    }
+    preLoadData()
+  },[])
 
   const deleteBtn = async (categoryId) => {
     try {
       const response = await deleteCategory(user._id, categoryId, token)
       if (response) {
-        preLoadData()
         setSuccess(true)
         setError("")
       }

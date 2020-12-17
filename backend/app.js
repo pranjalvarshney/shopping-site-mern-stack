@@ -28,12 +28,12 @@ mongoose
     useCreateIndex: true,
   })
   .then((res) => {
-    console.log(res)
+    console.log("DB Connected")
   })
   .catch((err) => console.log(err))
 
 // listen to server
 const port = process.env.PORT || 4000
 app.listen(port, () => {
-  console.log(`Server stated at PORT: ${port} successfully`)
+  console.log(`Server started at PORT: ${port} successfully`)
 })

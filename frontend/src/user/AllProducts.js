@@ -42,6 +42,18 @@ export const AllProducts = () => {
     // console.log(value)
     return value
   }
+  const showLoading = () => (
+    <div className="d-flex justify-content-center">
+      <div
+        className="spinner-border"
+        role="status"
+        style={{ display: loading ? "" : "none" }}
+      >
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+  )
+
   return (
     <Base className="pt-5 container">
       <div className="pt-5 my-3">
@@ -49,14 +61,16 @@ export const AllProducts = () => {
           New Products
         </Typography>
       </div>
+      {loading && showLoading() }
       <GridList spacing={3} cols={getGridListCols()} cellHeight={getGridListRows()}>
-        {allproducts.length > 0 ? (
+        {loading ? null : allproducts.length > 0 ? (
           allproducts.map((pro, i) => {
             return (
               <GridListTile
                 onClick={() => {
                   history.push(`/product/${pro._id}`)
                 }}
+                key={i}
               >
                 <ImageLoading imgUrl={`${API}/product/photo/${pro._id}`} />
                 <GridListTileBar

@@ -50,8 +50,8 @@ exports.createProduct = (req, res) => {
     }
     // handling fields
 
-    const { name, description, price, category, totalStock } = fields
-    if (!name || !description || !price || !category || !totalStock) {
+    const { name, description, price, category, totalStock ,occasions } = fields
+    if (!name || !description || !price || !category || !totalStock || occasions) {
       return res.status(400).json({
         errormsg: "Please provide all the relevant details",
       })
@@ -158,7 +158,7 @@ exports.removeProduct = (req, res) => {
 //product listing
 
 exports.getAllProductsHome = (req, res) => {
-  let limit = req.query.limit ? parseInt(req.query.limit) : 10
+  let limit = req.query.limit ? parseInt(req.query.limit) : 8
   Product.find()
     .select("-pimage") // minus sign to de-select pimage from the result
     .populate("category")

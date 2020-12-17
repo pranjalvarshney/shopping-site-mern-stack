@@ -36,6 +36,12 @@ const productSchema = new mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
+    occasions: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
   },
   { timestamps: true }
 )

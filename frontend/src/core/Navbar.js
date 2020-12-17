@@ -24,7 +24,7 @@ const Navbar = ({ history }) => {
   }
 
   return (
-    <nav className="main-navbar">
+    <nav className="main-navbar px-5">
       <Button id="brandName" variant="text" className="main-navbar-brand" onClick={()=>{
         usehistory.push("/")
         window.location.reload()
