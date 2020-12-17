@@ -157,15 +157,34 @@ exports.removeProduct = (req, res) => {
 
 //product listing
 
-exports.getAllProducts = (req, res) => {
-  let limit = req.query.limit ? parseInt(req.query.limit) : 8
-  let sortBy = req.query.sortBy ? parseInt(req.query.sortBy) : "_id"
-
+exports.getAllProductsHome = (req, res) => {
+  let limit = req.query.limit ? parseInt(req.query.limit) : 10
   Product.find()
     .select("-pimage") // minus sign to de-select pimage from the result
     .populate("category")
-    .sort([[sortBy, "asc"]])
+    .sort({ createdAt: -1 })
     .limit(limit)
+    .exec((err, products) => {
+      if (err) {
+        return res.status(400).json({
+          errormsg: "An error occured! try again later",
+        })
+      }
+      if (!products) {
+        return res.status(400).json({
+          errormsg: "No product found",
+        })
+      }
+      res.json(products)
+    })
+}
+
+// getAll
+exports.getAllProducts = (req, res) => {
+  Product.find()
+    .select("-pimage") // minus sign to de-select pimage from the result
+    .populate("category")
+    .sort({ createdAt: -1 })
     .exec((err, products) => {
       if (err) {
         return res.status(400).json({

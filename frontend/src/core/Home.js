@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { Base } from "./Base"
-import { SectionHello } from "./components/SectionHello"
 import { OccasionsSection } from "./components/OccasionsSection"
 import { ShowProducts } from "./components/ShowProducts"
-import { getProducts } from "./helper/mainAPICalls"
+import {getProductsHome } from "./helper/mainAPICalls"
 import { loadCart } from "./helper/addToCartHelper"
 import { Carousel } from "react-bootstrap"
 
@@ -13,7 +12,7 @@ export const Home = () => {
 
   const loadData = async () => {
     try {
-      const response = await getProducts()
+      const response = await getProductsHome()
       // console.log(response.data)
 
       if (response) {
@@ -21,7 +20,7 @@ export const Home = () => {
         // setErrors("")
       }
     } catch (error) {
-      // setErrors(error.response.data.errormsg)
+      // setErrors(error)
     }
   }
 

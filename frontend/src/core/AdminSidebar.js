@@ -1,7 +1,9 @@
+import { Button } from "@material-ui/core"
 import React from "react"
-import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 export const AdminSidebar = () => {
+  const history = useHistory()
   return (
     <div className="card text-left ">
       <h6 className="card-header px-4 bg-info text-white border-0">
@@ -9,44 +11,87 @@ export const AdminSidebar = () => {
       </h6>
       <ul className="list-group">
         <li className="list-group-item py-2 my-0 border-0">
-          <Link to="/admin/create/blog" className=" nav-link">
+          <Button
+            onClick={() => {
+              history.push("/admin/create/blog")
+              window.location.reload()
+            }}
+          >
             Create Blog
-          </Link>
+          </Button>
         </li>
         <li className="list-group-item py-2 my-0 border-0">
-          <Link to="/admin/manage/blogs" className=" nav-link">
+          <Button
+            onClick={() => {
+              history.push("/admin/manage/blogs")
+              window.location.reload()
+            }}
+          >
             Manage Blogs
-          </Link>
+          </Button>
         </li>
         <li className="list-group-item py-2 my-0 border-0">
-          <Link to="/admin/create/category" className=" nav-link">
+          <Button
+            onClick={() => {
+              history.push("/admin/create/category")
+              window.location.reload()
+            }}
+          >
             Create Category
-          </Link>
+          </Button>
         </li>
         <li className="list-group-item py-2 my-0 border-0">
-          <Link to="/admin/manage/categories" className=" nav-link">
+          <Button
+            onClick={() => {
+              history.push("/admin/manage/categories")
+              window.location.reload()
+            }}
+          >
             Manage Categories
-          </Link>
+          </Button>
         </li>
         <li className="list-group-item py-2 my-0 border-0">
-          <Link to="/admin/create/product" className="nav-link">
+          <Button
+            onClick={() => {
+              history.push("/admin/create/product")
+              window.location.reload()
+            }}
+          >
             Create Product
-          </Link>
+          </Button>
         </li>
         <li className="list-group-item py-2 my-0 border-0">
-          <Link to="/admin/manage/products" className="nav-link">
+          <Button
+            onClick={() => {
+              history.push("/admin/manage/products")
+              window.location.reload()
+            }}
+            className="nav-link"
+          >
             Manage Products
-          </Link>
+          </Button>
         </li>
         <li className="list-group-item py-2 my-0 border-0">
-          <Link to="/admin/manage/orders" className="nav-link">
+          <Button
+            onClick={() => {
+              history.push("/admin/manage/orders")
+              window.location.reload()
+            }}
+            className="nav-link"
+          >
             Manage Orders
-          </Link>
+          </Button>
         </li>
         <li className="list-group-item py-2 my-0 border-0">
-          <Link to="/admin/manage/users" className="nav-link">
+          <Button
+            onClick={() => {
+              history.push("/admin/manage/users")
+              window.location.reload()
+            }}
+            className="nav-link"
+          >
             Manage Users
-          </Link>
+          </Button>
         </li>
       </ul>
     </div>

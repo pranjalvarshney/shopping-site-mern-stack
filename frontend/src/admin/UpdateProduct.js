@@ -37,7 +37,7 @@ export const UpdateProduct = ({ match }) => {
   const preloadCategories = async () => {
     try {
       const response = await getAllCategories()
-      return setValues({
+        setValues({
         categories: response.data,
         formData: new FormData(),
       })
@@ -61,7 +61,7 @@ export const UpdateProduct = ({ match }) => {
             name: response.data.name,
             description: response.data.description,
             price: response.data.price,
-            category: response.data.category._id,
+            category: response.data.category.name,
             totalStock: response.data.totalStock,
             pimage: response.data.pimage,
             formData: new FormData(),
@@ -79,7 +79,7 @@ export const UpdateProduct = ({ match }) => {
     }
     preLoadData(match.params.productId) // using match to get the productId from the params
     preloadCategories()
-  }, [match.params.productId,values])
+  }, [])
 
   const successMsg = () => {
     return (
@@ -164,7 +164,6 @@ export const UpdateProduct = ({ match }) => {
             <label>Product name</label>
             <input
               className='form-control'
-              type='text'
               name='name'
               value={name}
               onChange={handleChange}
@@ -208,7 +207,7 @@ export const UpdateProduct = ({ match }) => {
               name='category'
               onChange={handleChange}
             >
-              <option>select</option>
+              <option>{values.category}</option>
               {categories &&
                 categories.map((item, index) => {
                   return (

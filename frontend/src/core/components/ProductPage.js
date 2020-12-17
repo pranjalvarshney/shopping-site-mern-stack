@@ -88,7 +88,7 @@ export const ProductPage = ({ match }) => {
       </div>
     )
   }
-  console.log(data)
+  // console.log(data)
   if (data === null) {
     return <div>Loading</div>
   }

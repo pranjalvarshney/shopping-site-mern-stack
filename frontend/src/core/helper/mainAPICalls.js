@@ -9,6 +9,14 @@ export const getProducts = async () => {
     throw error
   }
 }
+export const getProductsHome = async () => {
+  try {
+    const response = await axios.get(`${API}/home/products`)
+    return response
+  } catch (error) {
+    throw error.response.data.errormsg
+  }
+}
 
 export const getProduct = async (productId) => {
   try {

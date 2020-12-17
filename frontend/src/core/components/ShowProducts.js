@@ -5,19 +5,31 @@ import {
   GridList,
   GridListTile,
   GridListTileBar,
+  Typography,
 } from "@material-ui/core"
 import { API } from "../../utils/backend"
 import { ImageLoading } from "./ImageLoading"
 
 export const ShowProducts = ({ products }) => {
   const history = useHistory()
+  const getGridListCols = () => {
+    const value =  window.innerWidth > 768 ? 5 : 2
+    // console.log(value)
+    return value
+  }
+  const getGridListRows = () => {
+    const value =  window.innerWidth > 768 ? 260 : 240
+    // console.log(value)
+    return value
+  }
   return (
     <div className="products-section container mt-3">
-      <div className="row container justify-content-between mb-3">
-        <h4>Trending gifts</h4>
-        <h6>Explore more</h6>
-      </div>
-      <GridList cols={5}>
+      <Grid className="mb-3" container justify="space-between" alignItems="center">
+        <Typography variant="h6">Trending gifts</Typography>
+        <Typography variant="caption">Explore more</Typography>
+      </Grid>
+
+      <GridList spacing={3} cols={getGridListCols()} cellHeight={getGridListRows()}>
         {products.length > 0 ? (
           products.map((product, index) => {
             return (
@@ -30,9 +42,9 @@ export const ShowProducts = ({ products }) => {
                 <ImageLoading imgUrl={`${API}/product/photo/${product._id}`} />
                 <GridListTileBar
                   title={
-                    <Grid container justify="space-between">
-                      <Grid item>{product.name}</Grid>
-                      <Grid item>{product.price}</Grid>
+                    <Grid container justify="space-between" alignItems="center">
+                      <Grid item><Typography variant="subtitle2"><b>{product.name.slice(0,20)}</b></Typography></Grid>
+                      <Grid item ><Typography variant="subtitle2">{product.price}</Typography></Grid>
                     </Grid>
                   }
                 />
@@ -43,19 +55,6 @@ export const ShowProducts = ({ products }) => {
           <div>loading</div>
         )}
       </GridList>
-      {/* <div className='products-wrapper'>
-        {products.length > 0 ? (
-          products.map((product, index) => {
-            return (
-              <Link key={index} to={`/product/${product._id}`}>
-                <ProductCard product={product} />
-              </Link>
-            )
-          })
-        ) : (
-          <div>loading</div>
-        )}
-      </div> */}
     </div>
   )
 }

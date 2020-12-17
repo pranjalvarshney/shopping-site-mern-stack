@@ -9,6 +9,7 @@ const {
   updateProduct,
   getAllDistictCategories,
   getAllProducts,
+  getAllProductsHome,
 } = require("../controllers/product")
 const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth")
 const router = express.Router()
@@ -49,6 +50,7 @@ router.delete(
 )
 
 // products listing routes
+router.get("/home/products", getAllProductsHome)
 router.get("/products", getAllProducts)
 
 // get all unique categories
