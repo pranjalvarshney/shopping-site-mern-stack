@@ -1,6 +1,7 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
 import {
+  Button,
   Grid,
   GridList,
   GridListTile,
@@ -26,7 +27,9 @@ export const ShowProducts = ({ products }) => {
     <div className="products-section container mt-3">
       <Grid className="mb-3" container justify="space-between" alignItems="center">
         <Typography variant="h6">Trending gifts</Typography>
-        <Typography variant="caption">Explore more</Typography>
+        <Button variant="text" size="small" onClick={()=>{
+          history.push("/products")
+        }}>Explore more</Button>
       </Grid>
 
       <GridList spacing={3} cols={getGridListCols()} cellHeight={getGridListRows()}>

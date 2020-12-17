@@ -99,7 +99,7 @@ export const ProductPage = ({ match }) => {
         {errorMsg()}
 
         <Card>
-          <Grid container>
+          <Grid container >
             <Grid item xs={12} md={6}>
               <img
                 src={`${API}/product/photo/${match.params.productId}`}

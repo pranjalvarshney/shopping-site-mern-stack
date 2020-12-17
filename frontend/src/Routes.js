@@ -20,6 +20,7 @@ import { Occasion } from "./user/Occasion"
 import { CreateBlog } from "./admin/CreateBlog"
 import { ManageBlog } from "./admin/ManageBlog"
 import { Payment } from "./user/Payment"
+import { AllProducts } from "./user/AllProducts"
 
 export const Routes = () => {
   return (
@@ -32,6 +33,7 @@ export const Routes = () => {
         <Route exact path='/product/:productId' component={ProductPage} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/signin' component={Signin} />
+        <Route exact path='/products' component={AllProducts} />
         <PrivateRoutes exact path='/user' component={UserDashboard} />
         <PrivateRoutes exact path='/payment' component={Payment} />
         <AdminRoutes exact path='/admin' component={AdminDashboard} />

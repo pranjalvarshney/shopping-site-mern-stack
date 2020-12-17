@@ -1,8 +1,9 @@
 import React from "react"
-import { Link, withRouter } from "react-router-dom"
+import { Link, useHistory, withRouter } from "react-router-dom"
 import { isAuthenticated, signout } from "../auth/helper"
 import ShoppingCartTwoToneIcon from "@material-ui/icons/ShoppingCartTwoTone"
 import { useState } from "react"
+import { Button } from "@material-ui/core"
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
@@ -14,6 +15,7 @@ const currentTab = (history, path) => {
 
 const Navbar = ({ history }) => {
   
+  const usehistory = useHistory()
   const [toggleMenu, setToggleMenu] = useState(false)
   
   const handleToggle = () => {
@@ -23,9 +25,12 @@ const Navbar = ({ history }) => {
 
   return (
     <nav className="main-navbar">
-      <Link className="main-navbar-brand" to="/" style={{textDecoration:"none"}}>
-        <h2 id="brandName">Wrap & go</h2>
-      </Link>
+      <Button id="brandName" variant="text" className="main-navbar-brand" onClick={()=>{
+        usehistory.push("/")
+        window.location.reload()
+      }}>
+        Wrap & go
+      </Button>
       <div className="menu-toggle" id="mobile-menu" onClick={handleToggle}>
         <span className="bar"></span>
         <span className="bar"></span>

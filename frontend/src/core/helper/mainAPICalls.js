@@ -4,7 +4,7 @@ import axios from "axios"
 export const getProducts = async () => {
   try {
     const response = await axios.get(`${API}/products`)
-    return response
+    return response.data
   } catch (error) {
     throw error
   }
