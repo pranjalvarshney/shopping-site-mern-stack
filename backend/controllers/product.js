@@ -51,7 +51,7 @@ exports.createProduct = (req, res) => {
     // handling fields
 
     const { name, description, price, category, totalStock ,occasions } = fields
-    if (!name || !description || !price || !category || !totalStock || occasions) {
+    if (!name || !description || !price || !category || !totalStock || !occasions) {
       return res.status(400).json({
         errormsg: "Please provide all the relevant details",
       })

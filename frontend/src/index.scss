@@ -14,7 +14,6 @@ $nav-red-color-dark: #ff003357;
   font-style: normal;
   font-size: 1.8rem;
   text-transform: capitalize;
-  
 }
 .main-navbar {
   position: fixed;
@@ -243,6 +242,32 @@ $nav-red-color-dark: #ff003357;
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+#hover-card {
+  transition: 1s;
+
+  p {
+    position: absolute;
+    display: none;
+  }
+}
+#hover-card:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    filter: brightness(0.25);
+  }
+  p {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
   }
 }
 

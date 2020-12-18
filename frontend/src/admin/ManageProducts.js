@@ -27,7 +27,7 @@ export const ManageProducts = () => {
     try {
       const response = await getProducts()
       if (response) {
-        // console.log(response.data)
+        console.log(response.data)
         setPreData({
           ...preData,
           getData: response.data,
@@ -36,12 +36,12 @@ export const ManageProducts = () => {
         setError("")
       }
     } catch (error) {
-      // console.log(error.response)
+      console.log(error)
       setPreData({
         ...preData,
         loading: false,
       })
-      setError(error.response.data.errormsg)
+      // setError(error.response.data.errormsg)
     }
   }
 
@@ -57,7 +57,6 @@ export const ManageProducts = () => {
         setSuccess(true)
         setError("")
         preLoad()
-
       }
     } catch (error) {
       setSuccess(false)
@@ -101,7 +100,7 @@ export const ManageProducts = () => {
       <div>
         <h4>Manage products</h4>
 
-        <table className="table table-hover table-md border-0">
+        <table className="table table-responsive table-hover table-md border-0">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -113,7 +112,7 @@ export const ManageProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {getData &&
+            {!getData ? null:
               getData.map((item, index) => {
                 return (
                   <tr key={index}>
@@ -136,6 +135,7 @@ export const ManageProducts = () => {
                         Edit
                       </Button>
                       <Button
+                      className="ml-3"
                         size="small"
                         variant="contained"
                         color="secondary"

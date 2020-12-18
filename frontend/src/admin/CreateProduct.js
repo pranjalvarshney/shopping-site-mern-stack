@@ -90,6 +90,13 @@ export const CreateProduct = () => {
     )
   }
 
+  const handleMultiSelect = (data) => {
+    // console.log(data)
+    // formData.set("occasions",data)
+    // console.log(formData)
+    formData.set("occasions",data.toString())
+  }
+
   const handleChange = (e) => {
     const value =
       e.target.name === "pimage" ? e.target.files[0] : e.target.value
@@ -109,6 +116,8 @@ export const CreateProduct = () => {
         loading: true,
         success: false,
       })
+
+    
       const response = await createProduct(user._id, formData, token)
       if (response) {
         setValues({
@@ -186,7 +195,12 @@ export const CreateProduct = () => {
         </div>
         <div className="mb-3">
           <label>Occasions</label>
-          <Multiselect options={olist} isObject={false} />
+          <Multiselect
+            options={olist}
+            isObject={false}
+            onSelect={handleMultiSelect}
+            onRemove={handleMultiSelect}
+          />
         </div>
         <div className="row">
           <div className="form-group col-lg-6">

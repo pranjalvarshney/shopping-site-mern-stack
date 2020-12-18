@@ -58,7 +58,7 @@ export const AllProducts = () => {
     <Base className="pt-5 container">
       <div className="pt-5 my-3">
         <Typography variant="h5" color="textPrimary" className="py-3">
-          New Products
+          Trending gifts
         </Typography>
       </div>
       {loading && showLoading() }

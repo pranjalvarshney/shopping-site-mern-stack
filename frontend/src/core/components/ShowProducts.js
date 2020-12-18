@@ -26,7 +26,7 @@ export const ShowProducts = ({ products }) => {
   return (
     <div className="products-section container mt-3">
       <Grid className="mb-3" container justify="space-between" alignItems="center">
-        <Typography variant="h6">Trending gifts</Typography>
+        <Button variant="text" size="large">Trending gifts</Button>
         <Button variant="text" size="small" onClick={()=>{
           history.push("/products")
         }}>Explore more</Button>
