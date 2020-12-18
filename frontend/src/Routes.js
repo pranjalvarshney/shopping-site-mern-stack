@@ -31,7 +31,7 @@ export const Routes = () => {
         <Route exact path='/blogs' component={Blog} />
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/occasions' component={Occasion} />
-        <Route exact path='/occasions' component={OccasionType} />
+        <Route exact path='/occasion/:otype' component={OccasionType} />
         <Route exact path='/product/:productId' component={ProductPage} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/signin' component={Signin} />

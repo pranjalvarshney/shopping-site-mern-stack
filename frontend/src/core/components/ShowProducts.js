@@ -15,12 +15,10 @@ export const ShowProducts = ({ products }) => {
   const history = useHistory()
   const getGridListCols = () => {
     const value =  window.innerWidth > 768 ? 5 : 2
-    // console.log(value)
-    return value
+     return value
   }
   const getGridListRows = () => {
     const value =  window.innerWidth > 768 ? 260 : 240
-    // console.log(value)
     return value
   }
   return (
