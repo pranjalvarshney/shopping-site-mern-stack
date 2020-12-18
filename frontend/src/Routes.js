@@ -21,6 +21,7 @@ import { CreateBlog } from "./admin/CreateBlog"
 import { ManageBlog } from "./admin/ManageBlog"
 import { Payment } from "./user/Payment"
 import { AllProducts } from "./user/AllProducts"
+import { OccasionType } from "./user/OccasionType"
 
 export const Routes = () => {
   return (
@@ -30,6 +31,7 @@ export const Routes = () => {
         <Route exact path='/blogs' component={Blog} />
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/occasions' component={Occasion} />
+        <Route exact path='/occasions' component={OccasionType} />
         <Route exact path='/product/:productId' component={ProductPage} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/signin' component={Signin} />

@@ -2,8 +2,21 @@ import React, { useState, useEffect } from "react"
 import { AdminContent } from "../core/AdminContent"
 import { getAllCategories, createProduct } from "./adminAPI"
 import { isAuthenticated } from "../auth/helper"
+import { Multiselect } from "multiselect-react-dropdown"
 
 export const CreateProduct = () => {
+  let olist = [
+    "Birthday",
+    "Anniversary",
+    "Love And Romance",
+    "Wedding",
+    "Sorry",
+    "Thank You",
+    "Get Well Soon",
+    "Congratulations",
+    "Good Luck",
+    "Housewarming Gifts",
+  ]
   const [values, setValues] = useState({
     name: "",
     description: "",
@@ -32,9 +45,7 @@ export const CreateProduct = () => {
   const { data } = isAuthenticated()
   const { user, token } = data
 
-  
-
-  useEffect(()=>{
+  useEffect(() => {
     const preLoadData = async () => {
       try {
         const response = await getAllCategories()
@@ -148,7 +159,7 @@ export const CreateProduct = () => {
           <div className="form-group col-lg-6">
             <label>Price</label>
 
-            <div className="input-group mb-2">
+            <div className="input-group">
               <div className="input-group-prepend">
                 <div className="input-group-text">Rs</div>
               </div>
@@ -172,6 +183,10 @@ export const CreateProduct = () => {
             onChange={handleChange}
             placeholder="eg: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis    "
           />
+        </div>
+        <div className="mb-3">
+          <label>Occasions</label>
+          <Multiselect options={olist} isObject={false} />
         </div>
         <div className="row">
           <div className="form-group col-lg-6">
@@ -205,20 +220,23 @@ export const CreateProduct = () => {
             />
           </div>
         </div>
-        <div className="form-group">
-          <label>Product Image</label>
-          <input
-            className="form-control-file"
-            type="file"
-            accept="image"
-            name="pimage"
-            onChange={handleChange}
-          />
+        <div className="row">
+          <div className="form-group col-lg-6">
+            <label>Product Image</label>
+            <input
+              className="form-control-file"
+              type="file"
+              accept="image"
+              name="pimage"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-lg-6">
+            <button type="submit" className="w-100 btn btn-outline-info ">
+              Save
+            </button>
+          </div>
         </div>
-
-        <button type="submit" className="w-100 btn btn-outline-info">
-          Save
-        </button>
       </form>
     )
   }

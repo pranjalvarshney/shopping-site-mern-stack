@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react"
 import { Base } from "../Base"
 import { API } from "../../utils/backend"
-import { getProduct } from "../helper/mainAPICalls"
+import { getProduct, getProductsHome } from "../helper/mainAPICalls"
 import { addToCartFunc, buyNowFunc } from "../helper/addToCartHelper"
 import { Redirect, useHistory } from "react-router-dom"
 import { Toast } from "react-bootstrap"
-import {
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-} from "@material-ui/core"
+import { Button, Card, CardContent, Grid, Typography } from "@material-ui/core"
+import { ShowProducts } from "./ShowProducts"
 
 export const ProductPage = ({ match }) => {
   const history = useHistory()
@@ -19,6 +14,26 @@ export const ProductPage = ({ match }) => {
   const [data, setData] = useState(null)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
+  const [products, setProducts] = useState([])
+  // const [errors, setErrors] = useState([])
+
+  const loadData = async () => {
+    try {
+      const response = await getProductsHome()
+      // console.log(response.data)
+
+      if (response) {
+        setProducts(response.data)
+        // setErrors("")
+      }
+    } catch (error) {
+      // setErrors(error)
+    }
+  }
+
+  useEffect(() => {
+    loadData()
+  }, [])
 
   const addToCartMethod = async () => {
     if (!success) {
@@ -90,16 +105,23 @@ export const ProductPage = ({ match }) => {
   }
   // console.log(data)
   if (data === null) {
-    return <div>Loading</div>
+    return (
+      <div className="d-flex justify-content-center h-100 ">
+        <div className="spinner-border">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    )
   }
+
   return (
     <Base className="container py-5">
       <div className="product-page mt-5 py-5">
         {successMsg()}
         {errorMsg()}
 
-        <Card>
-          <Grid container >
+        <Card className="mb-5">
+          <Grid container>
             <Grid item xs={12} md={6}>
               <img
                 src={`${API}/product/photo/${match.params.productId}`}
@@ -144,7 +166,6 @@ export const ProductPage = ({ match }) => {
                 <br />
                 <Grid container spacing={3}>
                   <Grid item xs={6}>
-                   
                     {!success ? (
                       <Button
                         fullWidth
@@ -157,11 +178,11 @@ export const ProductPage = ({ match }) => {
                       </Button>
                     ) : (
                       <Button
-                        onClick={()=>{
+                        onClick={() => {
                           history.push("/cart")
                         }}
                         fullWidth
-                        style={{background:"#64DD17"}}
+                        style={{ background: "#64DD17" }}
                         variant="contained"
                         size="large"
                       >
@@ -186,64 +207,7 @@ export const ProductPage = ({ match }) => {
             </Grid>
           </Grid>
         </Card>
-
-        {/* <div className='row'>
-          <div
-            className='col-md-6'
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={`${API}/product/photo/${match.params.productId}`}
-              alt='product'
-            />
-          </div>
-          <div className='col-lg-6 product-info'>
-            <h4>{data.name}</h4>
-            <small className='text-muted'>PId: {data.category}</small>
-            <div>
-              <h6>Description</h6>
-              <p className='text-muted'>{data.description}</p>
-            </div>
-            <h6>
-              Price:
-              <span className='h3'>
-                {"  "}
-                {data.price}{" "}
-                <small className='h6 text-muted text-sm font-weight-normal'>
-                  (inclusive of all taxes)
-                </small>
-              </span>
-            </h6>
-            <div className='row justify-content-around'>
-              {!success ? (
-                <button
-                  onClick={buyNowMethod}
-                  className='btn btn-danger py-2 font-weight-bold p-btn'
-                >
-                  Buy now
-                </button>
-              ) : (
-                <button
-                  onClick={buyNowMethod}
-                  className='btn btn-success py-2 font-weight-bold p-btn'
-                >
-                  Go to cart
-                </button>
-              )}
-              <button
-                onClick={addToCartMethod}
-                className='btn btn-warning py-2 font-weight-bold p-btn'
-              >
-                Add to cart
-                {getRedirect(redirect)}
-              </button>
-            </div>
-          </div>
-        </div> */}
+        <ShowProducts products={products} />
       </div>
     </Base>
   )

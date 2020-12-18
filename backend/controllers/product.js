@@ -158,7 +158,7 @@ exports.removeProduct = (req, res) => {
 //product listing
 
 exports.getAllProductsHome = (req, res) => {
-  let limit = req.query.limit ? parseInt(req.query.limit) : 8
+  let limit = req.query.limit ? parseInt(req.query.limit) : 10
   Product.find()
     .select("-pimage") // minus sign to de-select pimage from the result
     .populate("category")
