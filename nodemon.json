@@ -1,0 +1,7 @@
+{
+    "env":{
+        "PORT": "4000",
+        "MONGO_URI":"mongodb+srv://db123:db123@cluster0.p7hrb.mongodb.net/<dbname>?retryWrites=true&w=majority",
+        "SECRET": "Secret hai nhi btaunga"
+    }
+}

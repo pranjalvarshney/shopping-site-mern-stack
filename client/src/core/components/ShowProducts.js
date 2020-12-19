@@ -78,7 +78,7 @@ export const ShowProducts = ({ products }) => {
             )
           })
         ) : (
-          <Typography>Loading</Typography>
+          <Typography></Typography>
         )}
       </GridList>
     </div>

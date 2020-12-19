@@ -1,15 +1,12 @@
-import {
-  Grid,
-  Typography,
-} from "@material-ui/core"
+import { Grid, Typography } from "@material-ui/core"
 import React, { useEffect, useState } from "react"
 import { Base } from "../core/Base"
 import { getProducts } from "../core/helper/mainAPICalls"
-import{ShowProducts} from '../core/components/ShowProducts'
+import { ShowProducts } from "../core/components/ShowProducts"
 
 export const OccasionType = ({ match }) => {
   const [products, setProducts] = useState(null)
-    // const [errors, setErrors] = useState([])
+  // const [errors, setErrors] = useState([])
 
   const loadData = async () => {
     try {
@@ -29,11 +26,11 @@ export const OccasionType = ({ match }) => {
       let arr = []
       products.map((prod) => {
         if (prod.occasions.includes(match.params.otype)) {
-         arr.push(prod)
+          arr.push(prod)
         }
         return 0
       })
-      return <ShowProducts products={arr}/>
+      return <ShowProducts products={arr} />
     }
   }
 
@@ -44,7 +41,13 @@ export const OccasionType = ({ match }) => {
   }, [])
 
   if (products === null) {
-    return <div>Loading</div>
+    return (
+      <div style={{ display: "grid", placeContent: "center", height: "100vh" }}>
+        <div className="spinner-border">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -56,11 +59,12 @@ export const OccasionType = ({ match }) => {
           justify="space-between"
           alignItems="center"
         >
-          <Typography variant="h5" style={{textTransform:"capitalize"}} >{match.params.otype} Gifts</Typography>
+          <Typography variant="h5" style={{ textTransform: "capitalize" }}>
+            {match.params.otype} Gifts
+          </Typography>
         </Grid>
 
         {filterData()}
-     
       </div>
     </Base>
   )
