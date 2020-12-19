@@ -1,64 +1,21 @@
 import React from "react"
 import { OccasionCard } from "../card/OccasionCard"
+import { oca } from "./ocaList"
 
-const oca = [
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-  {
-    name: "birthday",
-    img:
-      "https://static.archiesonline.com/public/images/product/medium/MT4092.jpg",
-  },
-]
 
 export const OccasionsSection = () => {
   return (
-    <div className='Occasions container'>
+    <div className="Occasions container">
       <h4>Occasions</h4>
-      <div className='occasions-wrap'>
+      <div
+        className="occasion-wrapper"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          width: "100%",
+          overflowX: "auto",
+        }}
+      >
         {oca.map((item, index) => {
           return <OccasionCard key={index} item={item} />
         })}

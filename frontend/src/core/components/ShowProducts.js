@@ -14,23 +14,40 @@ import { ImageLoading } from "./ImageLoading"
 export const ShowProducts = ({ products }) => {
   const history = useHistory()
   const getGridListCols = () => {
-    const value =  window.innerWidth > 768 ? 5 : 2
-     return value
+    const value = window.innerWidth > 768 ? 5 : 2
+    return value
   }
   const getGridListRows = () => {
-    const value =  window.innerWidth > 768 ? 260 : 240
+    const value = window.innerWidth > 768 ? 260 : 240
     return value
   }
   return (
     <div className="products-section container mt-3">
-      <Grid className="mb-3" container justify="space-between" alignItems="center">
-        <Button variant="text" size="large">Trending gifts</Button>
-        <Button variant="text" size="small" onClick={()=>{
-          history.push("/products")
-        }}>Explore more</Button>
+      <Grid
+        className="mb-3"
+        container
+        justify="space-between"
+        alignItems="center"
+      >
+        <Button variant="text" size="large">
+          Trending gifts
+        </Button>
+        <Button
+          variant="text"
+          size="small"
+          onClick={() => {
+            history.push("/products")
+          }}
+        >
+          Explore more
+        </Button>
       </Grid>
 
-      <GridList spacing={3} cols={getGridListCols()} cellHeight={getGridListRows()}>
+      <GridList
+        spacing={3}
+        cols={getGridListCols()}
+        cellHeight={getGridListRows()}
+      >
         {products.length > 0 ? (
           products.map((product, index) => {
             return (
@@ -44,8 +61,16 @@ export const ShowProducts = ({ products }) => {
                 <GridListTileBar
                   title={
                     <Grid container justify="space-between" alignItems="center">
-                      <Grid item><Typography variant="subtitle2"><b>{product.name.slice(0,20)}</b></Typography></Grid>
-                      <Grid item ><Typography variant="subtitle2">{product.price}</Typography></Grid>
+                      <Grid item>
+                        <Typography variant="subtitle2">
+                          <b>{product.name.slice(0, 20)}</b>
+                        </Typography>
+                      </Grid>
+                      <Grid item>
+                        <Typography variant="subtitle2">
+                          {product.price}
+                        </Typography>
+                      </Grid>
                     </Grid>
                   }
                 />
@@ -53,7 +78,7 @@ export const ShowProducts = ({ products }) => {
             )
           })
         ) : (
-          <div>loading</div>
+          <Typography>Loading</Typography>
         )}
       </GridList>
     </div>

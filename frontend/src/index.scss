@@ -123,6 +123,61 @@ $nav-red-color-dark: #ff003357;
       }
     }
   }
+  .occasion-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .hoverCard {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      filter: brightness(0.35);
+    }
+    p {
+      position: absolute;
+      display: flex;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+  }
+  .hoverCard:hover {
+    img {
+      filter: brightness(1);
+    }
+    p {
+      display: none;
+    }
+  }
+  #hover-card {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      filter: brightness(0.35);
+    }
+    p {
+      position: absolute;
+      display: flex;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+  }
+  #hover-card:hover {
+    img {
+      filter: brightness(1);
+    }
+    p {
+      display: none;
+    }
+  }
 
   .products-section {
     display: flex;
@@ -242,32 +297,6 @@ $nav-red-color-dark: #ff003357;
   }
   100% {
     background-position: 0% 50%;
-  }
-}
-
-#hover-card {
-  transition: 1s;
-
-  p {
-    position: absolute;
-    display: none;
-  }
-}
-#hover-card:hover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    filter: brightness(0.25);
-  }
-  p {
-    position: absolute;
-    display: flex;
-    text-align: center;
-    color: white;
-    font-weight: 600;
-    font-size: 1.5rem;
   }
 }
 

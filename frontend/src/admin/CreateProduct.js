@@ -6,16 +6,16 @@ import { Multiselect } from "multiselect-react-dropdown"
 
 export const CreateProduct = () => {
   let olist = [
-    "Birthday",
-    "Anniversary",
-    "Love And Romance",
-    "Wedding",
-    "Sorry",
-    "Thank You",
-    "Get Well Soon",
-    "Congratulations",
-    "Good Luck",
-    "Housewarming Gifts",
+    "birthday",
+    "anniversary",
+    "love and romance",
+    "wedding",
+    "sorry",
+    "thankyou",
+    "getwellsoon",
+    "congratulations",
+    "goodluck",
+    "housewarming gifts",
   ]
   const [values, setValues] = useState({
     name: "",

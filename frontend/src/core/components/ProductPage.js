@@ -106,7 +106,7 @@ export const ProductPage = ({ match }) => {
   // console.log(data)
   if (data === null) {
     return (
-      <div className="d-flex justify-content-center h-100 ">
+      <div style={{display: "grid",placeContent:"center", height:"100vh"}}>
         <div className="spinner-border">
           <span className="sr-only">Loading...</span>
         </div>
@@ -134,7 +134,9 @@ export const ProductPage = ({ match }) => {
                 <Typography component="h5" variant="h5">
                   {data.name}
                 </Typography>
-
+                <Typography variant="caption" color="textSecondary">
+                  Product ID - {data._id}
+                </Typography>
                 <h6>
                   <b>MRP : </b>
                   <span className="h3">
@@ -153,9 +155,7 @@ export const ProductPage = ({ match }) => {
                 <Typography variant="subtitle1" color="textSecondary">
                   {data.description}
                 </Typography>
-                <Typography variant="caption" color="textSecondary">
-                  Product ID - {data._id}
-                </Typography>
+                
                 <br />
                 <Typography variant="button">
                   Stock left : {data.totalStock}{" "}
