@@ -8,7 +8,7 @@ export const OccasionCard = ({ item }) => {
     history.push(`/occasion/${type}`)
   }
   return (
-    <div style={{display:"flex" , flex:"0 0 auto ",width: "200px",margin:"10px"}}>
+    <div style={{display:"flex" , flex:"0 0 auto ",width: "260px",margin:"10px"}}>
       <Card id="hover-card" onClick={() => handleOnClick(item.name)}>
         <img src={item.img} alt="item.name" width="100%" />
         <p style={{ textTransform: "capitalize" }}>{item.name}</p>
