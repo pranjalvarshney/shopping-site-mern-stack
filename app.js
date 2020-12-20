@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const morgan = require("morgan")
+const path = require("path")
 
 //middlewares
 app.use(morgan("dev"))
