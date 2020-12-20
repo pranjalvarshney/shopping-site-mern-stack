@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
-    "client-install": "cd client && npm install",
+    
     "start": "node app.js",
     "dev": "concurrently \"cd client && npm start\" \"nodemon app.js\""
   },
