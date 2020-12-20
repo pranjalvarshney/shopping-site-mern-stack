@@ -32,6 +32,12 @@ mongoose
   })
   .catch((err) => console.log(err))
 
+// if production 
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static('client/build'))
+}
+
+
 // listen to server
 const port = process.env.PORT || 4000
 app.listen(port, () => {

@@ -4,7 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && nm run build",
+    "client-install": "cd client && npm install",
+    "heroku-postbuild": "npm run client-install && npm run build",
+    "start":"node app.js",
+    "dev": "concurrently \"cd client && npm start\" \"nodemon app.js\""
   },
   "author": "",
   "license": "ISC",
