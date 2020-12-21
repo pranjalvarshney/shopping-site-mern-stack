@@ -18,7 +18,7 @@ export const ShowProducts = ({ products }) => {
     return value
   }
   const getGridListRows = () => {
-    const value = window.innerWidth > 768 ? 260 : 240
+    const value = window.innerWidth > 768 ? 200 : 180
     return value
   }
   return (
@@ -44,7 +44,7 @@ export const ShowProducts = ({ products }) => {
       </Grid>
 
       <GridList
-        spacing={3}
+        spacing={6}
         cols={getGridListCols()}
         cellHeight={getGridListRows()}
       >
@@ -78,7 +78,7 @@ export const ShowProducts = ({ products }) => {
             )
           })
         ) : (
-          <Typography></Typography>
+          <Typography className="text-center">Loading</Typography>
         )}
       </GridList>
     </div>

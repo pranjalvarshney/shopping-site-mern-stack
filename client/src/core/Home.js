@@ -32,15 +32,15 @@ export const Home = () => {
   return (
     <Base>
       <div className="Home">
-      <Carousel>
+      <Carousel >
           <Carousel.Item>
-            <img className="d-block w-100" src="slide1.jpg" alt="First slide" />
+            <img id="resp-img" className="d-block w-100" src="slide1.jpg" alt="First slide" />
           </Carousel.Item>
           <Carousel.Item>
-            <img className="d-block w-100" src="slide2.png" alt="First slide" />
+            <img id="resp-img" className="d-block w-100" src="slide2.png" alt="First slide" />
           </Carousel.Item>
           <Carousel.Item>
-            <img className="d-block w-100" src="christmas.gif" alt="First slide" />
+            <img id="resp-img" className="d-block w-100" src="christmas.gif" alt="First slide" />
           </Carousel.Item>
         </Carousel>
         <ShowProducts products={products} />

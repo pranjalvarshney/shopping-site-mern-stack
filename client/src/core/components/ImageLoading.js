@@ -18,6 +18,7 @@ export const ImageLoading = ({ imgUrl, height, width }) => {
       height={height}
       width={width}
       alt='cap'
+      style={{objectPosition:"center",objectFit:"cover"}}
     />
   )
 }

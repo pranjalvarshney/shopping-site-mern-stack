@@ -34,12 +34,10 @@ export const AllProducts = () => {
 
   const getGridListCols = () => {
     const value = window.innerWidth > 768 ? 5 : 2
-    // console.log(value)
     return value
   }
   const getGridListRows = () => {
-    const value = window.innerWidth > 768 ? 260 : 240
-    // console.log(value)
+    const value = window.innerWidth > 768 ? 200 : 180
     return value
   }
   const showLoading = () => (
@@ -62,7 +60,7 @@ export const AllProducts = () => {
         </Typography>
       </div>
       {loading && showLoading() }
-      <GridList spacing={3} cols={getGridListCols()} cellHeight={getGridListRows()}>
+      <GridList spacing={6} cols={getGridListCols()} cellHeight={getGridListRows()}>
         {loading ? null : allproducts.length > 0 ? (
           allproducts.map((pro, i) => {
             return (

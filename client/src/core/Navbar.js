@@ -7,7 +7,7 @@ import { Button } from "@material-ui/core"
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: "orange" ,textDecoration:"none"}
+    return { color: "black" ,textDecoration:"none"}
   } else {
     return { color: "white" ,textDecoration:"none"}
   }
@@ -24,11 +24,12 @@ const Navbar = ({ history }) => {
   }
 
   return (
-    <nav className="main-navbar pl-3">
-      <Button id="brandName" variant="text" className="main-navbar-brand" onClick={()=>{
+    <nav className="main-navbar">
+      <Button id="brandName" className="main-navbar-brand ml-0" onClick={()=>{
         usehistory.push("/")
         window.location.reload()
       }}>
+        <img src={"./gift.png"} className="logo-brand" alt="logo"/>
         Wrap & go
       </Button>
       <div className="menu-toggle" id="mobile-menu" onClick={handleToggle}>

@@ -7,8 +7,8 @@ import { Button } from "@material-ui/core"
 export const Signin = () => {
   const history = useHistory()
   const [inputValues, setinputValues] = useState({
-    email: "admin@admin.com",
-    password: "123123",
+    email: "",
+    password: "",
     error: "",
     success: false,
     loading: false,

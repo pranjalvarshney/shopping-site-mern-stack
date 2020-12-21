@@ -1,4 +1,4 @@
-$nav-red-color: #080963;
+$nav-red-color: rgb(228, 7, 81);
 $nav-red-color-dark: #ff003357;
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
@@ -6,7 +6,17 @@ $nav-red-color-dark: #ff003357;
   margin: 0;
   box-sizing: border-box;
 }
-
+img{
+  object-fit: cover;
+  object-position: center;
+}
+button:focus{
+border: 0;
+outline-width: 0;
+}
+.logo-brand{
+  width: 30%;
+}
 #brandName {
   font-family: "Pacifico", cursive;
   color: white;
@@ -26,8 +36,6 @@ $nav-red-color-dark: #ff003357;
   height: 90px;
 }
 .main-navbar-brand {
-  width: auto;
-  padding: 0 30px;
 }
 .main-navbar > ul {
   list-style: none;
@@ -97,6 +105,11 @@ $nav-red-color-dark: #ff003357;
     }
   }
 
+  .connect-with-us-icons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
   .Occasions {
     display: flex;
     padding-top: 90px;
@@ -305,6 +318,10 @@ $nav-red-color-dark: #ff003357;
 /* Mobile Devices - Phones/Tablets */
 
 @media only screen and (max-width: 720px) {
+  .logo-brand{
+    width: 20%;
+    padding-left: -50px;
+  }
   .main-navbar ul {
     display: flex;
     flex-direction: column;
@@ -314,12 +331,17 @@ $nav-red-color-dark: #ff003357;
     left: 0%;
     width: 100%;
     height: calc(100vh - 90px);
-    background-color: darkblue;
+    background-color: $nav-red-color;
     justify-content: center;
     align-items: center;
     transform: translate(-100%);
     text-align: center;
     overflow: hidden;
+  }
+  #resp-img{
+    height: 150px;
+    object-fit: cover;
+    
   }
 
   .main-navbar li {

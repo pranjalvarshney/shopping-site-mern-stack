@@ -9,42 +9,32 @@ export const Occasion = () => {
   return (
     <Base className="container pt-5">
       <div className="pt-5 my-3">
-        <Typography variant="h6">Occasions to gift</Typography>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
+        <Typography variant="h6">
+          <b>Occasions to gift</b>
+        </Typography>
+        <div className="row pt-3 d-flex justify-content-center">
           {oca.map((item, index) => {
             return (
-              <div
-                style={{
-                  display: "flex",
-                  width: "20%",
-                  padding: "10px",
-                }}
-                key={index}
-              >
+              <div className="col-6 col-md-4 col-lg-3 my-2" key={index}>
                 <Card
-                onClick={()=>{
-                  history.push(`/occasion/${item.name}`)
-                }}
-                  variant="elevation"
-                  elevation={2}
+                  onClick={() => {
+                    history.push(`/occasion/${item.name}`)
+                  }}
+                  variant="outlined"
                   style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexDirection: "column",
-                    cursor:"pointer"
+                    cursor: "pointer",
                   }}
                 >
                   <img src={item.img} alt={item.name} width="100%" />
-                  <p style={{ textTransform: "capitalize" }}>{item.name}</p>
+                  <p
+                    style={{ textTransform: "capitalize", fontWeight: "bold" }}
+                  >
+                    {item.name}
+                  </p>
                 </Card>
               </div>
             )
