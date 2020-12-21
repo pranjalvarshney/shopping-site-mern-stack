@@ -106,10 +106,8 @@ export const ProductPage = ({ match }) => {
   // console.log(data)
   if (data === null) {
     return (
-      <div style={{display: "grid",placeContent:"center", height:"100vh"}}>
-        <div className="spinner-border">
-          <span className="sr-only">Loading...</span>
-        </div>
+      <div style={{ display: "grid", placeContent: "center", height: "100vh" }}>
+        <img src={"../../loading.gif"} alt="loading" />
       </div>
     )
   }
@@ -155,7 +153,7 @@ export const ProductPage = ({ match }) => {
                 <Typography variant="subtitle1" color="textSecondary">
                   {data.description}
                 </Typography>
-                
+
                 <br />
                 <Typography variant="button">
                   Stock left : {data.totalStock}{" "}

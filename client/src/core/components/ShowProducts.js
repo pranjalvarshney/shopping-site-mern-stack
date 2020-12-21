@@ -78,8 +78,9 @@ export const ShowProducts = ({ products }) => {
             )
           })
         ) : (
-          <Typography className="text-center">Loading</Typography>
-        )}
+
+          <img src="loading.gif" alt="loading"/>
+)}
       </GridList>
     </div>
   )

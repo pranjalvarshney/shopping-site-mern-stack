@@ -29,7 +29,7 @@ const Navbar = ({ history }) => {
         usehistory.push("/")
         window.location.reload()
       }}>
-        <img src={"./gift.png"} className="logo-brand" alt="logo"/>
+        <img src={"../gift.png"} className="logo-brand" alt="logo"/>
         Wrap & go
       </Button>
       <div className="menu-toggle" id="mobile-menu" onClick={handleToggle}>

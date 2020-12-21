@@ -43,9 +43,8 @@ export const OccasionType = ({ match }) => {
   if (products === null) {
     return (
       <div style={{ display: "grid", placeContent: "center", height: "100vh" }}>
-        <div className="spinner-border">
-          <span className="sr-only">Loading...</span>
-        </div>
+                <img src="../../loading.gif" alt="loading"/>
+
       </div>
     )
   }
