@@ -20,7 +20,7 @@ export const CartItem = ({ item, removeFromCartFunc, addToWishListFunc }) => {
               <h6 className='card-subtitle mb-2 text-muted'>
                 <small style={{ fontSize: "11px" }}>PId: {item._id}</small>
               </h6>
-              <p className='card-text h5'>$ {item.price}</p>
+              <p className='card-text h5'>Rs. {item.price}</p>
               <span
                 className='card-link'
                 onClick={() => addToWishListFunc(item)}

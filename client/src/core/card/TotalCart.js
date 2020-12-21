@@ -16,7 +16,7 @@ export const TotalCart = ({ cartData }) => {
       <div className='card border-0 p-3 my-3'>
         <div className='row justify-content-between px-3 '>
           <h6>Price ({cartData.length})</h6>
-          <h6>$ {calculateTPrice()}</h6>
+          <h6>Rs. {calculateTPrice()}</h6>
         </div>
         <div className='row justify-content-between px-3 '>
           <h6>Delivery </h6>
@@ -26,7 +26,7 @@ export const TotalCart = ({ cartData }) => {
 
         <div className='row justify-content-between px-3 '>
           <h5>Total Amount </h5>
-          <h5 className=''>$ {calculateTPrice()}</h5>
+          <h5 >Rs. {calculateTPrice()}</h5>
         </div>
       </div>
       <div className='container'>
