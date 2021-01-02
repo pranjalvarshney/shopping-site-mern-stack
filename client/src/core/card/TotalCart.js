@@ -9,7 +9,7 @@ export const TotalCart = ({ cartData }) => {
     })
     return tprice
   }
-
+console.log(cartData)
   return (
     <div>
       <h5>Price Details</h5>
@@ -30,7 +30,7 @@ export const TotalCart = ({ cartData }) => {
         </div>
       </div>
       <div className='container'>
-        <VerifiedUserIcon style={{ color: "grey" }} />{" "}
+        <VerifiedUserIcon style={{ color: "grey" }} />
         <small className='text-muted text-center'>
           Safe and Secure Payments. Easy returns. 100% Authentic products.
         </small>

@@ -1,61 +1,54 @@
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import React from "react"
+import { isAuthenticated } from "../../auth/helper"
+import { loadCart } from "../helper/addToCartHelper"
+import StripeCheckout from "react-stripe-checkout"
+import axios from "axios"
+import { API } from "../../utils/backend"
 
 export const StripeCheckOutForm = () => {
-  const stripe = useStripe()
-  const elements = useElements()
-
-  const handleSubmit = async (event) => {
-    // Block native form submission.
-    event.preventDefault()
-
-    if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
-      return
-    }
-
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
-    const cardElement = elements.getElement(
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "#424770",
-              "::placeholder": {
-                color: "#aab7c4",
-              },
-            },
-            invalid: {
-              color: "#9e2146",
-            },
-          },
-        }}
-      />
-    )
-
-    // Use your card Element with other Stripe.js APIs
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: cardElement,
+  const calculateTPrice = () => {
+    let tprice = 0
+    loadCart().map((item) => {
+      return (tprice = item.price + tprice)
     })
+    return tprice
+  }
+  // const token = isAuthenticated() && isAuthenticated().data.token
+  // const userId = isAuthenticated() && isAuthenticated().data.user._id
 
-    if (error) {
-      console.log("[error]", error)
-    } else {
-      console.log("[PaymentMethod]", paymentMethod)
+  const makePayment = async (token) => {
+    const body = { token, products: loadCart() }
+    const headers = {
+      "Content-Type": "application/json",
+    }
+    try {
+      const response = await axios.post(
+        `${API}/stripepayment`,
+        JSON.stringify(body),
+        { headers }
+      )
+      console.log(response)
+      return response
+    } catch (error) {
+      console.log(error.response)
     }
   }
-
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement />
-      <button type='submit' disabled={!stripe}>
-        Pay
-      </button>
-    </form>
+    <div>
+      <StripeCheckout
+        stripeKey="pk_test_51HMkntCxS9AVpG8j9uhE5ySPCBRhmivv5EmybqcYT9umwzO8qHNTHC6nljG9vOCajNtLtz2PcGwvGgbkMoQl5AZ000tNxgnXPP"
+        token={makePayment}
+        email= {isAuthenticated().data.user.email}
+        amount={calculateTPrice() * 100}
+        currency="INR"
+        name="Pay to Wrap & go"
+        shippingAddress
+        billingAddress
+      >
+        <button className="btn btn-warning float-right shadow">
+          Complete payment
+        </button>
+      </StripeCheckout>
+    </div>
   )
 }

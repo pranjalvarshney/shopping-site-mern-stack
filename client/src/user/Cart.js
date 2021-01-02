@@ -6,6 +6,7 @@ import { loadCart, removeFromCart } from "../core/helper/addToCartHelper"
 import { useHistory, Link } from "react-router-dom"
 import { addToWishList } from "../core/helper/wishlistHelper"
 import { isAuthenticated } from "../auth/helper"
+import { StripeCheckOutForm } from "../core/card/StripeCheckOutForm"
 
 export const Cart = () => {
   const [cartdata, setCartdata] = useState([])
@@ -26,11 +27,11 @@ export const Cart = () => {
   }, [])
 
   return (
-    <Base className='container pt-5 '>
-      <div className='row my-5 pt-5'>
-        <div className='col-lg-7 jumbotron py-3 m-2'>
+    <Base className="container pt-5 ">
+      <div className="row my-5 pt-5">
+        <div className="col-lg-7 jumbotron py-3 m-2">
           <h5>
-            My Cart (<span className='h5 px-1'>{cartdata.length}</span>)
+            My Cart (<span className="h5 px-1">{cartdata.length}</span>)
           </h5>
           {cartdata.length > 0 ? (
             <>
@@ -44,31 +45,12 @@ export const Cart = () => {
                   />
                 )
               })}
-              {isAuthenticated() ? (
-                <Link to='/payment'>
-                  <button
-                    type='submit'
-                    className='btn btn-lg btn-danger float-right shadow'
-                  >
-                    Checkout
-                  </button>
-                </Link>
-              ) : (
-                <Link to='/signin'>
-                  <button
-                    type='submit'
-                    className='btn btn-lg btn-danger float-right shadow'
-                  >
-                    Signin to Checkout
-                  </button>
-                </Link>
-              )}
             </>
           ) : (
-            <div className='card m-auto w-50 border-0 py-3'>
-              <h5 className='text-center my-3'>Your cart is Empty</h5>
+            <div className="card m-auto w-50 border-0 py-3">
+              <h5 className="text-center my-3">Your cart is Empty</h5>
               <span
-                className='badge badge-primary p-3 m-auto'
+                className="badge badge-primary p-3 m-auto"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   history.push("/")
@@ -79,8 +61,22 @@ export const Cart = () => {
             </div>
           )}
         </div>
-        <div className='col-lg-4 jumbotron py-3 m-2'>
+        <div className="col-lg-4 jumbotron py-3 m-2">
           <TotalCart cartData={cartdata} />
+          <div className="float-right mt-3">
+          {isAuthenticated() ? (
+            <StripeCheckOutForm />
+          ) : (
+            <Link to="/signin">
+              <button
+                type="submit"
+                className="btn btn-danger float-right shadow"
+              >
+                Signin to Checkout
+              </button>
+            </Link>
+          )}
+          </div>
         </div>
       </div>
     </Base>

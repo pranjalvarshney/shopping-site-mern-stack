@@ -1,16 +1,19 @@
-const stripe = require("stripe")
+const stripe = require("stripe")(
+  "sk_test_51HMkntCxS9AVpG8jhhaU2VrovNJKH824BDAEDxEqXt4fyqiokADvjnBWCzLxW6BwjmI3Ix0NrE46EFlf3vLB6Lqr00FQrbDdeU"
+)
 const uuid = require("uuid")
 
 exports.stripePayment = (req, res) => {
   //
+  console.log("hi")
   const { products, token } = req.body
-
+  console.log(token,products)
   const payAmount = 0
   products.map((p) => {
     payAmount += p.price
   })
 
-  const idempotencyKey = uuid()
+  const idempotencyKey = uuid() // used so that the user is charged only once
 
   return stripe.customers
     .create({
@@ -18,17 +21,31 @@ exports.stripePayment = (req, res) => {
       source: token.id,
     })
     .then((customer) => {
+      console.log(customer, "+")
       stripe.charges
         .create(
           {
-            amount: payAmount,
-            currency: "usd",
+            amount: payAmount*100,
+            currency: "inr",
             customer: customer.id,
             receipt_email: token.email,
+            description: "Test data ok!",
+            // shipping: {
+            //   name: token.card.name,
+            //   address: {
+            //     line1: token.card.address_line1,
+            //     line2: token.card.address_line2,
+            //     city: token.card.address_city,
+            //     country: token.card.address_country,
+            //     postal_code: token.card.address_zip,
+            //   },
+            // },
           },
           { idempotencyKey }
         )
-        .then((result) => res.status(200).json(result))
+        .then((result) => {
+          console.log(result)
+          res.status(200).json(result)})
         .catch((err) => console.log(err))
     })
 }

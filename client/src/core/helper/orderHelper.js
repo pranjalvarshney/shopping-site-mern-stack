@@ -4,7 +4,7 @@ import { API } from "../../utils/backend"
 export const createOrder = async (userId, token, orderData) => {
   try {
     const response = await axios.post(
-      `${API}/order/create/${userID}`,
+      `${API}/order/create/${userId}`,
       orderData,
       {
         headers: {
