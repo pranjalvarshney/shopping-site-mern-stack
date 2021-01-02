@@ -4,16 +4,14 @@ const stripe = require("stripe")(
 const uuid = require("uuid")
 
 exports.stripePayment = (req, res) => {
-  //
-  console.log("hi")
+  
   const { products, token } = req.body
-  console.log(token,products)
-  const payAmount = 0
+  let payAmount = 0
   products.map((p) => {
     payAmount += p.price
   })
 
-  const idempotencyKey = uuid() // used so that the user is charged only once
+  const idempotencyKey = uuid.v1() // used so that the user is charged only once
 
   return stripe.customers
     .create({
