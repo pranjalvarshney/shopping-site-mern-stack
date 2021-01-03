@@ -18,6 +18,7 @@ app.use("/api", require("./routes/user"))
 app.use("/api", require("./routes/category"))
 app.use("/api", require("./routes/product"))
 app.use("/api", require("./routes/blog"))
+app.use("/api", require("./routes/orders"))
 app.use("/api", require("./routes/stripePay"))
 
 // mongodb connection

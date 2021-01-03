@@ -1,11 +1,12 @@
 import React from "react"
 import { isAuthenticated } from "../../auth/helper"
-import { loadCart } from "../helper/addToCartHelper"
+import { emptyCart, loadCart } from "../helper/addToCartHelper"
 import StripeCheckout from "react-stripe-checkout"
 import axios from "axios"
 import { API } from "../../utils/backend"
+import { createOrder } from "../helper/orderHelper"
 
-export const StripeCheckOutForm = () => {
+export const StripeCheckOutForm = ({setSuccess,setSuccessInfo}) => {
   const calculateTPrice = () => {
     let tprice = 0
     loadCart().map((item) => {
@@ -13,8 +14,8 @@ export const StripeCheckOutForm = () => {
     })
     return tprice
   }
-  // const token = isAuthenticated() && isAuthenticated().data.token
-  // const userId = isAuthenticated() && isAuthenticated().data.user._id
+  const token_auth = isAuthenticated() && isAuthenticated().data.token
+  const userId = isAuthenticated() && isAuthenticated().data.user._id
 
   const makePayment = async (token) => {
     const body = { token, products: loadCart() }
@@ -27,7 +28,13 @@ export const StripeCheckOutForm = () => {
         JSON.stringify(body),
         { headers }
       )
-      console.log(response)
+      // console.log(response)
+      if (response.status === 200) {
+        createOrder(userId,token_auth,loadCart())
+        setSuccess(true)
+        setSuccessInfo(response.data)
+        emptyCart()
+      }
       return response
     } catch (error) {
       console.log(error.response)
@@ -38,7 +45,7 @@ export const StripeCheckOutForm = () => {
       <StripeCheckout
         stripeKey="pk_test_51HMkntCxS9AVpG8j9uhE5ySPCBRhmivv5EmybqcYT9umwzO8qHNTHC6nljG9vOCajNtLtz2PcGwvGgbkMoQl5AZ000tNxgnXPP"
         token={makePayment}
-        email= {isAuthenticated().data.user.email}
+        email={isAuthenticated().data.user.email}
         amount={calculateTPrice() * 100}
         currency="INR"
         name="Pay to Wrap & go"

@@ -29,9 +29,9 @@ export const loadCart = () => {
   if (typeof window !== undefined) {
     if (localStorage.getItem("cart")) {
       return JSON.parse(localStorage.getItem("cart"))
-    }else{
+    } else {
       let cart = []
-      localStorage.setItem("cart",JSON.stringify(cart))
+      localStorage.setItem("cart", JSON.stringify(cart))
     }
   }
 }
@@ -49,5 +49,7 @@ export const removeFromCart = (item) => {
 export const emptyCart = () => {
   if (typeof window !== undefined) {
     localStorage.removeItem("cart")
+    let cart = []
+    localStorage.setItem("cart", JSON.stringify(cart))
   }
 }

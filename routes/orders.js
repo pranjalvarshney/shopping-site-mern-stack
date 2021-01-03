@@ -7,7 +7,6 @@ const {
   updateOrderStatus,
 } = require("../controllers/orders")
 const { getUserById, pushOrderInPurchaseList } = require("../controllers/user")
-const { route } = require("./product")
 const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth")
 const { updateStock } = require("../controllers/product")
 const router = express.Router()

@@ -13,9 +13,9 @@ export const createOrder = async (userId, token, orderData) => {
         },
       }
     )
-    console.log(response)
-    return response
+    console.log(response.data)
   } catch (error) {
+    console.log(error.response)
     throw error
   }
 }

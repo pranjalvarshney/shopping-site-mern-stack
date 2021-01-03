@@ -7,8 +7,11 @@ import { useHistory, Link } from "react-router-dom"
 import { addToWishList } from "../core/helper/wishlistHelper"
 import { isAuthenticated } from "../auth/helper"
 import { StripeCheckOutForm } from "../core/card/StripeCheckOutForm"
+import { PaymentSuccess } from "./PaymentSuccess"
 
 export const Cart = () => {
+  const [success, setSuccess] = useState(false)
+  const [successInfo, setSuccessInfo] = useState()
   const [cartdata, setCartdata] = useState([])
   const history = useHistory()
 
@@ -25,10 +28,11 @@ export const Cart = () => {
   useEffect(() => {
     setCartdata(loadCart())
   }, [])
-
+  console.log(success)
+  console.log(successInfo)
   return (
     <Base className="container pt-5 ">
-      <div className="row my-5 pt-5">
+      {!success ? <div className="row my-5 pt-5">
         <div className="col-lg-7 jumbotron py-3 m-2">
           <h5>
             My Cart (<span className="h5 px-1">{cartdata.length}</span>)
@@ -64,21 +68,21 @@ export const Cart = () => {
         <div className="col-lg-4 jumbotron py-3 m-2">
           <TotalCart cartData={cartdata} />
           <div className="float-right mt-3">
-          {isAuthenticated() ? (
-            <StripeCheckOutForm />
-          ) : (
-            <Link to="/signin">
-              <button
-                type="submit"
-                className="btn btn-danger float-right shadow"
-              >
-                Signin to Checkout
-              </button>
-            </Link>
-          )}
+            {isAuthenticated() ? (
+              <StripeCheckOutForm setSuccess={setSuccess} setSuccessInfo={setSuccessInfo}/>
+            ) : (
+              <Link to="/signin">
+                <button
+                  type="submit"
+                  className="btn btn-danger float-right shadow"
+                >
+                  Signin to Checkout
+                </button>
+              </Link>
+            )}
           </div>
         </div>
-      </div>
+      </div>: <PaymentSuccess successInfo={successInfo}/> }
     </Base>
   )
 }

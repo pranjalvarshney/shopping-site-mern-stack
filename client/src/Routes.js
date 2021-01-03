@@ -19,9 +19,9 @@ import { Cart } from "./user/Cart"
 import { Occasion } from "./user/Occasion"
 import { CreateBlog } from "./admin/CreateBlog"
 import { ManageBlog } from "./admin/ManageBlog"
-import { Payment } from "./user/Payment"
 import { AllProducts } from "./user/AllProducts"
 import { OccasionType } from "./user/OccasionType"
+import { PaymentSuccess } from "./user/PaymentSuccess"
 
 export const Routes = () => {
   return (
@@ -37,7 +37,7 @@ export const Routes = () => {
         <Route exact path='/signin' component={Signin} />
         <Route exact path='/products' component={AllProducts} />
         <PrivateRoutes exact path='/user' component={UserDashboard} />
-        <PrivateRoutes exact path='/payment' component={Payment} />
+        <PrivateRoutes exact path='/payment-success' component={PaymentSuccess} />
         <AdminRoutes exact path='/admin' component={AdminDashboard} />
         <AdminRoutes exact path='/admin/manage/blogs' component={ManageBlog} />
         <AdminRoutes exact path='/admin/create/blog' component={CreateBlog} />
