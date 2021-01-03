@@ -48,7 +48,7 @@ export const StripeCheckOutForm = ({setSuccess,setSuccessInfo}) => {
   return (
     <div>
       <StripeCheckout
-        stripeKey="pk_test_51HMkntCxS9AVpG8j9uhE5ySPCBRhmivv5EmybqcYT9umwzO8qHNTHC6nljG9vOCajNtLtz2PcGwvGgbkMoQl5AZ000tNxgnXPP"
+        stripeKey="pk_key"
         token={makePayment}
         email={isAuthenticated().data.user.email}
         amount={calculateTPrice() * 100}
