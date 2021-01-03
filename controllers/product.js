@@ -8,20 +8,22 @@ const { filter } = require("lodash")
 // middleware for param productID which gives us "req.product"
 
 exports.getProductByID = (req, res, next, id) => {
-  Product.findById(id).populate("category").exec((err, product) => {
-    if (err) {
-      return res.status(400).json({
-        errormsg: "An error occured!",
-      })
-    }
-    if (!product) {
-      return res.status(400).json({
-        errormsg: "Product not found!",
-      })
-    }
-    req.product = product
-    next()
-  })
+  Product.findById(id)
+    .populate("category")
+    .exec((err, product) => {
+      if (err) {
+        return res.status(400).json({
+          errormsg: "An error occured!",
+        })
+      }
+      if (!product) {
+        return res.status(400).json({
+          errormsg: "Product not found!",
+        })
+      }
+      req.product = product
+      next()
+    })
 }
 
 // get all distinct product categories
@@ -50,8 +52,15 @@ exports.createProduct = (req, res) => {
     }
     // handling fields
 
-    const { name, description, price, category, totalStock ,occasions } = fields
-    if (!name || !description || !price || !category || !totalStock || !occasions) {
+    const { name, description, price, category, totalStock, occasions } = fields
+    if (
+      !name ||
+      !description ||
+      !price ||
+      !category ||
+      !totalStock ||
+      !occasions
+    ) {
       return res.status(400).json({
         errormsg: "Please provide all the relevant details",
       })
@@ -207,13 +216,14 @@ exports.updateStock = (req, res, next) => {
     return {
       updateOne: {
         filter: { _id: item._id },
-        update: { $inc: { totalStock: -item.count, sold: +item.count } },
+        update: { $inc: { totalStock: - 1, sold: +1} },
       },
     }
   })
   Product.bulkWrite(updateOpertion, {}, (err, products) => {
     if (err) {
       return res.status(400).json({
+        err,
         errormsg: "Bulk operation failed",
       })
     }

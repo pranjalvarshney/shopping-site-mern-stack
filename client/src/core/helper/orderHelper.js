@@ -3,9 +3,10 @@ import { API } from "../../utils/backend"
 
 export const createOrder = async (userId, token, orderData) => {
   try {
+    console.log(orderData)
     const response = await axios.post(
       `${API}/order/create/${userId}`,
-      orderData,
+      JSON.stringify({order: orderData}),
       {
         headers: {
           "Content-Type": "application/json",

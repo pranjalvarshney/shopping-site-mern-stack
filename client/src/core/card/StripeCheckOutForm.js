@@ -30,7 +30,12 @@ export const StripeCheckOutForm = ({setSuccess,setSuccessInfo}) => {
       )
       // console.log(response)
       if (response.status === 200) {
-        createOrder(userId,token_auth,loadCart())
+        let orderData = {
+          products: loadCart(),
+          transaction_id: response.data.id,
+          amount: response.data.amount/100
+        } 
+        createOrder(userId,token_auth,orderData)
         setSuccess(true)
         setSuccessInfo(response.data)
         emptyCart()
