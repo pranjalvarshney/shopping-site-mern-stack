@@ -1,5 +1,5 @@
 const stripe = require("stripe")(
-  "sk_test_51HMkntCxS9AVpG8jhhaU2VrovNJKH824BDAEDxEqXt4fyqiokADvjnBWCzLxW6BwjmI3Ix0NrE46EFlf3vLB6Lqr00FQrbDdeU"
+  "sk_key"
 )
 const uuid = require("uuid")
 
