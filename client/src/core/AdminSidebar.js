@@ -6,7 +6,7 @@ export const AdminSidebar = () => {
   const history = useHistory()
   return (
     <div className="card text-left ">
-      <h6 className="card-header px-4 bg-info text-white border-0">
+      <h6 className="card-header px-4 bg-primary text-white border-0">
         Admin Navigation
       </h6>
       <ul className="list-group">

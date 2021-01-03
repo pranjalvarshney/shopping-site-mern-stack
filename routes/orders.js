@@ -5,6 +5,7 @@ const {
   getAllOrders,
   getOrderStatus,
   updateOrderStatus,
+  getAllOrdersByUser,
 } = require("../controllers/orders")
 const { getUserById, pushOrderInPurchaseList } = require("../controllers/user")
 const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth")
@@ -25,8 +26,10 @@ router.post(
   createOrder
 )
 
+router.get("/orders/:userId", isSignedIn, isAuthenticated, getAllOrdersByUser)
+
 router.get(
-  "/order/all/:userID",
+  "/orders/all/:userID",
   isSignedIn,
   isAuthenticated,
   isAdmin,

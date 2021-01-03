@@ -31,6 +31,19 @@ exports.createOrder = (req, res) => {
   })
 }
 
+exports.getAllOrdersByUser = (req, res) => {
+  Order.findById({ user: req.profile._id })
+    .populate("user", "_id name")
+    .exec((err, orders) => {
+      if (err) {
+        return res.status(400).json({
+          errormsg: "No orders found!",
+        })
+      }
+      res.json(orders)
+    })
+}
+
 // get all orders if admin and populating the user name and id
 
 exports.getAllOrders = (req, res) => {

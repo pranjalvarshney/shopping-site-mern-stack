@@ -32,7 +32,7 @@ export const Cart = () => {
   console.log(successInfo)
   return (
     <Base className="container pt-5 ">
-      {!success ? <div className="row my-5 pt-5">
+      {success ? <div className="row my-5 pt-5">
         <div className="col-lg-7 jumbotron py-3 m-2">
           <h5>
             My Cart (<span className="h5 px-1">{cartdata.length}</span>)

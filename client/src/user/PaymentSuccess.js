@@ -1,8 +1,11 @@
+import { Button, Grid } from "@material-ui/core"
 import React from "react"
-import CheckCircleIcon from "@material-ui/icons/CheckCircle"
-export const PaymentSuccess = () => {
+import { useHistory } from "react-router-dom"
+// import CheckCircleIcon from "@material-ui/icons/CheckCircle"
+export const PaymentSuccess = ({ successInfo }) => {
+  const history = useHistory()
   return (
-    <div className="my-5 pt-5">
+    <div className="py-5 ">
       <div
         style={{
           display: "flex",
@@ -11,15 +14,41 @@ export const PaymentSuccess = () => {
           flexDirection: "column",
         }}
       >
-        <CheckCircleIcon
+        <img src="orderplaced.gif" alt="orderplaced" height="300px" />
+        {/* <CheckCircleIcon
           style={{ color: "#3DBE29", fontSize: "100px", marginBottom: "10px" }}
-        />
-        <h6>
+        /> */}
+        <h3>
           <b>Your order has been placed successfully</b>
-        </h6>
-        <h6>Thank you for ordering!</h6>
+        </h3>
+        <h5>Thank you for ordering!</h5>
+        <Grid container spacing={3} justify="center">
+          <Grid item>
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={() => {
+                history.push(`${successInfo.as}`)
+              }}
+            >
+              Payment Receipt
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={() => {
+                history.push("/user")
+              }}
+            >
+              My orders
+            </Button>
+          </Grid>
+        </Grid>
       </div>
-      <div className="jumbotron py-3 my-3">
+
+      {/* <div className="jumbotron py-3 my-3">
         <div className="row">
           <div className="col-4">
             <div style={{display: "flex", flexDirection:"column"}}>
@@ -30,7 +59,7 @@ export const PaymentSuccess = () => {
           <div className="col-4">Date</div>
           <div className="col-4">Payment method</div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -20,3 +20,40 @@ export const createOrder = async (userId, token, orderData) => {
     throw error
   }
 }
+export const getAllOrders = async ( token) => {
+  try {
+    const response = await axios.get(
+      `${API}/orders/all`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    console.log(response.data)
+    return response.data
+  } catch (error) {
+    console.log(error.response)
+    throw error
+  }
+}
+
+export const viewOrdersById = async (userId, token) => {
+  try {
+    const response = await axios.get(
+      `${API}/orders/${userId}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    console.log(response.data)
+    return response.data
+  } catch (error) {
+    console.log(error.response)
+    throw error
+  }
+}

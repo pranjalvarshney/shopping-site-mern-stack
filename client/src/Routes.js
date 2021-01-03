@@ -22,6 +22,7 @@ import { ManageBlog } from "./admin/ManageBlog"
 import { AllProducts } from "./user/AllProducts"
 import { OccasionType } from "./user/OccasionType"
 import { PaymentSuccess } from "./user/PaymentSuccess"
+import { UserTransactions } from "./user/UserTransactions"
 
 export const Routes = () => {
   return (
@@ -37,6 +38,7 @@ export const Routes = () => {
         <Route exact path='/signin' component={Signin} />
         <Route exact path='/products' component={AllProducts} />
         <PrivateRoutes exact path='/user' component={UserDashboard} />
+        <PrivateRoutes exact path='/user/transactions' component={UserTransactions} />
         <PrivateRoutes exact path='/payment-success' component={PaymentSuccess} />
         <AdminRoutes exact path='/admin' component={AdminDashboard} />
         <AdminRoutes exact path='/admin/manage/blogs' component={ManageBlog} />
