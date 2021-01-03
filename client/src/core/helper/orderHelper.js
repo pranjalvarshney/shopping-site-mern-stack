@@ -3,7 +3,7 @@ import { API } from "../../utils/backend"
 
 export const createOrder = async (userId, token, orderData) => {
   try {
-    console.log(orderData)
+    // console.log(orderData)
     const response = await axios.post(
       `${API}/order/create/${userId}`,
       JSON.stringify({order: orderData}),
@@ -14,16 +14,17 @@ export const createOrder = async (userId, token, orderData) => {
         },
       }
     )
-    console.log(response.data)
+    return response.data
+    // console.log(response.data)
   } catch (error) {
-    console.log(error.response)
+    // console.log(error.response)
     throw error
   }
 }
-export const getAllOrders = async ( token) => {
+export const getAllOrders = async ( userId,token) => {
   try {
     const response = await axios.get(
-      `${API}/orders/all`,
+      `${API}/orders/all/${userId}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -31,15 +32,15 @@ export const getAllOrders = async ( token) => {
         },
       }
     )
-    console.log(response.data)
+    // console.log(response.data)
     return response.data
   } catch (error) {
-    console.log(error.response)
+    // console.log(error.response)
     throw error
   }
 }
 
-export const viewOrdersById = async (userId, token) => {
+export const getAllOrdersByUser = async (userId, token) => {
   try {
     const response = await axios.get(
       `${API}/orders/${userId}`,
@@ -50,10 +51,10 @@ export const viewOrdersById = async (userId, token) => {
         },
       }
     )
-    console.log(response.data)
+    // console.log(response.data)
     return response.data
   } catch (error) {
-    console.log(error.response)
+    // console.log(error.response)
     throw error
   }
 }

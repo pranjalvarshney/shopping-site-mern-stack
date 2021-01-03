@@ -100,57 +100,57 @@ export const ManageProducts = () => {
       <div>
         <h4>Manage products</h4>
 
-        <table className="table table-responsive table-hover table-md border-0">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Category</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Price</th>
-              <th scope="col">Manage</th>
-            </tr>
-          </thead>
-          <tbody>
-            {!getData ? null:
-              getData.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{item.name}</td>
-                    <td>{item.category.name}</td>
-                    <td>{item.totalStock}</td>
-                    <td>{item.price}</td>
-                    <td>
-                      <Button
-                        color="primary"
-                        size="small"
-                        variant="contained"
-                        style={{ textDecoration: "none", color: "#fff" }}
-                        onClick={() => {
-                          history.push(`/admin/product/update/${item._id}`)
-                          window.location.reload()
-                        }}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                      className="ml-3"
-                        size="small"
-                        variant="contained"
-                        color="secondary"
-                        onClick={() => {
-                          deleteBtn(item._id)
-                        }}
-                      >
-                        Delete
-                      </Button>
-                    </td>
-                  </tr>
-                )
-              })}
-          </tbody>
-        </table>
+        <div className="table-responsive">
+          <table className="table table-hover table-md border-0">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Price</th>
+                <th scope="col">Manage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {getData &&
+                getData.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <th scope="row">{index + 1}</th>
+                      <td>{item.name}</td>
+                      <td>{item.totalStock}</td>
+                      <td>{item.price}</td>
+                      <td>
+                        <Button
+                          color="primary"
+                          size="small"
+                          variant="contained"
+                          style={{ textDecoration: "none", color: "#fff" }}
+                          onClick={() => {
+                            history.push(`/admin/product/update/${item._id}`)
+                            window.location.reload()
+                          }}
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          className="ml-3"
+                          size="small"
+                          variant="contained"
+                          color="secondary"
+                          onClick={() => {
+                            deleteBtn(item._id)
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </td>
+                    </tr>
+                  )
+                })}
+            </tbody>
+          </table>
+        </div>
         {getData.length === 0 && (
           <div className="text-center">
             <h6>

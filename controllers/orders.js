@@ -4,7 +4,7 @@ const { Order } = require("../models/order")
 
 exports.getOrderByID = (req, res, next, id) => {
   Order.findById(id)
-    .populate("products.product", "name price")
+    .populate("products.product", "name price _id")
     .exec((err, order) => {
       if (err) {
         return res.status(400).json({
@@ -32,14 +32,19 @@ exports.createOrder = (req, res) => {
 }
 
 exports.getAllOrdersByUser = (req, res) => {
-  Order.findById({ user: req.profile._id })
-    .populate("user", "_id name")
+  Order.find({user: req.profile._id})
     .exec((err, orders) => {
       if (err) {
         return res.status(400).json({
           errormsg: "No orders found!",
         })
       }
+      // const a = orders.filter(order=> order.user === req.profile._id)
+      orders.map(order=>{
+        if(req.profile._id === order.user){
+          return order
+        }
+      })
       res.json(orders)
     })
 }
@@ -48,7 +53,7 @@ exports.getAllOrdersByUser = (req, res) => {
 
 exports.getAllOrders = (req, res) => {
   Order.find()
-    .populate("user", "_id name")
+    .populate("user", "_id name email")
     .exec((err, order) => {
       if (err) {
         return res.status(400).json({

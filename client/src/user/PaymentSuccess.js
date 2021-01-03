@@ -28,7 +28,7 @@ export const PaymentSuccess = ({ successInfo }) => {
               color="secondary"
               variant="contained"
               onClick={() => {
-                history.push(`${successInfo.as}`)
+                window.open(`${successInfo.receipt_url}`)
               }}
             >
               Payment Receipt

@@ -82,7 +82,7 @@ export const AdminSidebar = () => {
             Manage Orders
           </Button>
         </li>
-        <li className="list-group-item py-2 my-0 border-0">
+        {/* <li className="list-group-item py-2 my-0 border-0">
           <Button
             onClick={() => {
               history.push("/admin/manage/users")
@@ -92,7 +92,7 @@ export const AdminSidebar = () => {
           >
             Manage Users
           </Button>
-        </li>
+        </li> */}
       </ul>
     </div>
   )

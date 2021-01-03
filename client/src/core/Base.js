@@ -11,7 +11,7 @@ export const Base = ({ className, children }) => {
     <div>
       <Navbar />
       <div className={className}>{children}</div>
-      <div className="mt-5 pt-5 pb-5 footer text-white text-center" style={{background:"#212121"}}>
+      <div className="mt-5 pt-5 pb-5 footer text-white " style={{background:"#212121"}}>
         <div className="container">
           <div className="row">
             <div className="col-lg-5 col-xs-12 about-company">
@@ -47,7 +47,7 @@ export const Base = ({ className, children }) => {
                   </a>
                 </li>
                 <li className="my-3">
-                  <a href="/occassions" className="text-white">
+                  <a href="/occasions" className="text-white">
                     Occasions
                   </a>
                 </li>
@@ -59,7 +59,7 @@ export const Base = ({ className, children }) => {
               </ul>
             </div>
             <div className="col-lg-4 col-xs-12 location">
-              <Typography variant="button" className="m-3 ">
+              <Typography variant="button" className="">
                 Connect with us
               </Typography>
               <div className="connect-with-us-icons mt-3">
@@ -76,6 +76,10 @@ export const Base = ({ className, children }) => {
                   <YouTubeIcon fontSize="large" style={{color:"white"}} />
                 </IconButton>
               </div>
+              <Typography variant="subtitle2" className="ml-3">
+              customer-care@wrapandgo.com
+              </Typography>
+              
             </div>
           </div>
           <div className="row mt-5">

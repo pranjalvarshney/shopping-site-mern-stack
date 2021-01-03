@@ -26,7 +26,7 @@ router.post(
   createOrder
 )
 
-router.get("/orders/:userId", isSignedIn, isAuthenticated, getAllOrdersByUser)
+router.get("/orders/:userID", isSignedIn,isAuthenticated, getAllOrdersByUser)
 
 router.get(
   "/orders/all/:userID",
