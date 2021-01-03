@@ -6,7 +6,7 @@ import axios from "axios"
 import { API } from "../../utils/backend"
 import { createOrder } from "../helper/orderHelper"
 
-export const StripeCheckOutForm = ({ setSuccess, setSuccessInfo,setLoading }) => {
+export const StripeCheckOutForm = ({setSuccess,setSuccessInfo}) => {
   const calculateTPrice = () => {
     let tprice = 0
     loadCart().map((item) => {
@@ -33,21 +33,12 @@ export const StripeCheckOutForm = ({ setSuccess, setSuccessInfo,setLoading }) =>
         let orderData = {
           products: loadCart(),
           transaction_id: response.data.id,
-          amount: response.data.amount / 100,
-        }
-        try {
-          setLoading(true)
-          const res = createOrder(userId, token_auth, orderData)
-          if (res === 200) {
-            setLoading(false)
-            setSuccess(true)
-            setSuccessInfo(response.data)
-            emptyCart()
-          }
-        } catch (error) {
-          setLoading(false)
-          console.log(error)
-        }
+          amount: response.data.amount/100
+        } 
+        createOrder(userId,token_auth,orderData)
+        setSuccess(true)
+        setSuccessInfo(response.data)
+        emptyCart()
       }
       return response
     } catch (error) {

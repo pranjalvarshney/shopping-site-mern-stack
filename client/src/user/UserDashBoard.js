@@ -24,7 +24,7 @@ export const UserDashboard = () => {
             </li>
             <li className='list-group-item border-0 py-1'>
               <span className='badge badge-primary mr-2 px-2 py-1'>Work </span>
-              Admin
+              User
             </li>
           </ul>
         </div>

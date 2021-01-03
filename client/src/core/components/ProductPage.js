@@ -162,45 +162,56 @@ export const ProductPage = ({ match }) => {
                   </Typography>
                 </Typography>
                 <br />
-                <Grid container spacing={3}>
-                  <Grid item xs={6}>
-                    {!success ? (
+                {data.totalStock > 0 ? (
+                  <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                      {!success ? (
+                        <Button
+                          fullWidth
+                          color="primary"
+                          variant="contained"
+                          size="large"
+                          onClick={buyNowMethod}
+                        >
+                          Buy now
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={() => {
+                            history.push("/cart")
+                          }}
+                          fullWidth
+                          style={{ background: "#64DD17" }}
+                          variant="contained"
+                          size="large"
+                        >
+                          Go to cart
+                        </Button>
+                      )}
+                    </Grid>
+                    <Grid item xs={6}>
                       <Button
+                        color="secondary"
                         fullWidth
-                        color="primary"
                         variant="contained"
                         size="large"
-                        onClick={buyNowMethod}
+                        onClick={addToCartMethod}
                       >
-                        Buy now
+                        Add to cart
+                        {getRedirect(redirect)}
                       </Button>
-                    ) : (
-                      <Button
-                        onClick={() => {
-                          history.push("/cart")
-                        }}
-                        fullWidth
-                        style={{ background: "#64DD17" }}
-                        variant="contained"
-                        size="large"
-                      >
-                        Go to cart
-                      </Button>
-                    )}
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}>
-                    <Button
-                      color="secondary"
-                      fullWidth
-                      variant="contained"
-                      size="large"
-                      onClick={addToCartMethod}
-                    >
-                      Add to cart
-                      {getRedirect(redirect)}
-                    </Button>
-                  </Grid>
-                </Grid>
+                ) : (
+                  <Button
+                    className="my-3 "
+                    fullWidth
+                    style={{ background: "yellow" }}
+                    variant="contained"
+                  >
+                    Out of stock
+                  </Button>
+                )}
               </CardContent>
             </Grid>
           </Grid>
